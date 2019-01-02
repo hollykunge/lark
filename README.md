@@ -1,5 +1,4 @@
-# vue-nw-seed
-
+# lark-client
 > A seed project with Vue.js and Nw.js
 
 ## Build Setup
