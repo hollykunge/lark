@@ -16,16 +16,16 @@
     active-text-color="#FF8700"
     >
       <el-menu-item index="2" class="lark-sidebar-item">
-        <i class="el-icon-menu"></i>
-        <span slot="title">导航二</span>
+        <i class="el-icon-menu icon-style"></i>
+        <span slot="title">协同研讨</span>
       </el-menu-item>
       <el-menu-item index="3" class="lark-sidebar-item">
         <i class="el-icon-document"></i>
-        <span slot="title">导航三</span>
+        <span slot="title">主页</span>
       </el-menu-item>
       <el-menu-item index="4" class="lark-sidebar-item">
         <i class="el-icon-setting"></i>
-        <span slot="title">导航四</span>
+        <span slot="title">工具</span>
       </el-menu-item>
     </el-menu>
 </div>
@@ -55,7 +55,7 @@
   height: 64px;
   text-align: center;
   transition: all 0.3s;
-  background: #001529;
+  background: #002140;
   img {
     padding: 8px;
     height: 64px;
@@ -67,7 +67,10 @@
   height: 100%;
   width: 80px;
   .lark-sidebar-item {
-
+    .icon-style{
+      width: 36px;
+      height: 36px;
+    }
   }
 }
 </style>
