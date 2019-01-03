@@ -1,26 +1,34 @@
 <template>
-    <div class="app-wrapper">
-      <lark-sidebar class="sidebar-container"></lark-sidebar>
-        <el-container class="main-container">
-          <div class="main-container-background"></div>
-          <lark-navbar class="navbar-content"></lark-navbar>
-          <el-main class="main-content">Main</el-main>
-        </el-container>
-    </div>
+  <div class="app-wrapper">
+    <lark-sidebar class="sidebar-container"></lark-sidebar>
+    <el-container class="main-container">
+      <!-- <div class="main-container-background"></div> -->
+      <el-header>
+        <lark-navbar class="navbar-content"></lark-navbar>
+      </el-header>
+      <el-main class="main-content">Main</el-main>
+    </el-container>
+  </div>
 </template>
 <script>
-import { LarkNavbar, LarkSidebar } from '@/components/index'
+import { LarkNavbar, LarkSidebar } from "@/components/index";
 
 export default {
-  name: 'layout',
+  name: "layout",
   components: { LarkNavbar, LarkSidebar },
-  computed: { sidebar () { return this.$store.state.app.sidebar } }
-}
+  computed: {
+    sidebar() {
+      return this.$store.state.app.sidebar;
+    }
+  }
+};
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
 @import "src/style/mixin.scss";
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -62,14 +70,19 @@ export default {
     background: #f0f2f5;
     .navbar-content {
       width: 100%;
-      padding-right: 80px;
+      height: 64px;
+      // padding-right: 80px;
       position: fixed;
       top: 0;
       z-index: 1000;
+      background-color: #0561eb;
     }
     .main-content {
       padding-top: 64px;
       overflow-x: hidden;
+    }
+    .el-header {
+      padding: 0px;
     }
   }
 }
