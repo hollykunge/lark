@@ -77,7 +77,7 @@ export default {
       position: fixed;
       top: 0;
       z-index: 1000;
-      background-color: #0561eb;
+      background-color: #f6f7f8;
     }
     .main-content {
       padding-top: 64px;

@@ -6,12 +6,12 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCoffee, faHome, faComment, faTasks, faDatabase, faToolbox } from '@fortawesome/free-solid-svg-icons'
+import { faCoffee, faHome, faComment, faTasks, faDatabase, faToolbox, faSearch, faBell } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)
-library.add(faCoffee, faHome, faComment, faTasks, faDatabase, faToolbox)
+library.add(faCoffee, faHome, faComment, faTasks, faDatabase, faToolbox, faSearch, faBell)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 // fontawesome.library.add(solid)
