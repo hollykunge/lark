@@ -1,5 +1,6 @@
 <template>
   <el-autocomplete
+    class="lark-search"
     v-model="state4"
     :fetch-suggestions="querySearchAsync"
     placeholder="请输入内容"
@@ -162,4 +163,10 @@ export default {
   }
 };
 </script>
+
+<style rel="stylesheet/scss" lang="scss" scoped>
+.lark-search {
+  -webkit-app-region: no-drag;
+}
+</style>
 

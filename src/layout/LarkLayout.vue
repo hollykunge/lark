@@ -11,7 +11,8 @@
   </div>
 </template>
 <script>
-import { LarkNavbar, LarkSidebar } from "@/components/index";
+import LarkNavbar from "./LarkNavbar"
+import LarkSidebar from "./LarkSidebar"
 
 export default {
   name: "layout",
@@ -69,6 +70,7 @@ export default {
     margin-left: 80px;
     background: #f0f2f5;
     .navbar-content {
+      padding-right: 80px;
       width: 100%;
       height: 64px;
       // padding-right: 80px;
