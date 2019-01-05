@@ -29,7 +29,7 @@ export default {
 };
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style rel="stylesheet/scss" lang="scss">
 @import "src/style/mixin.scss";
 *,
 *:before,
