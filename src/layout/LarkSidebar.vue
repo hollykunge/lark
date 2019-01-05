@@ -1,5 +1,6 @@
 <template>
   <div class="sidebar-container">
+
     <div class="logo-con">
       <router-link to="/">
         <!-- <img v-show="!isCollapse" src="../../../static/images/logo.svg" key="max-logo" />

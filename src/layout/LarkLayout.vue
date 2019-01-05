@@ -12,8 +12,8 @@
   </el-container>
 </template>
 <script>
-import LarkNavbar from "./LarkNavbar";
-import LarkSidebar from "./LarkSidebar";
+import LarkNavbar from "./LarkNavbar"
+import LarkSidebar from "./LarkSidebar"
 
 export default {
   name: "layout",
