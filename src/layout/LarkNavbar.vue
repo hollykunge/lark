@@ -1,4 +1,5 @@
 <template>
+
   <el-row class="lark-navbar" type="flex" justify="center" align="middle" :gutter="20">
     <el-col :span="10">
       <lark-search></lark-search>
@@ -15,6 +16,7 @@
 
 <script>
 import Shell from "nw.gui";
+
 import LarkSearch from "./LarkSearch";
 export default {
   name: "navbar",
