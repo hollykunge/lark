@@ -6,7 +6,34 @@
         <img v-show="isCollapse" src="../../../static/images/logo-min.svg" key="min-logo" />-->
       </router-link>
     </div>
-    <el-menu
+    <Menu active-name="1-2" theme="dark" width="auto" :class="menuitemClasses">
+      <MenuItem name="1-1">
+        <div class="icon-style">
+          <font-awesome-icon icon="home" size="2x"/>
+        </div>
+      </MenuItem>
+      <MenuItem name="1-2">
+        <div class="icon-style">
+          <font-awesome-icon icon="comment" size="2x"/>
+        </div>
+      </MenuItem>
+      <MenuItem name="1-3">
+        <div class="icon-style">
+          <font-awesome-icon icon="tasks" size="2x"/>
+        </div>
+      </MenuItem>
+      <MenuItem name="1-3">
+        <div class="icon-style">
+          <font-awesome-icon icon="database" size="2x"/>
+        </div>
+      </MenuItem>
+      <MenuItem name="1-3">
+        <div class="icon-style">
+          <font-awesome-icon icon="toolbox" size="2x"/>
+        </div>
+      </MenuItem>
+    </Menu>
+    <!-- <el-menu
       default-active="1-4-1"
       class="lark-sidebar"
       @open="handleOpen"
@@ -46,7 +73,7 @@
         </div>
         <span slot="title">工具</span>
       </el-menu-item>
-    </el-menu>
+    </el-menu>-->
   </div>
 </template>
 
@@ -54,15 +81,20 @@
 export default {
   data() {
     return {
-      isCollapse: true
+      isCollapsed: true
     };
   },
-  methods: {
-    handleOpen(key, keyPath) {
-      console.log(key, keyPath);
+  computed: {
+    rotateIcon() {
+      return ["menu-icon", this.isCollapsed ? "rotate-icon" : ""];
     },
-    handleClose(key, keyPath) {
-      console.log(key, keyPath);
+    menuitemClasses() {
+      return ["menu-item", this.isCollapsed ? "collapsed-menu" : ""];
+    }
+  },
+  methods: {
+    collapsedSider() {
+      this.$refs.side1.toggleCollapse();
     }
   }
 };
@@ -92,5 +124,9 @@ export default {
     }
   }
 }
+.ivu-menu-dark {
+  background-color: #002140 !important;
+}
+
 </style>
 
