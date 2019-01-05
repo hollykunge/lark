@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="sidebar-container">
     <div class="logo-con">
       <router-link to="/">
         <!-- <img v-show="!isCollapse" src="../../../static/images/logo.svg" key="max-logo" />
@@ -70,6 +70,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style rel="stylesheet/scss" lang="scss" scoped>
+.sidebar-container {
+  height: 100%;
+}
 .logo-con {
   height: 64px;
   text-align: center;

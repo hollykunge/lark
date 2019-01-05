@@ -1,15 +1,12 @@
 <template>
-  <!-- <lark-sidebar class="sidebar-container"></lark-sidebar>
-    <el-container class="main-container">
-      <el-header>
-        <lark-navbar class="navbar-content"></lark-navbar>
-      </el-header>
-      <el-main class="main-content">Main</el-main>
-  </el-container>-->
   <el-container class="app-wrapper">
-    <el-aside width="80px">Aside</el-aside>
+    <el-aside width="80px">
+      <lark-sidebar></lark-sidebar>
+    </el-aside>
     <el-container class="main-container">
-      <el-header height="64px">Header</el-header>
+      <el-header height="64px">
+        <lark-navbar></lark-navbar>
+      </el-header>
       <el-main>Main</el-main>
     </el-container>
   </el-container>
@@ -38,67 +35,21 @@ export default {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-// .main-container-background {
-//   z-index: -1;
-//   width: 100%;
-//   height: 100%;
-//   position: fixed;
-  // background-color: #f0f2f5;
-// }
 .app-wrapper {
-  //   @include clearfix;
-  //   position: relative;
   height: 100%;
   width: 100%;
-  //   .sidebar-container {
-  //     transition: width 0.28s ease-out;
-  //     background-color: #001529;
-  //     width: 80px;
-  //     height: 100%;
-  //     position: fixed;
-  //     top: 0;
-  //     bottom: 0;
-  //     left: 0;
-  //     box-shadow: 1px 0 6px rgba(0, 21, 41, 0.35);
-  //     z-index: 1001;
-      // overflow-x: hidden;
-  //     overflow-y: auto;
-  //     &::-webkit-scrollbar {
-  //       display: none;
-  //     }
 }
-  .main-container {
-    min-width: 800px;
-    min-height: 100%;
-    transition: margin-left 0.28s ease-out;
-//     margin-left: 80px;
-//     background: #f0f2f5;
-//     .navbar-content {
-//       padding-right: 80px;
-//       width: 100%;
-//       height: 64px;
-//       // padding-right: 80px;
-//       position: fixed;
-//       top: 0;
-//       z-index: 1000;
-//       background-color: #0561eb;
-    }
-//     .main-content {
-//       // padding-top: 44px;
-//       overflow: hidden;
-//       min-height: -webkit-fill-available;
-//     }
-//     .el-header {
-//       padding: 0px;
-//     }
-//   }
-// }
+.main-container {
+  min-width: 800px;
+  min-height: 100%;
+  transition: margin-left 0.28s ease-out;
+}
 .el-header {
-  // position: fixed;
   background-color: #0561eb;
   width: 100%;
-  padding: 0;
+  padding: 0px !important;
   z-index: 1000;
+  line-height: 64px;
 }
 
 .el-aside {
@@ -118,10 +69,6 @@ export default {
 .el-main {
   background-color: #f0f2f5;
   height: 100%;
-    min-width: 800px;
-//     min-height: 100%;
-//     transition: margin-left 0.28s ease-out;
-//     margin-left: 80px;
-//     background: #f0f2f5;
+  min-width: 800px;
 }
 </style>
