@@ -80,7 +80,7 @@
     "toolbar": false,
     "width": 1024,
     "height": 768,
-    "min_width": 800,
+    "min_width": 880,
     "min_height": 600,
     "resizable": true,
     "frame": false,
