@@ -18,7 +18,8 @@ import {
   faSyncAlt,
   faWindowMaximize,
   faWindowMinimize,
-  faTimes
+  faTimes,
+  faCog
 
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -37,7 +38,8 @@ library.add(
   faSyncAlt,
   faWindowMaximize,
   faWindowMinimize,
-  faTimes
+  faTimes,
+  faCog
 );
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 Vue.config.productionTip = false;

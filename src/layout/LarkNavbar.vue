@@ -1,11 +1,14 @@
 <template>
   <div>
     <Row>
-      <Col span="14" :offset="1">
+      <Col span="12" :offset="1">
         <lark-search></lark-search>
       </Col>
       <Col span="1">
         <lark-notice></lark-notice>
+      </Col>
+      <Col span="1">
+        <lark-setup></lark-setup>
       </Col>
       <Col span="4">
         <Poptip trigger="hover" title="我的账户" content="content" width="240">
@@ -18,7 +21,7 @@
       <Col span="1">
         <Divider type="vertical"/>
       </Col>
-      <Col span="3">
+      <Col span="3" :push="1">
         <lark-window></lark-window>
       </Col>
     </Row>
@@ -32,6 +35,7 @@ import LarkNotice from "@/components/header/LarkNotice";
 import LarkWindow from "@/components/header/LarkWindow";
 import LarkAvatar from "@/components/header/LarkAvatar";
 import LarkMyAccount from "@/components/header/personal/LarkMyAccount";
+import LarkSetup from "@/components/header/LarkSetup";
 export default {
   name: "navbar",
   components: {
@@ -40,7 +44,8 @@ export default {
     LarkNotice,
     LarkWindow,
     LarkAvatar,
-    LarkMyAccount
+    LarkMyAccount,
+    LarkSetup
   },
   data() {
     return {

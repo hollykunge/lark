@@ -2,9 +2,7 @@
   <div>
     <div class="logo-con">
       <router-link to="/">
-      <img src="static/logo.png">
-        <!-- <img v-show="!isCollapse" src="../../../static/images/logo.svg" key="max-logo" />
-        <img v-show="isCollapse" src="../../../static/images/logo-min.svg" key="min-logo" />-->
+        <img src="static/logo.png">
       </router-link>
     </div>
     <Menu active-name="1-2" theme="dark" width="auto" :class="menuitemClasses">
@@ -23,58 +21,18 @@
           <font-awesome-icon icon="tasks" size="2x"/>
         </div>
       </MenuItem>
-      <MenuItem name="1-3">
+      <MenuItem name="1-4">
         <div class="icon-style">
           <font-awesome-icon icon="database" size="2x"/>
         </div>
       </MenuItem>
-      <MenuItem name="1-3">
+      <MenuItem name="1-5">
         <div class="icon-style">
           <font-awesome-icon icon="toolbox" size="2x"/>
         </div>
       </MenuItem>
     </Menu>
-    <!-- <el-menu
-      default-active="1-4-1"
-      class="lark-sidebar"
-      @open="handleOpen"
-      @close="handleClose"
-      :collapse="isCollapse"
-      background-color="#002140"
-      text-color="#D3D3D3"
-      active-text-color="#FF8700"
-    >
-      <el-menu-item index="2" class="lark-sidebar-item">
-        <div class="icon-style">
-          <font-awesome-icon icon="home" size="2x"/>
-        </div>
-        <span slot="title">主页</span>
-      </el-menu-item>
-      <el-menu-item index="3" class="lark-sidebar-item">
-        <div class="icon-style">
-          <font-awesome-icon icon="comment" size="2x"/>
-        </div>
-        <span slot="title">研讨</span>
-      </el-menu-item>
-      <el-menu-item index="3" class="lark-sidebar-item">
-        <div class="icon-style">
-          <font-awesome-icon icon="tasks" size="2x"/>
-        </div>
-        <span slot="title">任务</span>
-      </el-menu-item>
-      <el-menu-item index="3" class="lark-sidebar-item">
-        <div class="icon-style">
-          <font-awesome-icon icon="database" size="2x"/>
-        </div>
-        <span slot="title">数据</span>
-      </el-menu-item>
-      <el-menu-item index="4" class="lark-sidebar-item">
-        <div class="icon-style">
-          <font-awesome-icon icon="toolbox" size="2x"/>
-        </div>
-        <span slot="title">工具</span>
-      </el-menu-item>
-    </el-menu>-->
+
   </div>
 </template>
 
@@ -129,6 +87,5 @@ export default {
 .ivu-menu-dark {
   background-color: #002140 !important;
 }
-
 </style>
 

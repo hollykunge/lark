@@ -11,7 +11,7 @@
       </Col>
       <Col span="12">
         <Row>
-          <p style="height: 20px">hollykunge</p>
+          <p style="height: 20px"><strong>hollykunge</strong></p>
           <p style="height: 20px">副主任按摩师</p>
         </Row>
         <Row type="flex" align="middle" class="code-row-bg"><strong>全局:</strong>1200</Row>
