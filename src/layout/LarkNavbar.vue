@@ -8,7 +8,12 @@
         <lark-notice></lark-notice>
       </Col>
       <Col span="4">
-        <lark-avatar></lark-avatar>
+        <Poptip trigger="hover" title="我的账户" content="content" width="240">
+          <lark-avatar></lark-avatar>
+          <div class="api" slot="content">
+            <lark-my-account></lark-my-account>
+          </div>
+        </Poptip>
       </Col>
       <Col span="1">
         <Divider type="vertical"/>
@@ -26,9 +31,17 @@ import LarkSearch from "@/components/search/LarkSearch";
 import LarkNotice from "@/components/header/LarkNotice";
 import LarkWindow from "@/components/header/LarkWindow";
 import LarkAvatar from "@/components/header/LarkAvatar";
+import LarkMyAccount from "@/components/header/personal/LarkMyAccount";
 export default {
   name: "navbar",
-  components: { Shell, LarkSearch, LarkNotice, LarkWindow, LarkAvatar },
+  components: {
+    Shell,
+    LarkSearch,
+    LarkNotice,
+    LarkWindow,
+    LarkAvatar,
+    LarkMyAccount
+  },
   data() {
     return {
       isCollapse: true

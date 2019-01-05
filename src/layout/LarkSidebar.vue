@@ -2,6 +2,7 @@
   <div>
     <div class="logo-con">
       <router-link to="/">
+      <img src="static/logo.png">
         <!-- <img v-show="!isCollapse" src="../../../static/images/logo.svg" key="max-logo" />
         <img v-show="isCollapse" src="../../../static/images/logo-min.svg" key="min-logo" />-->
       </router-link>
@@ -109,7 +110,8 @@ export default {
   background: #002140;
   img {
     padding: 8px;
-    height: 64px;
+    margin-top: 6px;
+    height: 50px;
     width: auto;
   }
 }

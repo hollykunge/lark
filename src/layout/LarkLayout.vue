@@ -86,14 +86,4 @@ export default {
 .ivu-layout-sider {
   background: #002140 !important;
 }
-// .lark-navbar {
-//   -webkit-app-region: drag;
-//   &-operation {
-//     float: right;
-//     .el-button {
-//       -webkit-app-region: no-drag;
-//       margin-left: 0%;
-//     }
-//   }
-// }
 </style>
