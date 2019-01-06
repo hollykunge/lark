@@ -84,6 +84,6 @@ export default {
   font-size: 22px;
 }
 .ivu-layout-sider {
-  background: #002140 !important;
+  background: #001529 !important;
 }
 </style>

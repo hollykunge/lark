@@ -8,10 +8,10 @@ import "iview/dist/styles/iview.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faCoffee,
-  faHome,
+  faDove,
   faComment,
   faTasks,
-  faDatabase,
+  faTable,
   faToolbox,
   faSearch,
   faBell,
@@ -19,7 +19,11 @@ import {
   faWindowMaximize,
   faWindowMinimize,
   faTimes,
-  faCog
+  faCog,
+  faBook,
+  faUserGraduate,
+  faBookOpen,
+  faBookReader
 
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -28,10 +32,10 @@ Vue.config.productionTip = false;
 Vue.use(iView);
 library.add(
   faCoffee,
-  faHome,
+  faDove,
   faComment,
   faTasks,
-  faDatabase,
+  faTable,
   faToolbox,
   faSearch,
   faBell,
@@ -39,7 +43,11 @@ library.add(
   faWindowMaximize,
   faWindowMinimize,
   faTimes,
-  faCog
+  faCog,
+  faBook,
+  faUserGraduate,
+  faBookOpen,
+  faBookReader
 );
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 Vue.config.productionTip = false;

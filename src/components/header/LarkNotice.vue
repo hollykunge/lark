@@ -1,6 +1,6 @@
 <style scoped>
 .notice-position {
-  margin-top: 9px;
+  margin-top: 8px;
 }
 </style>
 <template>

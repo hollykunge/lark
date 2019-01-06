@@ -17,6 +17,6 @@ export default {};
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
 .setup-position {
-  margin-top: 9px;
+  margin-top: 8px;
 }
 </style>
