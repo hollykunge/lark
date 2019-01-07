@@ -5,51 +5,44 @@
         <img src="static/logo.png">
       </router-link>
     </div>
-    <Menu active-name="1-1" theme="dark" width="auto" :class="menuitemClasses">
+    <Menu :active-name="$route.name" theme="dark" width="auto" :class="menuitemClasses">
       <Tooltip content="主页" placement="right">
-        <MenuItem name="1-1">
+        <MenuItem name="dashboard" to="/dashboard">
           <div class="icon-style">
             <font-awesome-icon icon="dove" size="2x"/>
           </div>
         </MenuItem>
       </Tooltip>
       <Tooltip content="研讨" placement="right">
-        <MenuItem name="1-2">
+        <MenuItem name="chat" to="/chat">
           <div class="icon-style">
             <font-awesome-icon icon="comment" size="2x"/>
           </div>
         </MenuItem>
       </Tooltip>
       <Tooltip content="任务" placement="right">
-        <MenuItem name="1-3">
+        <MenuItem name="task" to="/task">
           <div class="icon-style">
             <font-awesome-icon icon="tasks" size="2x"/>
           </div>
         </MenuItem>
       </Tooltip>
       <Tooltip content="数据" placement="right">
-        <MenuItem name="1-4">
+        <MenuItem name="data" to="/data">
           <div class="icon-style">
             <font-awesome-icon icon="table" size="2x"/>
           </div>
         </MenuItem>
       </Tooltip>
-      <!-- <Tooltip content="数据" placement="right">
-      <MenuItem name="1-4">
-        <div class="icon-style">
-          <font-awesome-icon icon="database" size="2x"/>
-        </div>
-      </MenuItem>
-      </Tooltip>-->
       <Tooltip content="工具" placement="right">
-        <MenuItem name="1-5">
+        <MenuItem name="tool" to="/tool">
           <div class="icon-style">
             <font-awesome-icon icon="toolbox" size="2x"/>
           </div>
         </MenuItem>
       </Tooltip>
       <Tooltip content="知识" placement="right">
-        <MenuItem name="1-6">
+        <MenuItem name="knowledge" to="/knowledge">
           <div class="icon-style">
             <font-awesome-icon icon="book-reader" size="2x"/>
           </div>
