@@ -1,6 +1,5 @@
 <template>
-  <div class="sidebar-container">
-
+  <div>
     <div class="logo-con">
       <router-link to="/">
         <img src="static/logo.png">
@@ -85,9 +84,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style rel="stylesheet/scss" lang="scss" scoped>
-.sidebar-container {
-  height: 100%;
-}
 .logo-con {
   height: 64px;
   text-align: center;

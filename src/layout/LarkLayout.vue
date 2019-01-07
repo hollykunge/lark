@@ -33,7 +33,7 @@ export default {
 };
 </script>
 
-<style rel="stylesheet/scss" lang="scss">
+<style rel="stylesheet/scss" lang="scss" scoped>
 @import "src/style/mixin.scss";
 *,
 *:before,
@@ -85,11 +85,5 @@ export default {
 }
 .ivu-layout-sider {
   background: #001529 !important;
-}
-
-.el-main {
-  background-color: #f0f2f5;
-  height: 100%;
-  min-width: 800px;
 }
 </style>
