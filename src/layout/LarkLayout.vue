@@ -1,25 +1,33 @@
 <template>
-  <div class="app-wrapper">
-    <lark-sidebar class="sidebar-container"></lark-sidebar>
-    <el-container class="main-container">
-      <!-- <div class="main-container-background"></div> -->
-      <el-header>
-        <lark-navbar class="navbar-content"></lark-navbar>
-      </el-header>
-      <el-main class="main-content">Main</el-main>
-    </el-container>
+  <div class="layout">
+    <Layout style="height: 100%">
+      <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
+        <lark-sidebar class="sidebar-container"></lark-sidebar>
+      </Sider>
+      <Layout>
+        <Header :style="{padding: 0}" class="layout-header-bar">
+          <lark-navbar></lark-navbar>
+        </Header>
+        <Content :style="{margin: '20px', background: '#fff', minHeight: '260px'}">Content</Content>
+      </Layout>
+    </Layout>
   </div>
 </template>
 <script>
-import LarkNavbar from "./LarkNavbar"
-import LarkSidebar from "./LarkSidebar"
+import LarkNavbar from "./LarkNavbar";
+import LarkSidebar from "./LarkSidebar";
 
 export default {
   name: "layout",
   components: { LarkNavbar, LarkSidebar },
+  data() {
+    return {
+      isCollapsed: true
+    };
+  },
   computed: {
-    sidebar() {
-      return this.$store.state.app.sidebar;
+    menuitemClasses: function() {
+      return ["menu-item", this.isCollapsed ? "collapsed-menu" : ""];
     }
   }
 };
@@ -34,58 +42,48 @@ export default {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.main-container-background {
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  background-color: #f0f2f5;
-}
-.app-wrapper {
+.layout {
   @include clearfix;
   position: relative;
   height: 100%;
   width: 100%;
-  .sidebar-container {
-    transition: width 0.28s ease-out;
-    background-color: #001529;
-    width: 80px;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    box-shadow: 1px 0 6px rgba(0, 21, 41, 0.35);
-    z-index: 1001;
-    overflow-x: hidden;
-    overflow-y: auto;
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-  .main-container {
-    min-width: 800px;
-    min-height: 100%;
-    transition: margin-left 0.28s ease-out;
-    margin-left: 80px;
-    background: #f0f2f5;
-    .navbar-content {
-      padding-right: 80px;
-      width: 100%;
-      height: 64px;
-      // padding-right: 80px;
-      position: fixed;
-      top: 0;
-      z-index: 1000;
-      background-color: #0561eb;
-    }
-    .main-content {
-      padding-top: 64px;
-      overflow-x: hidden;
-    }
-    .el-header {
-      padding: 0px;
-    }
-  }
+  border: 0px solid #d7dde4;
+  background: #f5f7f9;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.layout-header-bar {
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  -webkit-app-region: drag;
+}
+.menu-item span {
+  display: inline-block;
+  overflow: hidden;
+  width: 69px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: bottom;
+  transition: width 0.2s ease 0.2s;
+}
+.menu-item i {
+  transform: translateX(0px);
+  transition: font-size 0.2s ease, transform 0.2s ease;
+  vertical-align: middle;
+  font-size: 16px;
+}
+.collapsed-menu span {
+  width: 0px;
+  transition: width 0.2s ease;
+}
+.collapsed-menu i {
+  transform: translateX(5px);
+  transition: font-size 0.2s ease 0.2s, transform 0.2s ease 0.2s;
+  vertical-align: middle;
+  font-size: 22px;
+}
+.ivu-layout-sider {
+  background: #001529 !important;
 }
 </style>

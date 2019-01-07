@@ -1,24 +1,52 @@
 <template>
-  <el-row class="lark-navbar" type="flex" justify="center" align="middle" :gutter="20">
-    <el-col :span="10">
-      <lark-search></lark-search>
-    </el-col>
-    <el-col :span="6" :push="4">
-      <div class="lark-navbar-operation">
-        <el-button id="min" size="mini" icon="el-icon-minus" circle @click="handleMinimize"></el-button>
-        <el-button id="max" size="mini" icon="el-icon-plus" circle @click="handleMaximize"></el-button>
-        <el-button id="close" size="mini" type="danger" icon="el-icon-close" circle @click="handleClose"></el-button>
-      </div>
-    </el-col>
-  </el-row>
+  <div>
+    <Row>
+      <Col span="12" :offset="1">
+        <lark-search></lark-search>
+      </Col>
+      <Col span="1">
+        <lark-notice></lark-notice>
+      </Col>
+      <Col span="1">
+        <lark-setup></lark-setup>
+      </Col>
+      <Col span="4">
+        <Poptip trigger="hover" title="我的账户" content="content" width="240">
+          <lark-avatar></lark-avatar>
+          <div class="api" slot="content">
+            <lark-my-account></lark-my-account>
+          </div>
+        </Poptip>
+      </Col>
+      <Col span="1">
+        <Divider type="vertical"/>
+      </Col>
+      <Col span="3" :push="1">
+        <lark-window></lark-window>
+      </Col>
+    </Row>
+  </div>
 </template>
 
 <script>
 import Shell from "nw.gui";
-import LarkSearch from "./LarkSearch";
+import LarkSearch from "@/components/search/LarkSearch";
+import LarkNotice from "@/components/header/LarkNotice";
+import LarkWindow from "@/components/header/LarkWindow";
+import LarkAvatar from "@/components/header/LarkAvatar";
+import LarkMyAccount from "@/components/header/personal/LarkMyAccount";
+import LarkSetup from "@/components/header/LarkSetup";
 export default {
   name: "navbar",
-  components: { Shell, LarkSearch },
+  components: {
+    Shell,
+    LarkSearch,
+    LarkNotice,
+    LarkWindow,
+    LarkAvatar,
+    LarkMyAccount,
+    LarkSetup
+  },
   data() {
     return {
       isCollapse: true
@@ -32,29 +60,22 @@ export default {
       console.log(key, keyPath);
     },
     handleMinimize() {
-      let win = Shell.Window.get()
-      win.minimize()
+      let win = Shell.Window.get();
+      win.minimize();
     },
     handleMaximize() {
-      let win = Shell.Window.get()
-      win.maximize()
+      let win = Shell.Window.get();
+      win.maximize();
     },
     handleClose() {
-      Shell.App.quit()
+      Shell.App.quit();
     }
   }
 };
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-.lark-navbar {
-  -webkit-app-region: drag;
-  &-operation {
-    float: right;
-    .el-button {
-      -webkit-app-region: no-drag;
-      margin-left: 0%;
-    }
-  }
+.lark-navbar-operation {
+  border-left: 1px solid #c2c2c2;
 }
 </style>

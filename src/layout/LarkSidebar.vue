@@ -2,51 +2,60 @@
   <div>
     <div class="logo-con">
       <router-link to="/">
-        <!-- <img v-show="!isCollapse" src="../../../static/images/logo.svg" key="max-logo" />
-        <img v-show="isCollapse" src="../../../static/images/logo-min.svg" key="min-logo" />-->
+        <img src="static/logo.png">
       </router-link>
     </div>
-    <el-menu
-      default-active="1-4-1"
-      class="lark-sidebar"
-      @open="handleOpen"
-      @close="handleClose"
-      :collapse="isCollapse"
-      background-color="#002140"
-      text-color="#D3D3D3"
-      active-text-color="#FF8700"
-    >
-      <el-menu-item index="2" class="lark-sidebar-item">
-        <div class="icon-style">
-          <font-awesome-icon icon="home" size="2x"/>
-        </div>
-        <span slot="title">主页</span>
-      </el-menu-item>
-      <el-menu-item index="3" class="lark-sidebar-item">
-        <div class="icon-style">
-          <font-awesome-icon icon="comment" size="2x"/>
-        </div>
-        <span slot="title">研讨</span>
-      </el-menu-item>
-      <el-menu-item index="3" class="lark-sidebar-item">
-        <div class="icon-style">
-          <font-awesome-icon icon="tasks" size="2x"/>
-        </div>
-        <span slot="title">任务</span>
-      </el-menu-item>
-      <el-menu-item index="3" class="lark-sidebar-item">
+    <Menu active-name="1-1" theme="dark" width="auto" :class="menuitemClasses">
+      <Tooltip content="主页" placement="right">
+        <MenuItem name="1-1">
+          <div class="icon-style">
+            <font-awesome-icon icon="dove" size="2x"/>
+          </div>
+        </MenuItem>
+      </Tooltip>
+      <Tooltip content="研讨" placement="right">
+        <MenuItem name="1-2">
+          <div class="icon-style">
+            <font-awesome-icon icon="comment" size="2x"/>
+          </div>
+        </MenuItem>
+      </Tooltip>
+      <Tooltip content="任务" placement="right">
+        <MenuItem name="1-3">
+          <div class="icon-style">
+            <font-awesome-icon icon="tasks" size="2x"/>
+          </div>
+        </MenuItem>
+      </Tooltip>
+      <Tooltip content="数据" placement="right">
+        <MenuItem name="1-4">
+          <div class="icon-style">
+            <font-awesome-icon icon="table" size="2x"/>
+          </div>
+        </MenuItem>
+      </Tooltip>
+      <!-- <Tooltip content="数据" placement="right">
+      <MenuItem name="1-4">
         <div class="icon-style">
           <font-awesome-icon icon="database" size="2x"/>
         </div>
-        <span slot="title">数据</span>
-      </el-menu-item>
-      <el-menu-item index="4" class="lark-sidebar-item">
-        <div class="icon-style">
-          <font-awesome-icon icon="toolbox" size="2x"/>
-        </div>
-        <span slot="title">工具</span>
-      </el-menu-item>
-    </el-menu>
+      </MenuItem>
+      </Tooltip>-->
+      <Tooltip content="工具" placement="right">
+        <MenuItem name="1-5">
+          <div class="icon-style">
+            <font-awesome-icon icon="toolbox" size="2x"/>
+          </div>
+        </MenuItem>
+      </Tooltip>
+      <Tooltip content="知识" placement="right">
+        <MenuItem name="1-6">
+          <div class="icon-style">
+            <font-awesome-icon icon="book-reader" size="2x"/>
+          </div>
+        </MenuItem>
+      </Tooltip>
+    </Menu>
   </div>
 </template>
 
@@ -54,15 +63,20 @@
 export default {
   data() {
     return {
-      isCollapse: true
+      isCollapsed: true
     };
   },
-  methods: {
-    handleOpen(key, keyPath) {
-      console.log(key, keyPath);
+  computed: {
+    rotateIcon() {
+      return ["menu-icon", this.isCollapsed ? "rotate-icon" : ""];
     },
-    handleClose(key, keyPath) {
-      console.log(key, keyPath);
+    menuitemClasses() {
+      return ["menu-item", this.isCollapsed ? "collapsed-menu" : ""];
+    }
+  },
+  methods: {
+    collapsedSider() {
+      this.$refs.side1.toggleCollapse();
     }
   }
 };
@@ -74,10 +88,11 @@ export default {
   height: 64px;
   text-align: center;
   transition: all 0.3s;
-  background: #002140;
+  background: #001529;
   img {
     padding: 8px;
-    height: 64px;
+    margin-top: 6px;
+    height: 50px;
     width: auto;
   }
 }
@@ -91,6 +106,9 @@ export default {
       padding-left: 3px;
     }
   }
+}
+.ivu-menu-dark {
+  background-color: #001529 !important;
 }
 </style>
 
