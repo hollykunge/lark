@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Button shape="circle" icon="md-remove" size="small" @click="handleMinimize"></Button>
-    <Button shape="circle" icon="md-add" size="small" @click="handleMaximize"></Button>
-    <Button type="error" shape="circle" icon="md-close" ghost size="small" @click="handleClose"></Button>
+    <Button class="lark-window" shape="circle" icon="md-remove" size="small" @click="handleMinimize"></Button>
+    <Button class="lark-window" shape="circle" icon="md-add" size="small" @click="handleMaximize"></Button>
+    <Button class="lark-window" type="error" shape="circle" icon="md-close" ghost size="small" @click="handleClose"></Button>
   </div>
 </template>
 <script>
@@ -29,3 +29,8 @@ export default {
   }
 };
 </script>
+<style rel="stylesheet/scss" lang="scss" scoped>
+.lark-window {
+  -webkit-app-region: no-drag;
+}
+</style>
