@@ -50,7 +50,7 @@ export default {
   border: 0px solid #d7dde4;
   background: #f5f7f9;
   position: relative;
-  border-radius: 4px;
+  border-radius: 0px;
   overflow: hidden;
 }
 .layout-header-bar {
