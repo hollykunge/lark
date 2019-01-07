@@ -19,4 +19,7 @@ export default {};
 .setup-position {
   margin-top: 8px;
 }
+.setup-position {
+  -webkit-app-region: no-drag;
+}
 </style>

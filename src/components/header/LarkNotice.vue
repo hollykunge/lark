@@ -1,6 +1,7 @@
 <style scoped>
 .notice-position {
   margin-top: 8px;
+  -webkit-app-region: no-drag;
 }
 </style>
 <template>
