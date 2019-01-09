@@ -29,7 +29,10 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 Vue.config.productionTip = false;
-Vue.use(iView);
+Vue.use(iView, {
+  transfer: true,
+  size: 'large'
+});
 library.add(
   faCoffee,
   faDove,

@@ -7,28 +7,28 @@
     </div>
     <Menu active-name="1-1" theme="dark" width="auto" :class="menuitemClasses">
       <Tooltip content="主页" placement="right">
-        <MenuItem name="1-1">
+        <MenuItem name="1-1" class="lark-sidebar-item">
           <div class="icon-style">
             <font-awesome-icon icon="dove" size="2x"/>
           </div>
         </MenuItem>
       </Tooltip>
       <Tooltip content="研讨" placement="right">
-        <MenuItem name="1-2">
+        <MenuItem name="1-2" class="lark-sidebar-item">
           <div class="icon-style">
             <font-awesome-icon icon="comment" size="2x"/>
           </div>
         </MenuItem>
       </Tooltip>
       <Tooltip content="任务" placement="right">
-        <MenuItem name="1-3">
+        <MenuItem name="1-3" class="lark-sidebar-item">
           <div class="icon-style">
             <font-awesome-icon icon="tasks" size="2x"/>
           </div>
         </MenuItem>
       </Tooltip>
       <Tooltip content="数据" placement="right">
-        <MenuItem name="1-4">
+        <MenuItem name="1-4" class="lark-sidebar-item">
           <div class="icon-style">
             <font-awesome-icon icon="table" size="2x"/>
           </div>
@@ -42,14 +42,14 @@
       </MenuItem>
       </Tooltip>-->
       <Tooltip content="工具" placement="right">
-        <MenuItem name="1-5">
+        <MenuItem name="1-5" class="lark-sidebar-item">
           <div class="icon-style">
             <font-awesome-icon icon="toolbox" size="2x"/>
           </div>
         </MenuItem>
       </Tooltip>
       <Tooltip content="知识" placement="right">
-        <MenuItem name="1-6">
+        <MenuItem name="1-6" class="lark-sidebar-item">
           <div class="icon-style">
             <font-awesome-icon icon="book-reader" size="2x"/>
           </div>
@@ -88,7 +88,7 @@ export default {
   height: 64px;
   text-align: center;
   transition: all 0.3s;
-  background: #001529;
+  background: rgb(1, 68, 168);
   img {
     padding: 8px;
     margin-top: 6px;
@@ -108,7 +108,19 @@ export default {
   }
 }
 .ivu-menu-dark {
-  background-color: #001529 !important;
+  background-color: rgb(1, 68, 168) !important;
+}
+.ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu), .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu):hover, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu), .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu):hover {
+    background: #002852;
+    border-radius: 50%;
+}
+// .lark-sidebar-item:hover {
+//   background: #002852;
+// }
+.ivu-menu-dark.ivu-menu-vertical .ivu-menu-item:hover, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title:hover {
+    color: #fff;
+    background: #002852;
+    border-radius: 50%;
 }
 </style>
 
