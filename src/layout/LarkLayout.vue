@@ -8,7 +8,9 @@
         <Header :style="{padding: 0}" class="layout-header-bar">
           <lark-navbar></lark-navbar>
         </Header>
-        <Content :style="{margin: '20px', background: '#fff', minHeight: '260px'}">Content</Content>
+        <Content :style="{margin: '20px', background: '#fff', minHeight: '260px'}">
+          <router-view></router-view>
+        </Content>
       </Layout>
     </Layout>
   </div>
