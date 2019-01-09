@@ -29,6 +29,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 Vue.config.productionTip = false
 Vue.use(iView)
+
 library.add(
   faCoffee,
   faDove,
