@@ -1,7 +1,7 @@
 <template>
   <div class="layout">
     <Layout style="height: 100%">
-      <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
+      <Sider ref="side1" hide-trigger collapsible :collapsed-width="64" v-model="isCollapsed">
         <lark-sidebar class="sidebar-container"></lark-sidebar>
       </Sider>
       <Layout>
@@ -56,6 +56,7 @@ export default {
   overflow: hidden;
 }
 .layout-header-bar {
+  height: 32px;
   background: #fff;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   -webkit-app-region: drag;
