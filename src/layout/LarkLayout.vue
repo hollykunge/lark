@@ -8,7 +8,7 @@
         <Header :style="{padding: 0}" class="layout-header-bar">
           <lark-navbar></lark-navbar>
         </Header>
-        <Content :style="{margin: '20px', background: '#fff', minHeight: '260px'}">
+        <Content :style="{margin: '0px', background: '#F2F2F2', minHeight: '704px'}">
           <router-view></router-view>
         </Content>
       </Layout>
@@ -36,29 +36,29 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-@import "src/style/mixin.scss";
-*,
-*:before,
-*:after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
+// @import "src/style/mixin.scss";
+// *,
+// *:before,
+// *:after {
+//   -moz-box-sizing: border-box;
+//   -webkit-box-sizing: border-box;
+//   box-sizing: border-box;
+// }
 .layout {
-  @include clearfix;
-  position: relative;
+  // @include clearfix;
+  // position: relative;
   height: 100%;
   width: 100%;
-  border: 0px solid #d7dde4;
-  background: #f5f7f9;
+  border: 0px solid #F2F2F2;
+  background: #F2F2F2;
   position: relative;
   border-radius: 0px;
   overflow: hidden;
 }
 .layout-header-bar {
   height: 32px;
-  background: #fff;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  background: #F2F2F2;
+  // box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   -webkit-app-region: drag;
 }
 .menu-item span {

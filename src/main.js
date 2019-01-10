@@ -26,6 +26,7 @@ import {
   faUserGraduate,
   faBookOpen,
   faBookReader,
+  faThumbtack
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -50,7 +51,8 @@ library.add(
   faBook,
   faUserGraduate,
   faBookOpen,
-  faBookReader
+  faBookReader,
+  faThumbtack
 )
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false

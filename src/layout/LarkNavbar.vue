@@ -1,6 +1,6 @@
 <template>
-  <div class="lark-nav-style">
-    <Row>
+  <div>
+
       <!-- <Col span="12" :offset="1">
       </Col>
       <Col span="1">
@@ -20,10 +20,8 @@
       <Col span="1">
         <Divider type="vertical"/>
       </Col>-->
-      <Col span="4" :offset="20">
+
         <lark-window></lark-window>
-      </Col>
-    </Row>
   </div>
 </template>
 
@@ -74,8 +72,6 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-.lark-navbar-operation {
-  border-left: 1px solid #c2c2c2;
-}
+
 
 </style>
