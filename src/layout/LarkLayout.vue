@@ -52,7 +52,7 @@ export default {
   border: 0px solid #d7dde4;
   background: #f5f7f9;
   position: relative;
-  border-radius: 4px;
+  border-radius: 0px;
   overflow: hidden;
 }
 .layout-header-bar {
@@ -86,6 +86,6 @@ export default {
   font-size: 22px;
 }
 .ivu-layout-sider {
-  background: #001529 !important;
+  background: rgb(1, 68, 168) !important;
 }
 </style>

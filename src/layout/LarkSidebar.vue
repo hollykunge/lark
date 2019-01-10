@@ -81,7 +81,7 @@ export default {
   height: 64px;
   text-align: center;
   transition: all 0.3s;
-  background: #001529;
+  background: rgb(1, 68, 168);
   img {
     padding: 8px;
     margin-top: 6px;
@@ -101,7 +101,19 @@ export default {
   }
 }
 .ivu-menu-dark {
-  background-color: #001529 !important;
+  background-color: rgb(1, 68, 168) !important;
+}
+.ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu), .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu):hover, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu), .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu):hover {
+    background: #002852;
+    border-radius: 50%;
+}
+// .lark-sidebar-item:hover {
+//   background: #002852;
+// }
+.ivu-menu-dark.ivu-menu-vertical .ivu-menu-item:hover, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title:hover {
+    color: #fff;
+    background: #002852;
+    border-radius: 50%;
 }
 </style>
 
