@@ -104,16 +104,18 @@ export default {
   background-color: rgb(1, 68, 168) !important;
 }
 .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu), .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu):hover, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu), .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu):hover {
-    background: #002852;
-    border-radius: 50%;
+    background: rgb(1, 68, 168);
+    border-radius: 0%;
 }
 // .lark-sidebar-item:hover {
 //   background: #002852;
 // }
 .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item:hover, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title:hover {
     color: #fff;
-    background: #002852;
-    border-radius: 50%;
+    background: rgb(1, 68, 168);
+    border-radius: 0%;
+}
+.ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu), .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu) {
+    color: #ff9900;
 }
 </style>
-
