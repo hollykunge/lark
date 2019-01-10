@@ -19,12 +19,13 @@ import {
   faSyncAlt,
   faWindowMaximize,
   faWindowMinimize,
+  faWindowClose,
   faTimes,
   faCog,
   faBook,
   faUserGraduate,
   faBookOpen,
-  faBookReader
+  faBookReader,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -43,6 +44,7 @@ library.add(
   faSyncAlt,
   faWindowMaximize,
   faWindowMinimize,
+  faWindowClose,
   faTimes,
   faCog,
   faBook,
