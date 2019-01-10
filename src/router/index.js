@@ -88,8 +88,8 @@ export const routerMap = [
 ]
 
 const router = new Router({
-  routes: routerMap,
-  mode: 'history'
+  routes: routerMap
+  // mode: 'history'
 })
 
 // router.beforeEach((to, from, next) => {})
