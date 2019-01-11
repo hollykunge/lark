@@ -1,31 +1,16 @@
 <template>
   <div class="lark-nav-style">
-    <!-- <button class="button-default">
-      <font-awesome-icon icon="thumbtack"/>
-    </button>
-    <button class="button-default">
-      <font-awesome-icon icon="window-minimize"/>
-    </button>
-    <button class="button-default">
-      <font-awesome-icon icon="window-maximize"/>
-    </button>
-    <button class="button-danger">
-      <font-awesome-icon icon="window-close"/>
-    </button>-->
     <Row type="flex" justify="center" align="top">
       <Button icon="md-disc" class="button-default"></Button>
       <Button icon="md-remove" class="button-default" @click="handleMinimize"></Button>
       <Button icon="md-square-outline" class="button-default" @click="handleMaximize"></Button>
       <Button icon="md-close" class="button-danger" @click="handleClose"></Button>
+      <!-- <Modal title="确认退出？" v-model="closeModel" :mask-closable="false">
+        <p>Content of dialog</p>
+        <p>Content of dialog</p>
+        <p>Content of dialog</p>
+      </Modal>-->
     </Row>
-    <!-- <ButtonGroup>
-        <Button icon="ios-color-wand-outline"></Button>
-        <Button icon="ios-sunny-outline"></Button>
-        <Button icon="ios-crop"></Button>
-    </ButtonGroup>-->
-    <!-- <Button class="lark-window" shape="circle" icon="md-remove" size="small" @click="handleMinimize"></Button>
-    <Button class="lark-window" shape="circle" icon="md-add" size="small" @click="handleMaximize"></Button>
-    <Button class="lark-window" type="error" shape="circle" icon="md-close" ghost size="small" @click="handleClose"></Button>-->
   </div>
 </template>
 <script>
@@ -34,7 +19,10 @@ export default {
   name: "navbar",
   components: { Shell },
   data() {
-    return {};
+    return {
+      closeModel: false,
+      chooseRadio: "最小化到托盘"
+    };
   },
   methods: {
     handleMinimize() {
@@ -46,7 +34,43 @@ export default {
       win.maximize();
     },
     handleClose() {
-      Shell.App.quit();
+
+      this.$Modal.confirm({
+        title: "确认退出？",
+        render: h => {
+          return h("RadioGroup", [
+            h("Radio", {
+              props: {
+                label: "最小化至托盘",
+                value: 0
+              },
+              on: {
+                input: val => {
+                  this.value = val;
+                  console.log(value);
+                }
+              }
+            }),
+            h("Radio", {
+              props: {
+                label: "直接退出",
+                value: 1
+              },
+              on: {
+                input: val => {
+                  this.value = val;
+                }
+              }
+            })
+          ]);
+        },
+        onOk: () => {
+          Shell.App.quit();
+        },
+        onCancel: () => {
+          this.$Message.info("Clicked cancel");
+        }
+      });
     }
   }
 };
@@ -64,11 +88,10 @@ export default {
     text-decoration: none;
     display: inline-block;
     cursor: pointer;
-    float: left;
     padding: 0;
     width: 40px;
     height: 32px;
-    border-radius: 0%;
+    border-radius: 0px;
     -webkit-app-region: no-drag;
   }
 

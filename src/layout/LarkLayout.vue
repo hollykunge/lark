@@ -52,8 +52,9 @@ export default {
   border: 0px solid #F2F2F2;
   background: #F2F2F2;
   position: relative;
-  border-radius: 0px;
+  border-radius: 1px;
   overflow: hidden;
+  border: rgb(165, 165, 165);
 }
 .layout-header-bar {
   height: 32px;
