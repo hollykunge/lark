@@ -19,12 +19,14 @@ import {
   faSyncAlt,
   faWindowMaximize,
   faWindowMinimize,
+  faWindowClose,
   faTimes,
   faCog,
   faBook,
   faUserGraduate,
   faBookOpen,
-  faBookReader
+  faBookReader,
+  faThumbtack
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -43,12 +45,14 @@ library.add(
   faSyncAlt,
   faWindowMaximize,
   faWindowMinimize,
+  faWindowClose,
   faTimes,
   faCog,
   faBook,
   faUserGraduate,
   faBookOpen,
-  faBookReader
+  faBookReader,
+  faThumbtack
 )
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
