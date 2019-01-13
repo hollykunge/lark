@@ -5,11 +5,11 @@
       <Button icon="md-remove" class="button-default" @click="handleMinimize"></Button>
       <Button icon="md-square-outline" class="button-default" @click="handleMaximize"></Button>
       <Button icon="md-close" class="button-danger" @click="handleClose"></Button>
-      <!-- <Modal title="确认退出？" v-model="closeModel" :mask-closable="false">
+      <Modal title="确认退出？" v-model="closeModel" :mask-closable="false">
         <p>Content of dialog</p>
         <p>Content of dialog</p>
         <p>Content of dialog</p>
-      </Modal>-->
+      </Modal>
     </Row>
   </div>
 </template>
@@ -34,36 +34,10 @@ export default {
       win.maximize();
     },
     handleClose() {
-
+      let value = 0;
       this.$Modal.confirm({
         title: "确认退出？",
-        render: h => {
-          return h("RadioGroup", [
-            h("Radio", {
-              props: {
-                label: "最小化至托盘",
-                value: 0
-              },
-              on: {
-                input: val => {
-                  this.value = val;
-                  console.log(value);
-                }
-              }
-            }),
-            h("Radio", {
-              props: {
-                label: "直接退出",
-                value: 1
-              },
-              on: {
-                input: val => {
-                  this.value = val;
-                }
-              }
-            })
-          ]);
-        },
+
         onOk: () => {
           Shell.App.quit();
         },

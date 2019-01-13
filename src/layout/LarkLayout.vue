@@ -4,11 +4,11 @@
       <Sider ref="side1" hide-trigger collapsible :collapsed-width="64" v-model="isCollapsed">
         <lark-sidebar class="sidebar-container"></lark-sidebar>
       </Sider>
-      <Layout>
+      <Layout style="height: 100%">
         <Header :style="{padding: 0}" class="layout-header-bar">
           <lark-navbar></lark-navbar>
         </Header>
-        <Content :style="{margin: '0px', background: '#F2F2F2', minHeight: '704px'}">
+        <Content :style="{margin: '0px', background: '#F2F2F2', minHeight: '704px', height: '100%'}">
           <router-view></router-view>
         </Content>
       </Layout>
