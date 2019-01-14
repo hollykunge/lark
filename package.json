@@ -16,6 +16,7 @@
     "@fortawesome/vue-fontawesome": "^0.1.4",
     "axios": "^0.18.0",
     "iview": "^3.2.1",
+    "js-cookie": "^2.2.0",
     "node-sass": "^4.11.0",
     "node-webkit-updater": "^0.3.3",
     "nw": "0.14.7-sdk",
