@@ -78,6 +78,12 @@ export const routerMap = [{
         name: 'knowledge',
         component: () => import('@/view/knowledge/index'),
         children: knowledge
+      },
+      {
+        path: '/search',
+        name: 'search',
+        component: () => import('@/view/search/index'),
+        children: search
       }
     ]
   },
@@ -98,8 +104,7 @@ const router = new Router({
   // mode: 'history'
 });
 const LOGIN_PAGE_NAME = 'login'
-// router.beforeEach((to, from, next) => {});
-// router.afterEach((to, from, next) => {});
+
 router.beforeEach((to, from, next) => {
   // iView.LoadingBar.start()
   const token = getToken()

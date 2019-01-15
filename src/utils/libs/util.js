@@ -7,6 +7,7 @@ const cookieExpires = config;
 export const TOKEN_KEY = "token";
 
 export const setToken = token => {
+    console.log(123)
   Cookies.set(TOKEN_KEY, token, { expires: cookieExpires || 1 });
 };
 export const getToken = () => {
