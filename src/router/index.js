@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
-
+import iView from 'iview'
 Vue.use(Router);
 
 // 引入layout
@@ -15,7 +15,10 @@ import knowledge from "./modules/knowledge.js";
 import task from "./modules/task.js";
 import tool from "./modules/tool.js";
 import search from "./modules/search.js";
-
+import {
+  setToken,
+  getToken
+} from '@/utils/libs/util'
 /**
  * 路由配置项说明
  * declare type RouteConfig = {
@@ -36,13 +39,11 @@ import search from "./modules/search.js";
 }
  */
 
-export const routerMap = [
-  {
+export const routerMap = [{
     path: "/index",
     name: "landing-page",
     component: LarkLayout,
-    children: [
-      {
+    children: [{
         path: "/dashboard",
         name: "dashboard",
         component: () => import("@/view/dashboard/index"),
@@ -93,7 +94,7 @@ export const routerMap = [
   },
   {
     path: "/",
-    name: "login-page",
+    name: "login",
     component: () => import("@/view/login")
   }
 ];
@@ -102,8 +103,39 @@ const router = new Router({
   routes: routerMap
   // mode: 'history'
 });
-
+const LOGIN_PAGE_NAME = 'login'
 // router.beforeEach((to, from, next) => {});
 // router.afterEach((to, from, next) => {});
-
+router.beforeEach((to, from, next) => {
+  // iView.LoadingBar.start()
+  const token = getToken()
+  if (!token && to.name !== LOGIN_PAGE_NAME) {
+    // 未登录且要跳转的页面不是登录页
+    next({
+      name: LOGIN_PAGE_NAME // 跳转到登录页
+    })
+  } else if (!token && to.name === LOGIN_PAGE_NAME) {
+    // 未登陆且要跳转的页面是登录页
+    next() // 跳转
+  } else if (token && to.name === LOGIN_PAGE_NAME) {
+    // 已登录且要跳转的页面是登录页
+    next({
+      name: homeName // 跳转到homeName页
+    })
+  } else {
+    if (store.state.user.hasGetInfo) {
+      turnTo(to, store.state.user.access, next)
+    } else {
+      store.dispatch('getUserInfo').then(user => {
+        // 拉取用户信息，通过用户权限和跳转的页面的name来判断是否有权限访问;access必须是一个数组，如：['super_admin'] ['super_admin', 'admin']
+        turnTo(to, user.access, next)
+      }).catch(() => {
+        setToken('')
+        next({
+          name: 'login'
+        })
+      })
+    }
+  }
+})
 export default router;
