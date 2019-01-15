@@ -59,8 +59,8 @@ module.exports = {
         // only one version path
         files: curReleasesPath,
         resourcesPath: resolve('./build/setup_resources'),
-        appPublisher: 'vue-nw-seed, Inc.',
-        appURL: 'https://github.com/anchengjian/vue-nw-seed',
+        appPublisher: 'WorkHub, Inc.',
+        appURL: 'https://github.com/hollykunge/lark',
         appId: '{{A448363D-3A2F-4800-B62D-8A1C4D8F1115}}',
         // data: { name, version, platform }
         outputFileName: function (data) {
