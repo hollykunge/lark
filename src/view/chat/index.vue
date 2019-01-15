@@ -3,9 +3,21 @@
 </template>
 
 <script>
-export default {
-
-}
+  import SocketApi from '@/chat/socketApi'
+  export default {
+    data () {
+      return {
+      }
+    },
+    methods: {
+      socketInit () {
+        // debugger
+        const socketapi = new SocketApi()
+        const socket = socketapi.socketInit('123')
+        socket.send('1')
+      }
+    }
+  }
 </script>
 
 <style>
