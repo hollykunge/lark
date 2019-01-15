@@ -4,8 +4,8 @@ import iView from 'iview'
 Vue.use(Router);
 
 // 引入layout
-import LarkLayout from "@/layout/LarkLayout";
-import Update from "@/components/Update";
+import LarkLayout from '@/layout/LarkLayout'
+import Update from '@/components/Update'
 
 // 引入模块
 import chat from "./modules/chat.js";
@@ -50,46 +50,40 @@ export const routerMap = [{
         children: dashboard
       },
       {
-        path: "/chat",
-        name: "chat",
-        component: () => import("@/view/chat/index"),
+        path: '/chat',
+        name: 'chat',
+        component: () => import('@/view/chat/index'),
         children: chat
       },
       {
-        path: "/task",
-        name: "task",
-        component: () => import("@/view/task/index"),
+        path: '/task',
+        name: 'task',
+        component: () => import('@/view/task/index'),
         children: task
       },
       {
-        path: "/data",
-        name: "data",
-        component: () => import("@/view/data/index"),
+        path: '/data',
+        name: 'data',
+        component: () => import('@/view/data/index'),
         children: data
       },
       {
-        path: "/tool",
-        name: "tool",
-        component: () => import("@/view/tool/index"),
+        path: '/tool',
+        name: 'tool',
+        component: () => import('@/view/tool/index'),
         children: tool
       },
       {
-        path: "/knowledge",
-        name: "knowledge",
-        component: () => import("@/view/knowledge/index"),
+        path: '/knowledge',
+        name: 'knowledge',
+        component: () => import('@/view/knowledge/index'),
         children: knowledge
-      },
-      {
-        path: "/search",
-        name: "search",
-        component: () => import("@/view/search/index"),
-        children: search
       }
     ]
   },
   {
-    path: "/update",
-    name: "update",
+    path: '/update',
+    name: 'update',
     component: Update
   },
   {
@@ -97,7 +91,7 @@ export const routerMap = [{
     name: "login",
     component: () => import("@/view/login")
   }
-];
+]
 
 const router = new Router({
   routes: routerMap
