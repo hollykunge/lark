@@ -92,7 +92,7 @@ const router = new Router({
   // mode: 'history'
 })
 
-router.beforeEach((to, from, next) => {});
-router.afterEach((to, from, next) => {});
+// router.beforeEach((to, from, next) => {});
+// router.afterEach((to, from, next) => {});
 
 export default router
