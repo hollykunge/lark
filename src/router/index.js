@@ -52,6 +52,7 @@ export const routerMap = [
         path: '/chat',
         name: 'chat',
         component: () => import('@/view/chat/index'),
+        redirect: '/chat/message/',
         children: chat
       },
       {
