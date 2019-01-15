@@ -1,20 +1,19 @@
-import Vue from "vue";
-import Router from "vue-router";
+import Vue from 'vue'
+import Router from 'vue-router'
 
-Vue.use(Router);
+Vue.use(Router)
 
 // 引入layout
-import LarkLayout from "@/layout/LarkLayout";
-import Update from "@/components/Update";
+import LarkLayout from '@/layout/LarkLayout'
+import Update from '@/components/Update'
 
 // 引入模块
-import chat from "./modules/chat.js";
-import dashboard from "./modules/dashboard.js";
-import data from "./modules/data.js";
-import knowledge from "./modules/knowledge.js";
-import task from "./modules/task.js";
-import tool from "./modules/tool.js";
-import search from "./modules/search.js";
+import chat from './modules/chat.js'
+import dashboard from './modules/dashboard.js'
+import data from './modules/data.js'
+import knowledge from './modules/knowledge.js'
+import task from './modules/task.js'
+import tool from './modules/tool.js'
 
 /**
  * 路由配置项说明
@@ -38,72 +37,62 @@ import search from "./modules/search.js";
 
 export const routerMap = [
   {
-    path: "/index",
-    name: "landing-page",
+    path: '/',
+    name: 'layout',
     component: LarkLayout,
+    redirect: '/dashboard',
     children: [
       {
-        path: "/dashboard",
-        name: "dashboard",
-        component: () => import("@/view/dashboard/index"),
+        path: '/dashboard',
+        name: 'dashboard',
+        component: () => import('@/view/dashboard/index'),
         children: dashboard
       },
       {
-        path: "/chat",
-        name: "chat",
-        component: () => import("@/view/chat/index"),
+        path: '/chat',
+        name: 'chat',
+        component: () => import('@/view/chat/index'),
         children: chat
       },
       {
-        path: "/task",
-        name: "task",
-        component: () => import("@/view/task/index"),
+        path: '/task',
+        name: 'task',
+        component: () => import('@/view/task/index'),
         children: task
       },
       {
-        path: "/data",
-        name: "data",
-        component: () => import("@/view/data/index"),
+        path: '/data',
+        name: 'data',
+        component: () => import('@/view/data/index'),
         children: data
       },
       {
-        path: "/tool",
-        name: "tool",
-        component: () => import("@/view/tool/index"),
+        path: '/tool',
+        name: 'tool',
+        component: () => import('@/view/tool/index'),
         children: tool
       },
       {
-        path: "/knowledge",
-        name: "knowledge",
-        component: () => import("@/view/knowledge/index"),
+        path: '/knowledge',
+        name: 'knowledge',
+        component: () => import('@/view/knowledge/index'),
         children: knowledge
-      },
-      {
-        path: "/search",
-        name: "search",
-        component: () => import("@/view/search/index"),
-        children: search
       }
     ]
   },
   {
-    path: "/update",
-    name: "update",
+    path: '/update',
+    name: 'update',
     component: Update
-  },
-  {
-    path: "/",
-    name: "login-page",
-    component: () => import("@/view/login")
   }
-];
+]
 
 const router = new Router({
   routes: routerMap
   // mode: 'history'
-});
+})
 
 // router.beforeEach((to, from, next) => {})
 // router.afterEach((to, from, next) => {})
 
-export default router;
+export default router
