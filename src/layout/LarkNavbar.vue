@@ -1,27 +1,6 @@
 <template>
   <div>
-
-      <!-- <Col span="12" :offset="1">
-      </Col>
-      <Col span="1">
-        <lark-notice></lark-notice>
-      </Col>
-      <Col span="1">
-        <lark-setup></lark-setup>
-      </Col>
-      <Col span="4">
-        <Poptip trigger="hover" title="我的账户" content="content" width="240">
-          <lark-avatar></lark-avatar>
-          <div class="api" slot="content">
-            <lark-my-account></lark-my-account>
-          </div>
-        </Poptip>
-      </Col>
-      <Col span="1">
-        <Divider type="vertical"/>
-      </Col>-->
-
-        <lark-window></lark-window>
+    <lark-window></lark-window>
   </div>
 </template>
 
@@ -72,6 +51,4 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-
-
 </style>
