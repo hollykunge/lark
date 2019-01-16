@@ -1,14 +1,21 @@
 import Cookies from "js-cookie";
 // cookie保存的天数
 import config from "@/conf/cookie";
-import { forEach, hasOneOf, objEqual } from "@/utils/libs/tools";
+import {
+  forEach,
+  hasOneOf,
+  objEqual
+} from "@/utils/libs/tools";
 const cookieExpires = config;
 
 export const TOKEN_KEY = "token";
 
 export const setToken = token => {
-    console.log(123)
-  Cookies.set(TOKEN_KEY, token, { expires: cookieExpires || 1 });
+  console.log(token)
+  console.log(cookieExpires)
+  Cookies.set(TOKEN_KEY, token, {
+    expires: 1
+  });
 };
 export const getToken = () => {
   const token = Cookies.get(TOKEN_KEY);

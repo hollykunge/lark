@@ -32,11 +32,10 @@ service.interceptors.response.use(
       //   top: 70,
       //   duration: 3
       // })
-      console.log('请求失败！')
-
+      console.log('请求失败!!!')
       return Promise.reject('error')
     } else {
-      return response.data
+      return res
     }
   },
   error => {
@@ -51,4 +50,3 @@ service.interceptors.response.use(
   }
 )
 export default service
-

@@ -1,15 +1,19 @@
 <template>
   <Layout style="height:100%">
-    <Header :style="{padding: 0}" class="layout-header-bar">
+    <Header :style="{padding: 0}"
+            class="layout-header-bar">
       <lark-navbar></lark-navbar>
     </Header>
     <Content :style="{margin: '0px', background: '#F2F2F2', minHeight: '600px', height: '100%'}">
-      <Row type="flex" justify="center" align="middle" class="login-panel">
+      <Row type="flex"
+           justify="center"
+           align="middle"
+           class="login-panel">
         <Col span="8">
-          <Card>
-            <p slot="title">登录</p>
-            <login-form @on-success-valid="handleSubmit"/>
-          </Card>
+        <Card>
+          <p slot="title">登录</p>
+          <login-form @on-success-valid="handleSubmit" />
+        </Card>
         </Col>
       </Row>
     </Content>
@@ -22,7 +26,7 @@ import LoginForm from "@/components/login/LoginForm";
 import { mapActions } from "vuex";
 export default {
   components: { LarkNavbar, LoginForm },
-  data() {
+  data () {
     return {
       formTop: {
         username: "workhub",
@@ -32,11 +36,11 @@ export default {
   },
   methods: {
     ...mapActions(["handleLogin", "getUserInfo"]),
-    handleSubmit({ userName, password }) {
+    handleSubmit ({ userName, password }) {
       this.handleLogin({ userName, password }).then(res => {
         this.getUserInfo().then(res => {
           this.$router.push({
-            name: this.$config.homeName
+            name: 'home'
           });
         });
       });

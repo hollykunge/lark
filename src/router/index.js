@@ -1,5 +1,6 @@
-import Vue from "vue";
-import Router from "vue-router";
+import Vue from "vue"
+import Router from "vue-router"
+import store from '@/store'
 import iView from 'iview'
 Vue.use(Router);
 
@@ -8,17 +9,19 @@ import LarkLayout from '@/layout/LarkLayout'
 import Update from '@/components/Update'
 
 // 引入模块
-import chat from "./modules/chat.js";
-import dashboard from "./modules/dashboard.js";
-import data from "./modules/data.js";
-import knowledge from "./modules/knowledge.js";
-import task from "./modules/task.js";
-import tool from "./modules/tool.js";
-import search from "./modules/search.js";
+import chat from "./modules/chat.js"
+import dashboard from "./modules/dashboard.js"
+import data from "./modules/data.js"
+import knowledge from "./modules/knowledge.js"
+import task from "./modules/task.js"
+import tool from "./modules/tool.js"
+import search from "./modules/search.js"
 import {
   setToken,
-  getToken
+  getToken,
+  canTurnTo
 } from '@/utils/libs/util'
+import config from "@/conf/cookie"
 /**
  * 路由配置项说明
  * declare type RouteConfig = {
@@ -38,10 +41,13 @@ import {
   pathToRegexpOptions?: Object; // 编译正则的选项
 }
  */
+const {
+  homeName
+} = config
 
 export const routerMap = [{
     path: "/index",
-    name: "landing-page",
+    name: "home",
     component: LarkLayout,
     children: [{
         path: "/dashboard",
@@ -104,7 +110,13 @@ const router = new Router({
   // mode: 'history'
 });
 const LOGIN_PAGE_NAME = 'login'
-
+const turnTo = (to, access, next) => {
+  if (canTurnTo(to.name, access, routerMap)) next() // 有权限，可访问
+  else next({
+    replace: true,
+    name: 'error_401'
+  }) // 无权限，重定向到401页面
+}
 router.beforeEach((to, from, next) => {
   // iView.LoadingBar.start()
   const token = getToken()
