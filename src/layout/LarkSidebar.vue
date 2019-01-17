@@ -1,62 +1,96 @@
 <template>
   <div>
     <div class="logo-con">
-      <Poptip title="Title" content="content" placement="right-start">
+      <Poptip title="Title"
+              content="content"
+              placement="right-start">
         <Badge dot>
-          <Avatar shape="square" size="large" style="color: #f56a00;background-color: #fde3cf">杜</Avatar>
+          <Avatar shape="square"
+                  size="large"
+                  style="color: #f56a00;background-color: #fde3cf">杜</Avatar>
         </Badge>
       </Poptip>
     </div>
-    <Menu :active-name="$route.name" theme="dark" width="auto" :class="menuitemClasses">
-      <Tooltip content="主页" placement="right">
-        <MenuItem name="dashboard" to="/index/dashboard" class="lark-item-home">
-          <div class="icon-style">
-            <span class="iconfont icon-logo"></span>
-          </div>
+    <Menu :active-name="$route.name"
+          theme="dark"
+          width="auto"
+          :class="menuitemClasses">
+      <Tooltip content="主页"
+               placement="right">
+        <MenuItem name="home"
+                  to="/index/home"
+                  class="lark-item-home">
+        <div class="icon-style">
+          <span class="iconfont icon-logo"></span>
+        </div>
         </MenuItem>
       </Tooltip>
-      <Tooltip content="研讨" placement="right">
-        <MenuItem name="chat" to="/index/chat" class="lark-menu-item">
-          <div class="icon-style">
-            <Badge :count="100">
-              <font-awesome-icon icon="comment" size="2x"/>
-            </Badge>
-          </div>
+      <Tooltip content="研讨"
+               placement="right">
+        <MenuItem name="chat"
+                  to="/index/chat"
+                  class="lark-menu-item">
+        <div class="icon-style">
+          <Badge :count="100">
+            <font-awesome-icon icon="comment"
+                               size="2x" />
+          </Badge>
+        </div>
         </MenuItem>
       </Tooltip>
-      <Tooltip content="任务" placement="right">
-        <MenuItem name="task" to="/index/task" class="lark-menu-item">
-          <div class="icon-style">
-            <font-awesome-icon icon="tasks" size="2x"/>
-          </div>
+      <Tooltip content="任务"
+               placement="right">
+        <MenuItem name="task"
+                  to="/index/task"
+                  class="lark-menu-item">
+        <div class="icon-style">
+          <font-awesome-icon icon="tasks"
+                             size="2x" />
+        </div>
         </MenuItem>
       </Tooltip>
-      <Tooltip content="数据" placement="right">
-        <MenuItem name="data" to="/index/data" class="lark-menu-item">
-          <div class="icon-style">
-            <font-awesome-icon icon="table" size="2x"/>
-          </div>
+      <Tooltip content="数据"
+               placement="right">
+        <MenuItem name="data"
+                  to="/index/data"
+                  class="lark-menu-item">
+        <div class="icon-style">
+          <font-awesome-icon icon="table"
+                             size="2x" />
+        </div>
         </MenuItem>
       </Tooltip>
-      <Tooltip content="工具" placement="right">
-        <MenuItem name="tool" to="/index/tool" class="lark-menu-item">
-          <div class="icon-style">
-            <font-awesome-icon icon="toolbox" size="2x"/>
-          </div>
+      <Tooltip content="工具"
+               placement="right">
+        <MenuItem name="tool"
+                  to="/index/tool"
+                  class="lark-menu-item">
+        <div class="icon-style">
+          <font-awesome-icon icon="toolbox"
+                             size="2x" />
+        </div>
         </MenuItem>
       </Tooltip>
-      <Tooltip content="知识" placement="right">
-        <MenuItem name="knowledge" to="/index/knowledge" class="lark-menu-item">
-          <div class="icon-style">
-            <font-awesome-icon icon="book-reader" size="2x"/>
-          </div>
+      <Tooltip content="知识"
+               placement="right">
+        <MenuItem name="knowledge"
+                  to="/index/knowledge"
+                  class="lark-menu-item">
+        <div class="icon-style">
+          <font-awesome-icon icon="book-reader"
+                             size="2x" />
+        </div>
         </MenuItem>
       </Tooltip>
-      <Tooltip content="搜索" placement="right">
-        <MenuItem name="search" to="/index/search" class="lark-menu-item">
-          <div class="icon-style">
-            <font-awesome-icon icon="search" size="2x"/>
-          </div>
+      <Tooltip content="搜索"
+               placement="right">
+        <MenuItem name="search"
+                  to="/index/search"
+                  class="lark-menu-item">
+        <div class="icon-style">
+          <font-awesome-icon icon="search"
+                             size="2x" />
+        </div>
         </MenuItem>
       </Tooltip>
     </Menu>
@@ -65,21 +99,21 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       isCollapsed: true
     };
   },
   computed: {
-    rotateIcon() {
+    rotateIcon () {
       return ["menu-icon", this.isCollapsed ? "rotate-icon" : ""];
     },
-    menuitemClasses() {
+    menuitemClasses () {
       return ["menu-item", this.isCollapsed ? "collapsed-menu" : ""];
     }
   },
   methods: {
-    collapsedSider() {
+    collapsedSider () {
       this.$refs.side1.toggleCollapse();
     }
   }
