@@ -32,6 +32,7 @@ export const hasChild = item => {
  * @param {*} route 路由列表
  */
 const hasAccess = (access, route) => {
+  console.log('hasAccess')
   if (route.meta && route.meta.access)
     return hasOneOf(access, route.meta.access);
   else return true;
@@ -45,11 +46,19 @@ const hasAccess = (access, route) => {
  * @description 用户是否可跳转到该页
  */
 export const canTurnTo = (name, access, routes) => {
+  console.log('canTurnTo的name:' + name)
+
   const routePermissionJudge = list => {
+
     return list.some(item => {
+      console.log('canTurnTo的routes:' + item.name)
       if (item.children && item.children.length) {
+        console.log('里面的item:' + item.name)
+        console.log('qqqq' + item.children + ',' + item.children.length)
+        console.log('!!!!!')
         return routePermissionJudge(item.children);
-      } else if (item.name === name) {
+      } else if (item.name === 'home') {
+        console.log(5)
         return hasAccess(access, item);
       }
     });

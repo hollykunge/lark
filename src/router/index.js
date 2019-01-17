@@ -50,46 +50,46 @@ export const routerMap = [{
     name: "home",
     component: LarkLayout,
     children: [{
-        path: "/dashboard",
+        path: "/home",
         name: "dashboard",
         component: () => import("@/view/dashboard/index"),
-        children: dashboard
+        // children: dashboard
       },
       {
         path: '/chat',
         name: 'chat',
         component: () => import('@/view/chat/index'),
-        children: chat
+        // children: chat
       },
       {
         path: '/task',
         name: 'task',
         component: () => import('@/view/task/index'),
-        children: task
+        // children: task
       },
       {
         path: '/data',
         name: 'data',
         component: () => import('@/view/data/index'),
-        children: data
+        // children: data
       },
       {
         path: '/tool',
         name: 'tool',
         component: () => import('@/view/tool/index'),
-        children: tool
+        // children: tool
       },
       {
         path: '/knowledge',
         name: 'knowledge',
         component: () => import('@/view/knowledge/index'),
-        children: knowledge
+        // children: knowledge
       },
       {
         path: '/search',
         name: 'search',
         component: () => import('@/view/search/index'),
-        children: search
+        // children: search
       }
     ]
   },
@@ -102,6 +102,21 @@ export const routerMap = [{
     path: "/",
     name: "login",
     component: () => import("@/view/login")
+  },
+  {
+    path: '/401',
+    name: 'error_401',
+    component: () => import('@/view/error/401.vue')
+  },
+  {
+    path: '/500',
+    name: 'error_500',
+    component: () => import('@/view/error/500.vue')
+  },
+  {
+    path: '*',
+    name: 'error_404',
+    component: () => import('@/view/error/404.vue')
   }
 ]
 
@@ -111,6 +126,7 @@ const router = new Router({
 });
 const LOGIN_PAGE_NAME = 'login'
 const turnTo = (to, access, next) => {
+  console.log(4)
   if (canTurnTo(to.name, access, routerMap)) next() // 有权限，可访问
   else next({
     replace: true,
@@ -118,6 +134,7 @@ const turnTo = (to, access, next) => {
   }) // 无权限，重定向到401页面
 }
 router.beforeEach((to, from, next) => {
+  console.log(1)
   // iView.LoadingBar.start()
   const token = getToken()
   if (!token && to.name !== LOGIN_PAGE_NAME) {
@@ -135,9 +152,12 @@ router.beforeEach((to, from, next) => {
     })
   } else {
     if (store.state.user.hasGetInfo) {
+      console.log(2)
       turnTo(to, store.state.user.access, next)
     } else {
       store.dispatch('getUserInfo').then(user => {
+        console.log(3)
+        console.log(to.name)
         // 拉取用户信息，通过用户权限和跳转的页面的name来判断是否有权限访问;access必须是一个数组，如：['super_admin'] ['super_admin', 'admin']
         turnTo(to, user.access, next)
       }).catch(() => {
