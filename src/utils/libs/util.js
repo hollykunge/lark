@@ -49,15 +49,14 @@ export const canTurnTo = (name, access, routes) => {
   console.log('canTurnTo的name:' + name)
 
   const routePermissionJudge = list => {
-
     return list.some(item => {
-      console.log('canTurnTo的routes:' + item.name)
       if (item.children && item.children.length) {
-        console.log('里面的item:' + item.name)
-        console.log('qqqq' + item.children + ',' + item.children.length)
-        console.log('!!!!!')
+        //   for(let i=0;i<=item.children.length;i++){
+        //     console.log('有子路由:' + item.children[i].name)
+        //   }
+
         return routePermissionJudge(item.children);
-      } else if (item.name === 'home') {
+      } else if (item.name === name) {
         console.log(5)
         return hasAccess(access, item);
       }

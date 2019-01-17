@@ -46,12 +46,12 @@ const {
 } = config
 
 export const routerMap = [{
-    path: "/index",
-    name: "home",
+    path: '/index',
+    name: '_home',
     component: LarkLayout,
     children: [{
-        path: "/home",
-        name: "dashboard",
+        path: '/home',
+        name: 'home',
         component: () => import("@/view/dashboard/index"),
         // children: dashboard
       },
@@ -99,25 +99,26 @@ export const routerMap = [{
     component: Update
   },
   {
-    path: "/",
-    name: "login",
-    component: () => import("@/view/login")
+    path: '/',
+    name: 'login',
+    component: () => import('@/view/login')
   },
   {
     path: '/401',
     name: 'error_401',
-    component: () => import('@/view/error/401.vue')
-  },
-  {
-    path: '/500',
-    name: 'error_500',
-    component: () => import('@/view/error/500.vue')
-  },
-  {
-    path: '*',
-    name: 'error_404',
-    component: () => import('@/view/error/404.vue')
+    component: () => import('@/view/error/page_401')
   }
+  // ,
+  // {
+  //   path: '/500',
+  //   name: 'error_500',
+  //   component: () => import('@/view/error/500')
+  // },
+  // {
+  //   path: '*',
+  //   name: 'error_404',
+  //   component: () => import('@/view/error/404')
+  // }
 ]
 
 const router = new Router({
