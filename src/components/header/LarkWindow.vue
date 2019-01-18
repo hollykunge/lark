@@ -1,39 +1,56 @@
 <template>
   <div class="lark-nav-style">
-    <Row type="flex" justify="center" align="top">
-      <Button icon="md-disc" class="button-default"></Button>
-      <Button icon="md-remove" class="button-default" @click="handleMinimize"></Button>
-      <Button icon="md-square-outline" class="button-default" @click="handleMaximize"></Button>
-      <Button icon="md-close" class="button-danger" @click="handleClose"></Button>
-      <Modal title="确认退出？" v-model="closeModel" :mask-closable="false">
-        <p>Content of dialog</p>
-        <p>Content of dialog</p>
-        <p>Content of dialog</p>
+    <Row type="flex"
+         justify="center"
+         align="top">
+      <Button icon="md-disc"
+              class="button-default"
+              @click="handleTray"></Button>
+      <Button icon="md-remove"
+              class="button-default"
+              @click="handleMinimize"></Button>
+      <Button icon="md-square-outline"
+              class="button-default"
+              @click="handleMaximize"></Button>
+      <Button icon="md-close"
+              class="button-danger"
+              @click="handleClose"></Button>
+      <Modal title="确认退出？"
+             v-model="closeModel"
+             :mask-closable="false">
       </Modal>
     </Row>
   </div>
 </template>
 <script>
 import Shell from "nw.gui";
+import logo from '@/view/assets/icon/logo.png'
+import tray from '@/compontents/tray/tray.js'
 export default {
   name: "navbar",
   components: { Shell },
-  data() {
+  data () {
     return {
       closeModel: false,
       chooseRadio: "最小化到托盘"
     };
   },
   methods: {
-    handleMinimize() {
+    handleTray () {
       let win = Shell.Window.get();
+      win.hide();
+    },
+    handleMinimize () {
+      let win = Shell.Window.get();
+      win.removeAllListeners('minimize');
       win.minimize();
     },
-    handleMaximize() {
+    handleMaximize () {
       let win = Shell.Window.get();
+      win.removeAllListeners('maximize');
       win.maximize();
     },
-    handleClose() {
+    handleClose () {
       let value = 0;
       this.$Modal.confirm({
         title: "确认退出？",

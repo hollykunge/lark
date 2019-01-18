@@ -1,11 +1,16 @@
 <template>
   <div class="layout">
     <Layout style="height: 100%">
-      <Sider ref="side1" hide-trigger collapsible :collapsed-width="64" v-model="isCollapsed">
+      <Sider ref="side1"
+             hide-trigger
+             collapsible
+             :collapsed-width="64"
+             v-model="isCollapsed">
         <lark-sidebar class="sidebar-container"></lark-sidebar>
       </Sider>
       <Layout style="height: 100%">
-        <Header :style="{padding: 0}" class="layout-header-bar">
+        <Header :style="{padding: 0}"
+                class="layout-header-bar">
           <lark-navbar></lark-navbar>
         </Header>
         <Content :style="{margin: '0px', background: '#F2F2F2', minHeight: '704px', height: '100%'}">
@@ -22,13 +27,13 @@ import LarkSidebar from "./LarkSidebar";
 export default {
   name: "layout",
   components: { LarkNavbar, LarkSidebar },
-  data() {
+  data () {
     return {
       isCollapsed: true
     };
   },
   computed: {
-    menuitemClasses: function() {
+    menuitemClasses: function () {
       return ["menu-item", this.isCollapsed ? "collapsed-menu" : ""];
     }
   }
@@ -36,21 +41,11 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-// @import "src/style/mixin.scss";
-// *,
-// *:before,
-// *:after {
-//   -moz-box-sizing: border-box;
-//   -webkit-box-sizing: border-box;
-//   box-sizing: border-box;
-// }
 .layout {
-  // @include clearfix;
-  // position: relative;
   height: 100%;
   width: 100%;
-  border: 0px solid #F2F2F2;
-  background: #F2F2F2;
+  border: 0px solid #f2f2f2;
+  background: #f2f2f2;
   position: relative;
   border-radius: 1px;
   overflow: hidden;
@@ -58,7 +53,7 @@ export default {
 }
 .layout-header-bar {
   height: 32px;
-  background: #F2F2F2;
+  background: #f2f2f2;
   // box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   -webkit-app-region: drag;
 }
