@@ -25,7 +25,7 @@
 <script>
 import Shell from "nw.gui";
 import logo from '@/view/assets/icon/logo.png'
-import tray from '@/compontents/tray/tray.js'
+import tray from '@/function/LarkTray'
 export default {
   name: "navbar",
   components: { Shell },

@@ -82,8 +82,8 @@
   "window": {
     "title": "云雀",
     "toolbar": false,
-    "width": 1024,
-    "height": 768,
+    "width": 960,
+    "height": 720,
     "min_width": 800,
     "min_height": 600,
     "resizable": true,
