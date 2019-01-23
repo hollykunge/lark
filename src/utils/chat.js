@@ -1,5 +1,4 @@
-// 格式化时间
-import conf from '../conf';
+import conf from '@/conf';
 
 export function formatDateTime(date) {
   let y = date.getFullYear();
@@ -75,17 +74,17 @@ export class Chat {
 function preloadImages(arr) {
   let loadedImage = 0;
   let images = [];
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     for (let i = 0; i < arr.length; i++) {
       images[i] = new Image();
       images[i].src = arr[i];
-      images[i].onload = function() {
+      images[i].onload = function () {
         loadedImage++;
         if (loadedImage === arr.length) {
           resolve();
         }
       };
-      images[i].onerror = function() {
+      images[i].onerror = function () {
         reject();
       };
     }
@@ -110,7 +109,7 @@ export function imageLoad(id) {
         .then(() => {
           scrollBottom(id);
         })
-        .catch(function() {
+        .catch(function () {
           scrollBottom(id);
         });
     }
@@ -203,7 +202,7 @@ export let faceUtils = {
     '[蜡烛]',
     '[蛋糕]'
   ],
-  faces: function() {
+  faces: function () {
     let self = this;
     let arr = {};
     for (let i = 0; i < self.alt.length; i++) {
@@ -215,7 +214,7 @@ export let faceUtils = {
 
 export function transform(content) {
   // 支持的html标签
-  let html = function(end) {
+  let html = function (end) {
     return new RegExp('\\n*\\[' + (end || '') + '(code|pre|div|span|p|table|thead|th|tbody|tr|td|ul|li|ol|li|dl|dt|dd|h2|h3|h4|h5)([\\s\\S]*?)]\\n*', 'g');
   };
   let fa = faceUtils.faces();
@@ -228,32 +227,32 @@ export function transform(content) {
       .replace(/"/g, '&quot;') // XSS
       .replace(/@(\S+)(\s+?|$)/g, '@<a href="javascript:;">$1</a>$2')
 
-      .replace(/face\[([^\s\[\]]+?)]/g, function(face) {
+      .replace(/face\[([^\s\[\]]+?)]/g, function (face) {
         // 转义表情
         let alt = face.replace(/^face/g, '');
         return '<img alt="' + fa[alt] + '" title="' + fa[alt] + '" src="' + fa[alt] + '">';
       })
-      .replace(/img\[([^\s]+?)]/g, function(img) {
+      .replace(/img\[([^\s]+?)]/g, function (img) {
         // 转义图片
         let href = img.replace(/(^img\[)|(]$)/g, '');
         return '<img class="message-img" src="' + href + '" alt="消息图片不能加载">';
       })
-      .replace(/file\([\s\S]+?\)\[[\s\S]*?]/g, function(str) {
+      .replace(/file\([\s\S]+?\)\[[\s\S]*?]/g, function (str) {
         // 转义文件
         let href = (str.match(/file\(([\s\S]+?)\)\[/) || [])[1];
         let text = (str.match(/\)\[([\s\S]*?)]/) || [])[1];
         if (!href) return str;
         return '<a class="message-file" href="' + href + '"><i class="ivu-icon ivu-icon-md-arrow-down"></i>' + (text || href) + '</a>';
       })
-      .replace(/audio\[([^\s]+?)]/g, function(audio) {
+      .replace(/audio\[([^\s]+?)]/g, function (audio) {
         // 转义音频
         return '<div class="message-audio" data-src="' + audio.replace(/(^audio\[)|(]$)/g, '') + '"><i class="layui-icon">&#xe652;</i><p>音频消息</p></div>';
       })
-      .replace(/video\[([^\s]+?)]/g, function(video) {
+      .replace(/video\[([^\s]+?)]/g, function (video) {
         // 转义音频
         return '<div class="message-video"  data-src="' + video.replace(/(^video\[)|(]$)/g, '') + '"><i class="layui-icon">&#xe652;</i></div>';
       })
-      .replace(/a\([\s\S]+?\)\[[\s\S]*?]/g, function(str) {
+      .replace(/a\([\s\S]+?\)\[[\s\S]*?]/g, function (str) {
         // 转义链接
         let href = (str.match(/a\(([\s\S]+?)\)\[/) || [])[1];
         let text = (str.match(/\)\[([\s\S]*?)]/) || [])[1];
@@ -269,11 +268,11 @@ export function transform(content) {
 
 export const ChatListUtils = {
   listKey: '_chatList',
-  setChatList: function(userId, chatList) {
+  setChatList: function (userId, chatList) {
     localStorage.setItem(userId + this.listKey, JSON.stringify(chatList));
   },
   //从缓存中获取已经保存的会话
-  getChatList: function(userId) {
+  getChatList: function (userId) {
     let str = localStorage.getItem(userId + this.listKey);
     if (!str) {
       return [];
@@ -281,7 +280,7 @@ export const ChatListUtils = {
     return JSON.parse(str);
   },
   //删除聊天会话框
-  delChat: function(userId, chat) {
+  delChat: function (userId, chat) {
     let tempChatList = [];
     for (let item of this.getChatList(userId)) {
       if (String(item.id) !== String(chat.id)) {
@@ -299,10 +298,10 @@ export const ChatListUtils = {
    * @param host 主机名
    * @returns {Chat} 当前会话
    */
-  resetChatList: function(self, user, host) {
+  resetChatList: function (self, user, host) {
     let chatList = this.getChatList(self.$store.state.user.id);
     // 删除当前用户已经有的会话
-    let newChatList = chatList.filter(function(element) {
+    let newChatList = chatList.filter(function (element) {
       return String(element.id) !== String(user.id);
     });
     // 重新添加会话，放到第一个
@@ -349,8 +348,8 @@ export function timeoutFetch(fetchPromise, timeout) {
   let abortFn = null;
 
   //这是一个可以被reject的promise
-  let abortPromise = new Promise(function(resolve, reject) {
-    abortFn = function() {
+  let abortPromise = new Promise(function (resolve, reject) {
+    abortFn = function () {
       reject(ErrorType.TIMEOUT_ERROR);
     };
   });
@@ -358,7 +357,7 @@ export function timeoutFetch(fetchPromise, timeout) {
   //这里使用Promise.race，以最快 resolve 或 reject 的结果来传入后续绑定的回调
   let abortAblePromise = Promise.race([fetchPromise, abortPromise]);
 
-  setTimeout(function() {
+  setTimeout(function () {
     abortFn();
   }, timeout);
 

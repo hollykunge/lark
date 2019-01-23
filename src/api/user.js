@@ -1,6 +1,9 @@
 import request from "@/utils/request";
 
-export const login = ({ userName, password }) => {
+export const login = ({
+  userName,
+  password
+}) => {
   const data = {
     userName,
     password
@@ -80,5 +83,12 @@ export const restoreTrash = msg_id => {
     data: {
       msg_id
     }
+  });
+};
+
+export const getChatList = () => {
+  return request({
+    url: "message/chatList",
+    method: "get"
   });
 };

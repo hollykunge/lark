@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="chat-box-top">
     <lark-window></lark-window>
   </div>
 </template>
@@ -11,16 +11,16 @@ export default {
   components: {
     LarkWindow
   },
-  data() {
+  data () {
     return {
       isCollapse: true
     };
   },
   methods: {
-    handleOpen(key, keyPath) {
+    handleOpen (key, keyPath) {
       console.log(key, keyPath);
     },
-    handleClose(key, keyPath) {
+    handleClose (key, keyPath) {
       console.log(key, keyPath);
     }
   }
@@ -28,4 +28,7 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
+.chat-box-top {
+  -webkit-app-region: drag;
+}
 </style>

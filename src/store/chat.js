@@ -6,7 +6,7 @@ import {
   MessageTargetType,
   transform
 } from "@/utils/chat";
-import conf from "@/conf/conf";
+import conf from "@/conf";
 
 export default {
   state: {
@@ -25,74 +25,74 @@ export default {
     currentChat: {},
     // 所有的聊天窗口
     chatList: [],
-    //好友列表
-    userFriendList: [],
+    //联系人列表
+    contactList: [],
     //群组列表
-    chatGroupList: [],
+    groupList: [],
     //刷新token 的定时器
     flushTokenTimerId: null
   },
   mutations: {
-    setFlushTokenTimerId: function(state, flushTokenTimerId) {
+    setFlushTokenTimerId: function (state, flushTokenTimerId) {
       state.flushTokenTimerId = flushTokenTimerId;
     },
-    clearFlushTokenTimerId: function(state) {
+    clearFlushTokenTimerId: function (state) {
       clearTimeout(state.flushTokenTimerId);
     },
-    setToken: function(state, token) {
+    setToken: function (state, token) {
       sessionStorage.setItem("token", token.access_token);
       sessionStorage.setItem("refresh_token", token.refresh_token);
     },
     //token 是否有效
-    setTokenStatus: function(state, tokenStatus) {
+    setTokenStatus: function (state, tokenStatus) {
       state.tokenStatus = tokenStatus;
     },
-    setUser: function(state, user) {
+    setUser: function (state, user) {
       state.user = user;
     },
-    setUserFriendList: function(state, userFriendList) {
-      state.userFriendList = userFriendList;
+    setContactList: function (state, contactList) {
+      state.contactList = contactList;
     },
-    setChatGroupList: function(state, chatGroupList) {
-      state.chatGroupList = chatGroupList;
+    setGroupList: function (state, groupList) {
+      state.groupList = groupList;
     },
-    setChatMap: function(state, chatMap) {
+    setChatMap: function (state, chatMap) {
       state.chatMap = chatMap;
     },
-    setWebsocket: function(state, websocket) {
+    setWebsocket: function (state, websocket) {
       state.websocket = websocket;
     },
     // 发送给服务器
-    sendMessage: function(state, message) {
+    sendMessage: function (state, message) {
       let msg = {
         code: MessageInfoType.MSG_MESSAGE,
         message: message
       };
       state.websocket.send(JSON.stringify(msg));
     },
-    resetUnRead: function(state) {
+    resetUnRead: function (state) {
       state.currentChat.unReadCount = 0;
     },
     // 退出登录
-    closeConnect: function(state) {
+    closeConnect: function (state) {
       state.websocket.heartReset();
       state.websocket.close();
     },
     // 退出后清除内存中的聊天信息
-    clear: function(state) {
+    clear: function (state) {
       state.messageList = [];
       state.messageListMap = new Map();
     },
     // 保存到内存
-    addMessage: function(state, message) {
+    addMessage: function (state, message) {
       message.content = transform(message.content);
       state.messageList.push(message);
       state.messageListMap.set(message.id, state.messageList);
     },
     // 在用户姓名下展示收到的最后一条信息
-    setLastMessage: function(state, message) {
+    setLastMessage: function (state, message) {
       let list = ChatListUtils.getChatList(state.user.id);
-      let tempChatList = list.map(function(chat) {
+      let tempChatList = list.map(function (chat) {
         if (
           String(chat.id) === String(message.fromid) &&
           message.type === "0"
@@ -110,13 +110,13 @@ export default {
       ChatListUtils.setChatList(state.user.id, tempChatList);
       state.chatList = tempChatList;
     },
-    setMessageList: function(state, messageList) {
+    setMessageList: function (state, messageList) {
       state.messageList = messageList;
     },
-    setMessageListMap: function(state, messageListMap) {
+    setMessageListMap: function (state, messageListMap) {
       state.messageListMap = messageListMap;
     },
-    addUnreadMessage: function(state, message) {
+    addUnreadMessage: function (state, message) {
       message.content = transform(message.content);
       if (message.type === "0") {
         // 从内存中取聊天信息
@@ -140,11 +140,11 @@ export default {
         }
       }
     },
-    setCurrentChat: function(state, currentChat) {
+    setCurrentChat: function (state, currentChat) {
       state.currentChat = currentChat;
       state.currentChat.unReadCount = 0;
 
-      let tempChatList = state.chatList.map(function(chat) {
+      let tempChatList = state.chatList.map(function (chat) {
         if (String(chat.id) === String(currentChat.id)) {
           chat.unReadCount = 0;
         }
@@ -153,10 +153,10 @@ export default {
       // 放入缓存
       ChatListUtils.setChatList(state.user.id, tempChatList);
     },
-    setChatList: function(state, chatList) {
+    setChatList: function (state, chatList) {
       state.chatList = chatList;
     },
-    delChat: function(state, chat) {
+    delChat: function (state, chat) {
       state.chatList = ChatListUtils.delChat(state.user.id, chat);
     },
     /**
@@ -164,7 +164,7 @@ export default {
      * @param state state
      * @param message 消息
      */
-    setUnReadCount: function(state, message) {
+    setUnReadCount: function (state, message) {
       let tempChatList = [];
       let tempChat = {};
 

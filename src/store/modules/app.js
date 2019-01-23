@@ -7,9 +7,9 @@ export default {
   mutations: {
 
   },
-  getters: {
+  // getters: {
 
-  },
+  // },
   actions: {
 
   }
