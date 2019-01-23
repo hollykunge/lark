@@ -32,7 +32,7 @@
       <Tooltip content="研讨"
                placement="right">
         <div class="icon-style">
-          <Badge :count="100">
+          <Badge :count="messageUnreadCount">
             <font-awesome-icon icon="comment"
                                size="2x" />
           </Badge>
@@ -110,6 +110,7 @@
 </template>
 
 <script>
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 export default {
   data () {
     return {
@@ -122,7 +123,10 @@ export default {
     },
     menuitemClasses () {
       return ["menu-item", this.isCollapsed ? "collapsed-menu" : ""];
-    }
+    },
+    ...mapGetters([
+      'messageUnreadCount'
+    ])
   },
   methods: {
     collapsedSider () {

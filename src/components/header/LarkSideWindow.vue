@@ -9,7 +9,7 @@ export default {};
 .lark-side-header {
   width: 100%;
   height: 12px;
-  background: #f2f2f2;
+  background: #eceae8;
   -webkit-app-region: drag;
 }
 </style>

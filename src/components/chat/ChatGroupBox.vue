@@ -1,50 +1,89 @@
 <template>
   <div class="chat-panel">
     <div class="chat-box-list">
-      <lark-side-window/>
       <div class="search-box">
-        <Input
-          search
-          v-model="search"
-          placeholder="搜索"
-          size="small"
-          class="search"
-          @on-focus="showSearch()"
-        />
+        <lark-side-window />
+        <Row type="flex"
+             justify="center">
+          <Col span="20">
+          <Input search
+                 placeholder="搜索"
+                 size="small"
+                 class="search"
+                 @on-focus="showSearch()" />
+          </Col>
+          <Col span="4"
+               push="1">
+          <Button icon="md-close"
+                  size="small"
+                  v-show="showSearchDiv"
+                  @click="closeSearchDiv()"></Button>
+          <Button icon="md-add"
+                  size="small"
+                  v-show="showAdd"
+                  @click="modalCreateChat = true"></Button>
+          <Modal title="新建研讨"
+                 v-model="modalCreateChat"
+                 :mask-closable="false">
+          </Modal>
+          </Col>
+        </Row>
       </div>
-      <!-- 搜索框，当获取搜索框的focus时显示 -->
-      <div class="search-sidebar" v-show="showSearchDiv">
-        <div class="search-item">
-          <!-- <Input
-              search
-              v-model="search"
-              placeholder="搜索"
-              size="small"
-              class="search"
-              @on-search="searchUser"
-              @on-keyup="searchUser"
-          />-->
-          <!-- <Icon type="ios-close" class="text-right" @click="closeSearchDiv()"></Icon> -->
-        </div>
+      <div class="search-result"
+           v-show="showSearchDiv">
+
       </div>
       <div class="group-box">
         <Tabs size="small">
-          <TabPane label="最  近" icon="ios-time"></TabPane>
-          <TabPane label="群  组" icon="ios-people"></TabPane>
-          <TabPane label="联系人" icon="ios-contact"></TabPane>
+          <TabPane label="最 近"
+                   icon="ios-time">
+            <ul class="chat-list">
+              <li class="chat"
+                  v-for="chat in chatList">
+                <a href="javascript:"
+                   @click="showChat(chat)">
+                  <img :src="[host + chat.avatar]">
+                  <b>{{ chat.name }}</b>
+                  <p>{{ chat.name }}</p>
+                </a>
+              </li>
+            </ul>
+          </TabPane>
+          <TabPane label="群 组"
+                   icon="ios-people">
+            <ul class="group-list">
+              <li class="group"
+                  v-for="group in groupList">
+                <a href="javascript:"
+                   @click="showChat(group)">
+                  <img :src="[host + group.avatar]">
+                  <b>{{ group.name }}</b>
+                  <p>{{ group.name }}</p>
+                </a>
+              </li>
+            </ul>
+          </TabPane>
+          <TabPane label="联系人"
+                   icon="ios-contact">
+            <ul class="contact-list">
+              <li class="contact"
+                  v-for="contact in contactList">
+                <a href="javascript:"
+                   @click="showChat(contact)">
+                  <img :src="[host + contact.avatar]">
+                  <b>{{ contact.name }}</b>
+                  <p>{{ contact.name }}</p>
+                </a>
+              </li>
+            </ul>
+          </TabPane>
         </Tabs>
-        <ul class="user-list">
-          <li class="user" v-for="chatGroup in chatGroupList">
-            <a href="javascript:" @click="showChat(chatGroup)">
-              <img :src="[host + chatGroup.avatar]">
-              <b>{{ chatGroup.name }}</b>
-              <p>{{ chatGroup.name }}</p>
-            </a>
-          </li>
-        </ul>
+
       </div>
     </div>
-    <div class="chat-box"></div>
+    <div class="chat-box">
+      <lark-navbar />
+    </div>
   </div>
 </template>
 <script>
@@ -69,40 +108,80 @@ export default {
     LarkNavbar
   },
   computed: {
-    //需要展示的用户群组
-    chatGroupList: {
-      get: function() {
-        return this.$store.state.chatGroupList;
+    //需要展示的研讨
+    chatList: {
+      get: function () {
+        console.log('获取chatlist')
+        return this.$store.state.chatList;
       },
-      set: function(chatGroupList) {
-        this.$store.commit("setChatGroupList", chatGroupList);
+      set: function (chatList) {
+        this.$store.commit("setChatList", chatList);
+      }
+    },
+    //需要展示的群组
+    groupList: {
+      get: function () {
+        return this.$store.state.groupList;
+      },
+      set: function (groupList) {
+        this.$store.commit("setGroupList", groupList);
+      }
+    },
+    //需要展示的联系人
+    contactList: {
+      get: function () {
+        return this.$store.state.contactList;
+      },
+      set: function (contactList) {
+        this.$store.commit("setContactList", contactList);
       }
     }
   },
-  data() {
+  data () {
     return {
+      modalCreateChat: false,
       host: conf.getHostUrl(),
       search: "",
-      userList: [],
-      searchUserList: [],
-      showSearchDiv: false
+      showSearchDiv: false,
+      showAdd: true
     };
   },
   methods: {
-    closeSearchDiv: function() {
+    closeSearchDiv: function () {
+      this.showAdd = true;
       this.showSearchDiv = false;
     },
-    showSearch: function() {
+    showSearch: function () {
+      this.showAdd = false;
       this.search = "";
       this.showSearchDiv = true;
+    },
+    // 打开一个聊天对话框
+    showChat: function (chat) {
+      let self = this;
+      let chatList = ChatListUtils.getChatList(self.$store.state.user.id);
+      // 删除当前用户已经有的会话
+      let newChatList = chatList.filter(function (element) {
+        return String(element.id) !== String(chat.id);
+      });
+      // 重新添加会话，放到第一个
+      let chatV = new Chat(chat.id, chat.name, conf.getHostUrl() + chat.avatar, 0, '', '', '', MessageTargetType.CHAT_GROUP);
+      newChatList.unshift(chatV);
+      // 存储到localStorage 的 chatList
+      ChatListUtils.setChatList(self.$store.state.user.id, chatList);
+      this.$store.commit('setChatList', newChatList);
+      this.$router.push({
+        path: '/index/chatBox',
+        query: { chatV: chatV }
+      });
     }
   }
 };
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
 .chat-panel {
-  width: 264px;
-  background-color: #f2f2f2;
+  width: 100%;
+  background-color: #eceae8;
   height: 100%;
   display: flex;
   flex-direction: row;
@@ -118,7 +197,8 @@ export default {
   .chat-box-list {
     position: relative;
     height: 100%;
-    width: 100%;
+    width: 264px;
+
     display: flex;
     flex-direction: column;
 
@@ -136,15 +216,18 @@ export default {
     }
   }
 }
-.search-sidebar {
+.search-result {
   position: absolute;
+  top: 42px;
+  bottom: 0px;
   width: inherit;
-  height: 100%;
+  // height: 100%;
   overflow: auto;
   z-index: 999999999999999999;
-  backdrop-filter: blur(15px);
-  background: rgba(255, 255, 255, 0.8);
-  margin-top: -45px;
+  // -webkit-filter: blur(5px); /* Chrome, Safari, Opera */
+  // filter: blur(5px);
+  background: rgba(255, 255, 255, 1);
+  // margin-top: -45px;
 }
 .group-box {
   height: 100%;
@@ -204,7 +287,7 @@ export default {
     }
   }
 
-  .user {
+  .chat {
     height: 5.2rem;
     position: relative;
 

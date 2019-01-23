@@ -6,6 +6,7 @@ Vue.use(Vuex);
 // 引入模块
 import app from "./modules/app";
 import user from "./modules/user";
+import chat from "./chat";
 
 export default new Vuex.Store({
   state: {},
@@ -13,6 +14,7 @@ export default new Vuex.Store({
   actions: {},
   modules: {
     app,
-    user
+    user,
+    chat
   }
 });
