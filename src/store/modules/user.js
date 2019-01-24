@@ -60,6 +60,9 @@ export default {
     setMessageTrashList(state, list) {
       state.messageTrashList = list
     },
+    setChatList(state, list){
+
+    },
     updateMessageContentStore(state, {
       msg_id,
       content
@@ -123,7 +126,7 @@ export default {
         // resolve()
       })
     },
-    // 获取用户相关信息
+    // 在此处获取用户相关信息，存入store中，提供全局访问
     getUserInfo({
       state,
       commit
@@ -137,6 +140,7 @@ export default {
             commit('setUserId', data.user_id)
             commit('setAccess', data.access)
             commit('setHasGetInfo', true)
+            commit('setChatList',data.chat_list)
             resolve(data)
           }).catch(err => {
             reject(err)
