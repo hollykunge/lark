@@ -168,8 +168,7 @@ import { imageLoad, transform, ChatListUtils, fetchPost } from '@/utils/chat'
 
 export default {
   components: {
-    Faces,
-    Button
+    Faces
   },
   name: 'userChat',
   computed: {
