@@ -32,10 +32,10 @@
       <Tooltip content="研讨"
                placement="right">
         <div class="icon-style">
-          <Badge :count="messageUnreadCount">
-            <font-awesome-icon icon="comment"
-                               size="2x" />
-          </Badge>
+          <!-- <Badge :count="messageUnreadCount"> -->
+          <font-awesome-icon icon="comment"
+                             size="2x" />
+          <!-- </Badge> -->
         </div>
       </Tooltip>
       </MenuItem>
@@ -125,7 +125,7 @@ export default {
       return ["menu-item", this.isCollapsed ? "collapsed-menu" : ""];
     },
     ...mapGetters([
-      'messageUnreadCount'
+      // 'messageUnreadCount'
     ])
   },
   methods: {

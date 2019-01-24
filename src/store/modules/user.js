@@ -78,9 +78,9 @@ export default {
     }
   },
   getters: {
-    messageUnreadCount: state => state.messageUnreadList.length,
-    messageReadedCount: state => state.messageReadedList.length,
-    messageTrashCount: state => state.messageTrashList.length
+    // messageUnreadCount: state => state.messageUnreadList.length,
+    // messageReadedCount: state => state.messageReadedList.length,
+    // messageTrashCount: state => state.messageTrashList.length
   },
   actions: {
     // 登录
@@ -90,7 +90,6 @@ export default {
       userName,
       password
     }) {
-      console.log('handleLogin')
       userName = userName.trim()
       return new Promise((resolve, reject) => {
         login({
@@ -98,8 +97,6 @@ export default {
           password
         }).then(res => {
           const data = res
-          console.log('res')
-          console.log(data)
           commit('setToken', data.token)
           resolve()
         }).catch(err => {
@@ -135,7 +132,6 @@ export default {
         try {
           getUserInfo(state.token).then(res => {
             const data = res
-            console.log(data)
             commit('setAvator', data.avator)
             commit('setUserName', data.name)
             commit('setUserId', data.user_id)

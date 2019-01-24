@@ -111,7 +111,6 @@ export default {
     //需要展示的研讨
     chatList: {
       get: function () {
-        console.log('获取chatlist')
         return this.$store.state.chatList;
       },
       set: function (chatList) {

@@ -51,18 +51,12 @@ export const canTurnTo = (name, access, routes) => {
   const routePermissionJudge = list => {
     return list.some(item => {
       if (item.children && item.children.length) {
-        //   for(let i=0;i<=item.children.length;i++){
-        //     console.log('有子路由:' + item.children[i].name)
-        //   }
-
         return routePermissionJudge(item.children);
       } else if (item.name === name) {
-        console.log(5)
         return hasAccess(access, item);
       }
     });
   };
-
   return routePermissionJudge(routes);
 };
 
