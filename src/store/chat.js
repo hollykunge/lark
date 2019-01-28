@@ -155,6 +155,9 @@ export default {
     },
     setChatList: function (state, chatList) {
       state.chatList = chatList;
+      // 放入缓存
+      ChatListUtils.setChatList(state.user.userId, chatList);
+      console.log("放入缓存："+chatList)
     },
     delChat: function (state, chat) {
       state.chatList = ChatListUtils.delChat(state.user.id, chat);

@@ -109,9 +109,9 @@ export default {
             reject(err);
           });
         // 如果你的退出登录无需请求接口，则可以直接使用下面三行代码而无需使用logout调用接口
-        // commit('setToken', '')
-        // commit('setAccess', [])
-        // resolve()
+        commit('setToken', '')
+        commit('setAccess', [])
+        resolve()
       });
     },
     // 在此处获取用户相关信息，存入store中，提供全局访问
@@ -123,7 +123,7 @@ export default {
               const data = res;
               commit("setAvator", data.avator);
               commit("setUserName", data.name);
-              commit("setUserId", data.user_id);
+              commit("setUserId", data.userId);
               commit("setAccess", data.access);
               commit("setHasGetInfo", true);
               resolve(data);

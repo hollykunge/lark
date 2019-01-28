@@ -143,8 +143,10 @@ export default {
     },
     // 打开一个聊天对话框
     showChat: function(chat) {
+      console.log("chat会话：" + chat);
       let self = this;
-      let chatList = ChatListUtils.getChatList(self.$store.state.user.id);
+      let chatList = ChatListUtils.getChatList(self.$store.state.user.userId);
+      console.log("userId会话：" + self.$store.state.user.userId);
       // 删除当前用户已经有的会话
       let newChatList = chatList.filter(function(element) {
         return String(element.id) !== String(chat.id);
