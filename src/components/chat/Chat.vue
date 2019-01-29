@@ -352,7 +352,7 @@ export default {
           let tempList = list.map(function (message) {
             message.timestamp = self.formatDateTime(new Date(message.timestamp));
             return message;
-          });
+          }); 666
           self.hisMessageList = tempList.reverse();
           self.count = json.count;
           self.pageSize = json.pageSize;
@@ -368,6 +368,7 @@ export default {
   watch: {
     // 监听每次 user 的变化
     chat: function () {
+      console.log('开始监听')
       let self = this;
       self.messageList = [];
       // 从内存中取聊天信息

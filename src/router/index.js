@@ -56,6 +56,12 @@ export const routerMap = [{
         // children: dashboard
       },
       {
+        path: 'chatBox',
+        name: 'chatBox',
+        component: () => import('@/view/chat/chatBox'),
+        // children: chat
+      },
+      {
         path: '/chat',
         name: 'chat',
         component: () => import('@/view/chat/index'),

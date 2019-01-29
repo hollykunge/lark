@@ -1,4 +1,5 @@
 import conf from '@/conf';
+import CircularJSON from 'circular-json'
 
 export function formatDateTime(date) {
   let y = date.getFullYear();
@@ -269,7 +270,7 @@ export function transform(content) {
 export const ChatListUtils = {
   listKey: '_chatList',
   setChatList: function (userId, chatList) {
-    localStorage.setItem(userId + this.listKey, JSON.stringify(chatList));
+    localStorage.setItem(userId + this.listKey, CircularJSON.stringify(chatList));
   },
   //从缓存中获取已经保存的会话
   getChatList: function (userId) {

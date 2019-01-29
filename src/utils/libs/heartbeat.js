@@ -11,16 +11,18 @@
  * }
  * @api public
  */
-const { MessageInfoType } = require('./chatUtils');
+const {
+  MessageInfoType
+} = require('@/utils/chat');
 
 function WebsocketHeartbeatJs({
-                                url,
-                                pingTimeout = 20000,
-                                pongTimeout = 15000,
-                                reconnectTimeout = 5000,
-                                reconnectCount = 24,
-                                pingMsg = '{"code":' + MessageInfoType.MSG_PING + '}'
-                              }) {
+  url,
+  pingTimeout = 20000,
+  pongTimeout = 15000,
+  reconnectTimeout = 5000,
+  reconnectCount = 24,
+  pingMsg = '{"code":' + MessageInfoType.MSG_PING + '}'
+}) {
   this.opts = {
     url: url,
     pingTimeout: pingTimeout,
@@ -40,7 +42,7 @@ function WebsocketHeartbeatJs({
   this.createWebSocket();
 }
 
-WebsocketHeartbeatJs.prototype.createWebSocket = function() {
+WebsocketHeartbeatJs.prototype.createWebSocket = function () {
   try {
     this.ws = new WebSocket(this.opts.url + "?token=" + sessionStorage.getItem("token"));
     this.initEventHandle();
@@ -50,7 +52,7 @@ WebsocketHeartbeatJs.prototype.createWebSocket = function() {
   }
 };
 
-WebsocketHeartbeatJs.prototype.initEventHandle = function() {
+WebsocketHeartbeatJs.prototype.initEventHandle = function () {
   this.ws.onclose = () => {
     this.onclose();
     this.reconnect();
@@ -72,7 +74,7 @@ WebsocketHeartbeatJs.prototype.initEventHandle = function() {
   };
 };
 
-WebsocketHeartbeatJs.prototype.reconnect = function() {
+WebsocketHeartbeatJs.prototype.reconnect = function () {
   if (this.lockReconnect || this.forbidReconnect) return;
   this.lockReconnect = true;
   this.onreconnect();
@@ -82,15 +84,15 @@ WebsocketHeartbeatJs.prototype.reconnect = function() {
     this.lockReconnect = false;
   }, this.opts.reconnectTimeout);
 };
-WebsocketHeartbeatJs.prototype.send = function(msg) {
+WebsocketHeartbeatJs.prototype.send = function (msg) {
   this.ws.send(msg);
 };
 // 心跳检测
-WebsocketHeartbeatJs.prototype.heartCheck = function() {
+WebsocketHeartbeatJs.prototype.heartCheck = function () {
   this.heartReset();
   this.heartStart();
 };
-WebsocketHeartbeatJs.prototype.heartStart = function() {
+WebsocketHeartbeatJs.prototype.heartStart = function () {
   this.pingTimeoutId = setTimeout(() => {
     // 这里发送一个心跳，后端收到后，返回一个心跳消息，
     // onmessage拿到返回的心跳就说明连接正常
@@ -102,11 +104,11 @@ WebsocketHeartbeatJs.prototype.heartStart = function() {
     }, this.opts.pongTimeout);
   }, this.opts.pingTimeout);
 };
-WebsocketHeartbeatJs.prototype.heartReset = function() {
+WebsocketHeartbeatJs.prototype.heartReset = function () {
   clearTimeout(this.pingTimeoutId);
   clearTimeout(this.pongTimeoutId);
 };
-WebsocketHeartbeatJs.prototype.close = function() {
+WebsocketHeartbeatJs.prototype.close = function () {
   // 如果手动关闭连接，不再重连
   this.forbidReconnect = true;
   this.ws.close();
