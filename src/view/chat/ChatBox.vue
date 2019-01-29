@@ -28,8 +28,8 @@ export default {
   computed: {
     currentChat: {
       get: function () {
-        console.log('currentChat内容：' + this.$store.state.currentChat)
-        return this.$store.state.currentChat;
+        console.log('currentChat内容：' + this.$store.state.chat.currentChat)
+        return this.$store.state.chat.currentChat;
       },
       set: function (currentChat) {
         this.$store.commit('setCurrentChat', currentChat);

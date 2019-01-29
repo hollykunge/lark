@@ -44,7 +44,8 @@ function WebsocketHeartbeatJs({
 
 WebsocketHeartbeatJs.prototype.createWebSocket = function () {
   try {
-    this.ws = new WebSocket(this.opts.url + "?token=" + sessionStorage.getItem("token"));
+    // this.ws = new WebSocket(this.opts.url + "?token=" + sessionStorage.getItem("token"));
+    this.ws = new WebSocket("ws://127.0.0.1:9326");
     this.initEventHandle();
   } catch (e) {
     this.reconnect();

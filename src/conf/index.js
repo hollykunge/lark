@@ -1,5 +1,5 @@
 export default {
-  app_name: "V-IM",
+  app_name: "Lark",
   http_protocol: "http",
   http_port: 8080,
   ws_port: 9326,
@@ -13,7 +13,8 @@ export default {
     return (
       this.http_protocol +
       "://" +
-      localStorage.getItem("host") +
+      "127.0.0.1"+
+      // localStorage.getItem("host") +
       ":" +
       this.http_port
     );
