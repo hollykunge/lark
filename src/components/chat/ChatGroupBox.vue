@@ -88,6 +88,7 @@
     </div>
     <div class="chat-box">
       <lark-navbar />
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -117,7 +118,7 @@ export default {
     //需要展示的研讨
     chatList: {
       get: function () {
-        return this.$store.state.user.chatList;
+        return this.$store.state.chat.chatList;
       },
       set: function (chatList) {
         this.$store.commit("setChatList", chatList);
@@ -155,7 +156,7 @@ export default {
     ...mapMutations([
       //
     ]),
-    ...mapActions(["getChatList", "hasRead"]),
+    ...mapActions(["getChatList"]),
     stopLoading (name) {
       this[name] = false;
     },
@@ -169,33 +170,10 @@ export default {
       this.showSearchDiv = true;
     },
     // 打开一个聊天对话框
-    showChat: function(chat) {
-      console.log("chat会话：" + chat);
-      let self = this;
-      let chatList = ChatListUtils.getChatList(self.$store.state.user.userId);
-      console.log("userId会话：" + self.$store.state.user.userId);
-      // 删除当前用户已经有的会话
-      let newChatList = chatList.filter(function (element) {
-        return String(element.id) !== String(chat.id);
-      });
-      // 重新添加会话，放到第一个
-      let chatV = new Chat(
-        chat.id,
-        chat.name,
-        conf.getHostUrl() + chat.avatar,
-        0,
-        "",
-        "",
-        "",
-        MessageTargetType.CHAT_GROUP
-      );
-      newChatList.unshift(chatV);
-      // 存储到localStorage 的 chatList
-      ChatListUtils.setChatList(self.$store.state.user.id, chatList);
-      this.$store.commit("setChatList", newChatList);
+    showChat: function (chat) {
       this.$router.push({
         path: "/index/chatBox",
-        query: { chatV: chatV }
+        query: { chat: chat }
       });
     }
   },

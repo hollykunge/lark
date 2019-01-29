@@ -7,6 +7,9 @@ import {
   transform
 } from "@/utils/chat";
 import conf from "@/conf";
+import {
+  getChatList
+} from "@/api/user";
 
 export default {
   state: {
@@ -153,11 +156,14 @@ export default {
       // 放入缓存
       ChatListUtils.setChatList(state.user.id, tempChatList);
     },
-    setChatList: function (state, chatList) {
-      state.chatList = chatList;
+
+    setChatList: function (state, list) {
+      state.chatList = list;
       // 放入缓存
-      ChatListUtils.setChatList(state.user.userId, chatList);
-      console.log("放入缓存："+chatList)
+      console.log("用户id：" + state.user.userId)
+      //这里有循环引用的问题
+      ChatListUtils.setChatList(state.user.userId, list);
+      console.log("放入缓存：" + list)
     },
     delChat: function (state, chat) {
       state.chatList = ChatListUtils.delChat(state.user.id, chat);
@@ -236,6 +242,26 @@ export default {
       // 放入缓存
       ChatListUtils.setChatList(state.user.id, tempChatList);
     }
+  },
+  actions: {
+    //获取对话列表
+    getChatList({
+      state,
+      commit
+    }) {
+      return new Promise((resolve, reject) => {
+        try {
+          getChatList(state.token).then(res => {
+            const data = res;
+            commit("setChatList", data.chatList);
+            resolve(data);
+          });
+        } catch (error) {
+          console.log("错误" + error);
+          reject(error);
+        }
+      });
+    },
   },
   modules,
   strict: process.env.NODE_ENV !== "production"
