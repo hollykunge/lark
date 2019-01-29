@@ -2,25 +2,44 @@
   <div class="chat-panel">
     <div class="chat-box-list">
       <div class="search-box">
-        <lark-side-window/>
-        <Row type="flex" justify="center">
+        <lark-side-window />
+        <Row type="flex"
+             justify="center">
           <Col span="20">
-            <Input search placeholder="搜索" size="small" class="search" @on-focus="showSearch()"/>
+          <Input search
+                 placeholder="搜索"
+                 size="small"
+                 class="search"
+                 @on-focus="showSearch()" />
           </Col>
-          <Col span="4" push="1">
-            <Button icon="md-close" size="small" v-show="showSearchDiv" @click="closeSearchDiv()"></Button>
-            <Button icon="md-add" size="small" v-show="showAdd" @click="modalCreateChat = true"></Button>
-            <Modal title="新建研讨" v-model="modalCreateChat" :mask-closable="false"></Modal>
+          <Col span="4"
+               push="1">
+          <Button icon="md-close"
+                  size="small"
+                  v-show="showSearchDiv"
+                  @click="closeSearchDiv()"></Button>
+          <Button icon="md-add"
+                  size="small"
+                  v-show="showAdd"
+                  @click="modalCreateChat = true"></Button>
+          <Modal title="新建研讨"
+                 v-model="modalCreateChat"
+                 :mask-closable="false"></Modal>
           </Col>
         </Row>
       </div>
-      <div class="search-result" v-show="showSearchDiv"></div>
+      <div class="search-result"
+           v-show="showSearchDiv"></div>
       <div class="group-box">
         <Tabs size="small">
-          <TabPane label="最 近" icon="ios-time">
+          <TabPane label="最 近"
+                   class="group-tab"
+                   icon="ios-time">
             <ul class="chat-list">
-              <li class="chat-item" v-for="chat in chatList">
-                <a href="javascript:" @click="showChat(chat)">
+              <li class="chat-item"
+                  v-for="chat in chatList">
+                <a href="javascript:"
+                   @click="showChat(chat)">
                   <div class="avatar">
                     <img :src="chat.avatar">
                   </div>
@@ -34,10 +53,14 @@
               </li>
             </ul>
           </TabPane>
-          <TabPane label="群 组" icon="ios-people">
+          <TabPane label="群 组"
+                   class="group-tab"
+                   icon="ios-people">
             <ul class="group-list">
-              <li class="group" v-for="group in groupList">
-                <a href="javascript:" @click="showChat(group)">
+              <li class="group"
+                  v-for="group in groupList">
+                <a href="javascript:"
+                   @click="showChat(group)">
                   <img :src="[host + group.avatar]">
                   <b>{{ group.name }}</b>
                   <p>{{ group.lastword }}</p>
@@ -45,10 +68,14 @@
               </li>
             </ul>
           </TabPane>
-          <TabPane label="联系人" icon="ios-contact">
+          <TabPane label="联系人"
+                   class="group-tab"
+                   icon="ios-contact">
             <ul class="contact-list">
-              <li class="contact" v-for="contact in contactList">
-                <a href="javascript:" @click="showChat(contact)">
+              <li class="contact"
+                  v-for="contact in contactList">
+                <a href="javascript:"
+                   @click="showChat(contact)">
                   <img :src="[host + contact.avatar]">
                   <b>{{ contact.name }}</b>
                   <p>{{ contact.lastword }}</p>
@@ -60,7 +87,7 @@
       </div>
     </div>
     <div class="chat-box">
-      <lark-navbar/>
+      <lark-navbar />
     </div>
   </div>
 </template>
@@ -89,33 +116,33 @@ export default {
   computed: {
     //需要展示的研讨
     chatList: {
-      get: function() {
+      get: function () {
         return this.$store.state.user.chatList;
       },
-      set: function(chatList) {
+      set: function (chatList) {
         this.$store.commit("setChatList", chatList);
       }
     },
     //需要展示的群组
     groupList: {
-      get: function() {
+      get: function () {
         return this.$store.state.groupList;
       },
-      set: function(groupList) {
+      set: function (groupList) {
         this.$store.commit("setGroupList", groupList);
       }
     },
     //需要展示的联系人
     contactList: {
-      get: function() {
+      get: function () {
         return this.$store.state.contactList;
       },
-      set: function(contactList) {
+      set: function (contactList) {
         this.$store.commit("setContactList", contactList);
       }
     }
   },
-  data() {
+  data () {
     return {
       modalCreateChat: false,
       host: conf.getHostUrl(),
@@ -129,14 +156,14 @@ export default {
       //
     ]),
     ...mapActions(["getChatList", "hasRead"]),
-    stopLoading(name) {
+    stopLoading (name) {
       this[name] = false;
     },
-    closeSearchDiv: function() {
+    closeSearchDiv: function () {
       this.showAdd = true;
       this.showSearchDiv = false;
     },
-    showSearch: function() {
+    showSearch: function () {
       this.showAdd = false;
       this.search = "";
       this.showSearchDiv = true;
@@ -148,7 +175,7 @@ export default {
       let chatList = ChatListUtils.getChatList(self.$store.state.user.userId);
       console.log("userId会话：" + self.$store.state.user.userId);
       // 删除当前用户已经有的会话
-      let newChatList = chatList.filter(function(element) {
+      let newChatList = chatList.filter(function (element) {
         return String(element.id) !== String(chat.id);
       });
       // 重新添加会话，放到第一个
@@ -172,7 +199,7 @@ export default {
       });
     }
   },
-  mounted: function() {
+  mounted: function () {
     this.listLoading = true;
     // 请求获取消息列表
     this.getChatList()
@@ -181,6 +208,17 @@ export default {
   }
 };
 </script>
+<style rel="stylesheet/scss" lang="scss">
+.group-box {
+  .ivu-tabs {
+    height: 100%;
+  }
+  .ivu-tabs-bar {
+    margin-bottom: 0px !important;
+  }
+}
+</style>
+
 <style rel="stylesheet/scss" lang="scss" scoped>
 .chat-panel {
   width: 100%;
@@ -232,19 +270,36 @@ export default {
   background: rgba(255, 255, 255, 1);
   // margin-top: -45px;
 }
+
+/* 设置滚动条的样式 */
+.group-tab::-webkit-scrollbar {
+  width: 6px;
+}
+/* 滚动槽 */
+.group-tab::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+/* 滚动条滑块 */
+.group-tab::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.5);
+}
+
 .group-box {
   height: 100%;
-  overflow-y: auto;
+  overflow: hidden;
 
-  .count {
-    color: #aaaaaa;
+  .group-tab:hover {
+    overflow: scroll;
   }
-
-  .chat-list {
+  .group-tab {
     background: #eceae8;
+    // overflow: hidden;
   }
   .chat-item {
-    overflow: hidden;
+    // overflow: hidden;
     padding: 12px 18px 11px;
     border-bottom: 1px solid #c8c9ca;
     cursor: pointer;
