@@ -17,33 +17,33 @@
   </Layout>
 </template>
 <script>
-import LarkNavbar from "@/layout/LarkNavbar";
-import LoginForm from "@/components/login/LoginForm";
-import { mapActions } from "vuex";
+import LarkNavbar from '@/layout/LarkNavbar'
+import LoginForm from '@/components/login/LoginForm'
+import { mapActions } from 'vuex'
 export default {
   components: { LarkNavbar, LoginForm },
-  data() {
+  data () {
     return {
       formTop: {
-        username: "workhub",
-        password: "workhub"
+        username: 'workhub',
+        password: 'workhub'
       }
-    };
+    }
   },
   methods: {
-    ...mapActions(["handleLogin", "getUserInfo"]),
-    handleSubmit({ userName, password }) {
+    ...mapActions(['handleLogin', 'getUserInfo']),
+    handleSubmit ({ userName, password }) {
       this.handleLogin({ userName, password }).then(res => {
         this.getUserInfo()
           .then(res => {
             this.$router.push({
-              name: "home"
-            });
-          });
-      });
+              name: 'home'
+            })
+          })
+      })
     }
   }
-};
+}
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
 .login-panel {

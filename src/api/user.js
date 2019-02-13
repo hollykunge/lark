@@ -1,4 +1,4 @@
-import request from "@/utils/request";
+import request from '@/utils/request'
 
 export const login = ({
   userName,
@@ -7,88 +7,88 @@ export const login = ({
   const data = {
     userName,
     password
-  };
+  }
   return request({
-    url: "login",
+    url: 'login',
     data,
-    method: "post"
-  });
-};
+    method: 'post'
+  })
+}
 
 export const getUserInfo = token => {
   return request({
-    url: "get_info",
+    url: 'get_info',
     params: {
       token
     },
-    method: "get"
-  });
-};
+    method: 'get'
+  })
+}
 
 export const logout = token => {
   return request({
-    url: "logout",
-    method: "post"
-  });
-};
+    url: 'logout',
+    method: 'post'
+  })
+}
 
 export const getUnreadCount = () => {
   return request({
-    url: "message/count",
-    method: "get"
-  });
-};
+    url: 'message/count',
+    method: 'get'
+  })
+}
 
 export const getMessage = () => {
   return request({
-    url: "message/init",
-    method: "get"
-  });
-};
+    url: 'message/init',
+    method: 'get'
+  })
+}
 
 export const getContentByMsgId = msg_id => {
   return request({
-    url: "message/content",
-    method: "get",
+    url: 'message/content',
+    method: 'get',
     params: {
       msg_id
     }
-  });
-};
+  })
+}
 
 export const hasRead = msg_id => {
   return request({
-    url: "message/has_read",
-    method: "post",
+    url: 'message/has_read',
+    method: 'post',
     data: {
       msg_id
     }
-  });
-};
+  })
+}
 
 export const removeReaded = msg_id => {
   return request({
-    url: "message/remove_readed",
-    method: "post",
+    url: 'message/remove_readed',
+    method: 'post',
     data: {
       msg_id
     }
-  });
-};
+  })
+}
 
 export const restoreTrash = msg_id => {
   return request({
-    url: "message/restore",
-    method: "post",
+    url: 'message/restore',
+    method: 'post',
     data: {
       msg_id
     }
-  });
-};
+  })
+}
 
 export const getChatList = () => {
   return request({
-    url: "message/chatList",
-    method: "get"
-  });
-};
+    url: 'message/chatList',
+    method: 'get'
+  })
+}
