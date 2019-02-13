@@ -28,7 +28,9 @@ export default {
   computed: {
     currentChat: {
       get: function () {
-        console.log('currentChat内容：' + this.$store.state.chat.currentChat)
+        console.log('当前对话开始')
+        console.log(this.$store.state.chat.currentChat)
+        console.log('当前对话结束')
         return this.$store.state.chat.currentChat
       },
       set: function (currentChat) {
