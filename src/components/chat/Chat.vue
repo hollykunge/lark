@@ -162,8 +162,8 @@
 </template>
 
 <script>
-import conf from '@/conf';
-import Faces from './ChatFace';
+import conf from '@/conf'
+import Faces from './ChatFace'
 import { imageLoad, transform, ChatListUtils, fetchPost } from '@/utils/chat'
 
 export default {
@@ -174,10 +174,10 @@ export default {
   computed: {
     messageList: {
       get: function () {
-        return this.$store.state.messageList;
+        return this.$store.state.messageList
       },
       set: function (messageList) {
-        this.$store.commit('setMessageList', messageList);
+        this.$store.commit('setMessageList', messageList)
       }
     }
   },
@@ -208,17 +208,17 @@ export default {
       headers: {
         'Access-Control-Allow-Origin': '*'
       }
-    };
+    }
   },
   props: ['chat'],
   methods: {
     showChat (user) {
-      let self = this;
+      let self = this
       if (user.id !== self.$store.state.user.id) {
-        let chat = ChatListUtils.resetChatList(self, user, conf.getHostUrl());
-        self.$store.commit('setCurrentChat', chat);
+        let chat = ChatListUtils.resetChatList(self, user, conf.getHostUrl())
+        self.$store.commit('setCurrentChat', chat)
       } else {
-        self.$Message.warning('不能给自己说话哦');
+        self.$Message.warning('不能给自己说话哦')
       }
     },
     showUser: function () { },
@@ -226,83 +226,83 @@ export default {
       this.tokenImg = {
         access_token: sessionStorage.getItem('token'),
         type: 'image'
-      };
+      }
       this.tokenFile = {
         access_token: sessionStorage.getItem('token'),
         type: 'file'
-      };
+      }
       return new Promise(resolve => {
         this.$nextTick(function () {
-          resolve(true);
-        });
-      });
+          resolve(true)
+        })
+      })
     },
 
     // 错误提示
     openMessage (error) {
-      this.$Message.error(error);
+      this.$Message.error(error)
     },
     showFaceBox: function () {
-      this.showFace = !this.showFace;
+      this.showFace = !this.showFace
     },
     insertFace: function (item) {
-      this.messageContent = this.messageContent + 'face' + item;
-      this.showFace = false;
+      this.messageContent = this.messageContent + 'face' + item
+      this.showFace = false
     },
     handleStart () {
-      this.$Loading.start();
+      this.$Loading.start()
     },
     handleFormatError (file) {
-      this.$Message.warning('文件 ' + file.name + ' 格式不正确。');
+      this.$Message.warning('文件 ' + file.name + ' 格式不正确。')
     },
     handleImgMaxSize (file) {
-      this.$Message.warning('图片 ' + file.name + ' 太大，不能超过 512K！');
+      this.$Message.warning('图片 ' + file.name + ' 太大，不能超过 512K！')
     },
     handleFileMaxSize (file) {
-      this.$Message.warning('文件 ' + file.name + ' 太大，不能超过 10M！');
+      this.$Message.warning('文件 ' + file.name + ' 太大，不能超过 10M！')
     },
     handleSuccess (res, file) {
-      let self = this;
+      let self = this
       if (res.msg === 'success') {
-        let path = res.filePath;
-        let fileName = file.name;
+        let path = res.filePath
+        let fileName = file.name
         // 文件后缀
-        let suffix = fileName.substring(fileName.lastIndexOf('.') + 1, fileName.length);
+        let suffix = fileName.substring(fileName.lastIndexOf('.') + 1, fileName.length)
         // 文件
         if (self.imgFormat.indexOf(suffix) === -1) {
-          this.messageContent = this.messageContent + 'file(' + path + ')[' + fileName + ']';
+          this.messageContent = this.messageContent + 'file(' + path + ')[' + fileName + ']'
         }
         // 图片
         else {
-          this.messageContent = this.messageContent + 'img[' + path + ']';
+          this.messageContent = this.messageContent + 'img[' + path + ']'
         }
-        this.$Loading.finish();
+        this.$Loading.finish()
       } else {
-        this.$Message.error('文件上传错误，请重试');
+        this.$Message.error('文件上传错误，请重试')
       }
     },
     handleError: function () {
-      this.$Loading.finish();
-      this.$Message.error('上传错误！');
+      this.$Loading.finish()
+      this.$Message.error('上传错误！')
     },
     // 附件和图片点击展开
     openImageProxy: function (event) {
-      event.preventDefault();
+      event.preventDefault()
       if (event.target.nodeName === 'IMG') {
-        winControl.openURL(event.target.src);
+        winControl.openURL(event.target.src)
       } else if (event.target.className === 'message-file') {
-        winControl.openURL(event.target.href);
+        winControl.openURL(event.target.href)
       }
     },
     // 本人发送信息
     mineSend () {
-      let self = this;
-      let currentUser = self.$store.state.user;
-      let time = new Date().getTime();
-      let content = self.messageContent;
+      let self = this
+      let currentUser = self.$store.state.user
+      let time = new Date().getTime()
+      let content = self.messageContent
       if (content !== '' && content !== '\n') {
         if (content.length > 2000) {
-          self.openMessage('不能超过2000个字符');
+          self.openMessage('不能超过2000个字符')
         } else {
           let currentMessage = {
             mine: true,
@@ -313,94 +313,94 @@ export default {
             fromid: currentUser.id,
             id: self.chat.id,
             type: self.chat.type
-          };
-          self.send(currentMessage);
+          }
+          self.send(currentMessage)
         }
       }
     },
     // 发送消息的基础方法
     send (message) {
-      let self = this;
-      self.$store.commit('sendMessage', message);
-      message.timestamp = self.formatDateTime(new Date(message.timestamp));
-      self.$store.commit('addMessage', message);
-      self.messageContent = '';
+      let self = this
+      self.$store.commit('sendMessage', message)
+      message.timestamp = self.formatDateTime(new Date(message.timestamp))
+      self.$store.commit('addMessage', message)
+      self.messageContent = ''
       // 每次滚动到最底部
       self.$nextTick(() => {
-        imageLoad('message-box');
-      });
+        imageLoad('message-box')
+      })
     },
     getHistoryMessage (pageNo) {
-      let self = this;
-      self.showHistory = true;
+      let self = this
+      self.showHistory = true
       if (!pageNo) {
-        pageNo = 1;
+        pageNo = 1
       }
-      let param = new FormData();
-      param.set('chatId', self.chat.id);
-      param.set('chatType', self.chat.type);
-      param.set('fromId', self.$store.state.user.id);
-      param.set('pageNo', pageNo);
+      let param = new FormData()
+      param.set('chatId', self.chat.id)
+      param.set('chatType', self.chat.type)
+      param.set('fromId', self.$store.state.user.id)
+      param.set('pageNo', pageNo)
       fetchPost(
         conf.getHisUrl(),
         param,
         function (json) {
           let list = json.messageList.map(function (element) {
-            element.content = transform(element.content);
-            return element;
-          });
+            element.content = transform(element.content)
+            return element
+          })
           let tempList = list.map(function (message) {
-            message.timestamp = self.formatDateTime(new Date(message.timestamp));
-            return message;
+            message.timestamp = self.formatDateTime(new Date(message.timestamp))
+            return message
           }); 666
-          self.hisMessageList = tempList.reverse();
-          self.count = json.count;
-          self.pageSize = json.pageSize;
+          self.hisMessageList = tempList.reverse()
+          self.count = json.count
+          self.pageSize = json.pageSize
           // 每次滚动到最底部
           self.$nextTick(() => {
-            imageLoad('his-chat-message');
-          });
+            imageLoad('his-chat-message')
+          })
         },
         self
-      );
+      )
     }
   },
   watch: {
     // 监听每次 user 的变化
     chat: function () {
       console.log('开始监听')
-      let self = this;
-      self.messageList = [];
+      let self = this
+      self.messageList = []
       // 从内存中取聊天信息
-      let cacheMessages = self.$store.state.messageListMap.get(self.chat.id);
+      let cacheMessages = self.$store.state.messageListMap.get(self.chat.id)
       if (cacheMessages) {
-        self.messageList = cacheMessages;
+        self.messageList = cacheMessages
       }
       // 每次滚动到最底部
       this.$nextTick(() => {
-        imageLoad('message-box');
-      });
+        imageLoad('message-box')
+      })
       if (self.chat.type === '1') {
-        let param = new FormData();
-        param.set('chatId', self.chat.id);
+        let param = new FormData()
+        param.set('chatId', self.chat.id)
         fetchPost(
           conf.getChatUsersUrl(),
           param,
           function (json) {
-            self.userList = json;
+            self.userList = json
           },
           self
-        );
+        )
       }
     }
   },
   mounted: function () {
     // 每次滚动到最底部
     this.$nextTick(() => {
-      imageLoad('message-box');
-    });
+      imageLoad('message-box')
+    })
   }
-};
+}
 </script>
 
 <style lang="scss">

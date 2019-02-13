@@ -110,30 +110,30 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
-export default {
-  data () {
-    return {
-      isCollapsed: true
-    };
-  },
-  computed: {
-    rotateIcon () {
-      return ["menu-icon", this.isCollapsed ? "rotate-icon" : ""];
+  import { mapGetters } from 'vuex'
+  export default {
+    data () {
+      return {
+        isCollapsed: true
+      }
     },
-    menuitemClasses () {
-      return ["menu-item", this.isCollapsed ? "collapsed-menu" : ""];
-    },
-    ...mapGetters([
+    computed: {
+      rotateIcon () {
+        return ['menu-icon', this.isCollapsed ? 'rotate-icon' : '']
+      },
+      menuitemClasses () {
+        return ['menu-item', this.isCollapsed ? 'collapsed-menu' : '']
+      },
+      ...mapGetters([
       // 'messageUnreadCount'
-    ])
-  },
-  methods: {
-    collapsedSider () {
-      this.$refs.side1.toggleCollapse();
+      ])
+    },
+    methods: {
+      collapsedSider () {
+        this.$refs.side1.toggleCollapse()
+      }
     }
-  }
-};
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

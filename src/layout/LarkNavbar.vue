@@ -5,26 +5,26 @@
 </template>
 
 <script>
-import LarkWindow from "@/components/header/LarkWindow";
+import LarkWindow from '@/components/header/LarkWindow'
 export default {
-  name: "navbar",
+  name: 'navbar',
   components: {
     LarkWindow
   },
   data () {
     return {
       isCollapse: true
-    };
+    }
   },
   methods: {
     handleOpen (key, keyPath) {
-      console.log(key, keyPath);
+      console.log(key, keyPath)
     },
     handleClose (key, keyPath) {
-      console.log(key, keyPath);
+      console.log(key, keyPath)
     }
   }
-};
+}
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>

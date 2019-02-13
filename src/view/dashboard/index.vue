@@ -10,22 +10,22 @@
 </template>
 
 <script>
-import { testApi } from "@/api/test";
+import { testApi } from '@/api/test'
 
 export default {
-  data() {
+  data () {
     return {
       img: ''
-    };
+    }
   },
   methods: {
-    getData() {
+    getData () {
       testApi().then(res => {
         this.img = res.data.test
       })
     }
   }
-};
+}
 </script>
 
 <style>

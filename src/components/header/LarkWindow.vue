@@ -23,48 +23,46 @@
   </div>
 </template>
 <script>
-import Shell from "nw.gui";
-import logo from '@/view/assets/icon/logo.png'
-import tray from '@/function/LarkTray'
+import Shell from 'nw.gui'
+
 export default {
-  name: "navbar",
+  name: 'navbar',
   components: { Shell },
   data () {
     return {
       closeModel: false,
-      chooseRadio: "最小化到托盘"
-    };
+      chooseRadio: '最小化到托盘'
+    }
   },
   methods: {
     handleTray () {
-      let win = Shell.Window.get();
-      win.hide();
+      let win = Shell.Window.get()
+      win.hide()
     },
     handleMinimize () {
-      let win = Shell.Window.get();
-      win.removeAllListeners('minimize');
-      win.minimize();
+      let win = Shell.Window.get()
+      win.removeAllListeners('minimize')
+      win.minimize()
     },
     handleMaximize () {
-      let win = Shell.Window.get();
-      win.removeAllListeners('maximize');
-      win.maximize();
+      let win = Shell.Window.get()
+      win.removeAllListeners('maximize')
+      win.maximize()
     },
     handleClose () {
-      let value = 0;
       this.$Modal.confirm({
-        title: "确认退出？",
+        title: '确认退出？',
 
         onOk: () => {
-          Shell.App.quit();
+          Shell.App.quit()
         },
         onCancel: () => {
-          this.$Message.info("Clicked cancel");
+          this.$Message.info('Clicked cancel')
         }
-      });
+      })
     }
   }
-};
+}
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
 .lark-nav-style {

@@ -1,27 +1,18 @@
-import Vue from "vue"
-import Router from "vue-router"
+import Vue from 'vue'
+import Router from 'vue-router'
 import store from '@/store'
-import iView from 'iview'
-Vue.use(Router);
+Vue.use(Router)
 
 // 引入layout
 import LarkLayout from '@/layout/LarkLayout'
 import Update from '@/components/Update'
 
-// 引入模块
-import chat from "./modules/chat.js"
-import dashboard from "./modules/dashboard.js"
-import data from "./modules/data.js"
-import knowledge from "./modules/knowledge.js"
-import task from "./modules/task.js"
-import tool from "./modules/tool.js"
-import search from "./modules/search.js"
 import {
   setToken,
   getToken,
   canTurnTo
 } from '@/utils/libs/util'
-import config from "@/conf/cookie"
+import config from '@/conf/cookie'
 /**
  * 路由配置项说明
  * declare type RouteConfig = {
@@ -46,74 +37,74 @@ const {
 } = config
 
 export const routerMap = [{
-    path: '/index',
-    name: '_home',
-    component: LarkLayout,
-    children: [{
-        path: '/home',
-        name: 'home',
-        component: () => import("@/view/dashboard/index"),
+  path: '/index',
+  name: '_home',
+  component: LarkLayout,
+  children: [{
+    path: '/home',
+    name: 'home',
+    component: () => import('@/view/dashboard/index')
         // children: dashboard
-      },
+  },
+  {
+    path: '/chat',
+    name: 'chat',
+    component: () => import('@/view/chat/index'),
+    children: [
       {
-        path: 'chatBox',
+        path: '/chatBox',
         name: 'chatBox',
-        component: () => import('@/view/chat/chatBox'),
-        // children: chat
-      },
-      {
-        path: '/chat',
-        name: 'chat',
-        component: () => import('@/view/chat/index'),
-        // children: chat
-      },
-      {
-        path: '/task',
-        name: 'task',
-        component: () => import('@/view/task/index'),
-        // children: task
-      },
-      {
-        path: '/data',
-        name: 'data',
-        component: () => import('@/view/data/index'),
-        // children: data
-      },
-      {
-        path: '/tool',
-        name: 'tool',
-        component: () => import('@/view/tool/index'),
-        // children: tool
-      },
-      {
-        path: '/knowledge',
-        name: 'knowledge',
-        component: () => import('@/view/knowledge/index'),
-        // children: knowledge
-      },
-      {
-        path: '/search',
-        name: 'search',
-        component: () => import('@/view/search/index'),
-        // children: search
+        component: () => import('@/view/chat/chatBox')
       }
     ]
   },
   {
-    path: '/update',
-    name: 'update',
-    component: Update
+    path: '/task',
+    name: 'task',
+    component: () => import('@/view/task/index')
+        // children: task
   },
   {
-    path: '/',
-    name: 'login',
-    component: () => import('@/view/login')
+    path: '/data',
+    name: 'data',
+    component: () => import('@/view/data/index')
+        // children: data
   },
   {
-    path: '/401',
-    name: 'error_401',
-    component: () => import('@/view/error/page_401')
+    path: '/tool',
+    name: 'tool',
+    component: () => import('@/view/tool/index')
+        // children: tool
+  },
+  {
+    path: '/knowledge',
+    name: 'knowledge',
+    component: () => import('@/view/knowledge/index')
+        // children: knowledge
+  },
+  {
+    path: '/search',
+    name: 'search',
+    component: () => import('@/view/search/index')
+        // children: search
   }
+  ]
+},
+{
+  path: '/update',
+  name: 'update',
+  component: Update
+},
+{
+  path: '/',
+  name: 'login',
+  component: () => import('@/view/login')
+},
+{
+  path: '/401',
+  name: 'error_401',
+  component: () => import('@/view/error/page_401')
+}
   // ,
   // {
   //   path: '/500',
@@ -130,14 +121,16 @@ export const routerMap = [{
 const router = new Router({
   routes: routerMap
   // mode: 'history'
-});
+})
 const LOGIN_PAGE_NAME = 'login'
 const turnTo = (to, access, next) => {
   if (canTurnTo(to.name, access, routerMap)) next() // 有权限，可访问
-  else next({
-    replace: true,
-    name: 'error_401'
-  }) // 无权限，重定向到401页面
+  else {
+    next({
+      replace: true,
+      name: 'error_401'
+    })
+  } // 无权限，重定向到401页面
 }
 router.beforeEach((to, from, next) => {
   // iView.LoadingBar.start()
@@ -171,4 +164,4 @@ router.beforeEach((to, from, next) => {
     }
   }
 })
-export default router;
+export default router

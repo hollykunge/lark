@@ -13,9 +13,9 @@
  */
 const {
   MessageInfoType
-} = require('@/utils/chat');
+} = require('@/utils/chat')
 
-function WebsocketHeartbeatJs({
+function WebsocketHeartbeatJs ({
   url,
   pingTimeout = 20000,
   pongTimeout = 15000,
@@ -29,90 +29,90 @@ function WebsocketHeartbeatJs({
     pongTimeout: pongTimeout,
     reconnectTimeout: reconnectTimeout,
     pingMsg: pingMsg
-  };
-  this.ws = null; // websocket实例
+  }
+  this.ws = null // websocket实例
 
   // override hook function
-  this.onclose = () => {};
-  this.onerror = () => {};
-  this.onopen = () => {};
-  this.onmessage = () => {};
-  this.onreconnect = () => {};
+  this.onclose = () => {}
+  this.onerror = () => {}
+  this.onopen = () => {}
+  this.onmessage = () => {}
+  this.onreconnect = () => {}
 
-  this.createWebSocket();
+  this.createWebSocket()
 }
 
 WebsocketHeartbeatJs.prototype.createWebSocket = function () {
   try {
     // this.ws = new WebSocket(this.opts.url + "?token=" + sessionStorage.getItem("token"));
-    this.ws = new WebSocket("ws://127.0.0.1:9326");
-    this.initEventHandle();
+    this.ws = new WebSocket('ws://127.0.0.1:9326')
+    this.initEventHandle()
   } catch (e) {
-    this.reconnect();
-    throw e;
+    this.reconnect()
+    throw e
   }
-};
+}
 
 WebsocketHeartbeatJs.prototype.initEventHandle = function () {
   this.ws.onclose = () => {
-    this.onclose();
-    this.reconnect();
-  };
+    this.onclose()
+    this.reconnect()
+  }
   this.ws.onerror = error => {
-    this.onerror(error);
-    this.reconnect();
-  };
+    this.onerror(error)
+    this.reconnect()
+  }
   this.ws.onopen = () => {
-    this.onopen();
+    this.onopen()
     // 心跳检测重置
-    this.heartCheck();
-  };
+    this.heartCheck()
+  }
   this.ws.onmessage = event => {
-    this.onmessage(event);
+    this.onmessage(event)
     // 如果获取到消息，心跳检测重置
     // 拿到任何消息都说明当前连接是正常的
-    this.heartCheck();
-  };
-};
+    this.heartCheck()
+  }
+}
 
 WebsocketHeartbeatJs.prototype.reconnect = function () {
-  if (this.lockReconnect || this.forbidReconnect) return;
-  this.lockReconnect = true;
-  this.onreconnect();
+  if (this.lockReconnect || this.forbidReconnect) return
+  this.lockReconnect = true
+  this.onreconnect()
   // 没连接上会一直重连，设置延迟避免请求过多
   setTimeout(() => {
-    this.createWebSocket();
-    this.lockReconnect = false;
-  }, this.opts.reconnectTimeout);
-};
+    this.createWebSocket()
+    this.lockReconnect = false
+  }, this.opts.reconnectTimeout)
+}
 WebsocketHeartbeatJs.prototype.send = function (msg) {
-  this.ws.send(msg);
-};
+  this.ws.send(msg)
+}
 // 心跳检测
 WebsocketHeartbeatJs.prototype.heartCheck = function () {
-  this.heartReset();
-  this.heartStart();
-};
+  this.heartReset()
+  this.heartStart()
+}
 WebsocketHeartbeatJs.prototype.heartStart = function () {
   this.pingTimeoutId = setTimeout(() => {
     // 这里发送一个心跳，后端收到后，返回一个心跳消息，
     // onmessage拿到返回的心跳就说明连接正常
-    this.ws.send(this.opts.pingMsg);
+    this.ws.send(this.opts.pingMsg)
     // 如果超过一定时间还没重置，说明后端主动断开了
     this.pongTimeoutId = setTimeout(() => {
       // 如果onclose会执行reconnect，我们执行ws.close()就行了.如果直接执行reconnect 会触发onclose导致重连两次
-      this.ws.close();
-    }, this.opts.pongTimeout);
-  }, this.opts.pingTimeout);
-};
+      this.ws.close()
+    }, this.opts.pongTimeout)
+  }, this.opts.pingTimeout)
+}
 WebsocketHeartbeatJs.prototype.heartReset = function () {
-  clearTimeout(this.pingTimeoutId);
-  clearTimeout(this.pongTimeoutId);
-};
+  clearTimeout(this.pingTimeoutId)
+  clearTimeout(this.pongTimeoutId)
+}
 WebsocketHeartbeatJs.prototype.close = function () {
   // 如果手动关闭连接，不再重连
-  this.forbidReconnect = true;
-  this.ws.close();
-};
-if (window) window.WebsocketHeartbeatJs = WebsocketHeartbeatJs;
-export default WebsocketHeartbeatJs;
+  this.forbidReconnect = true
+  this.ws.close()
+}
+if (window) window.WebsocketHeartbeatJs = WebsocketHeartbeatJs
+export default WebsocketHeartbeatJs

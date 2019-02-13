@@ -20,14 +20,14 @@ export default {
     return {
       faceList: faceUtils.alt,
       faceMap: faceUtils.faces()
-    };
+    }
   },
   methods: {
     insertFace: function (item) {
-      this.$emit('insertFace', item);
+      this.$emit('insertFace', item)
     }
   }
-};
+}
 </script>
 
 <style scoped lang="scss">

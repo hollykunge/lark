@@ -93,19 +93,18 @@
   </div>
 </template>
 <script>
-import { mapState, mapGetters, mapMutations, mapActions } from "vuex";
-import LarkNavbar from "@/layout/LarkNavbar";
-import LarkSideWindow from "@/components/header/LarkSideWindow";
-import Search from "@/components/chat/ChatSearch";
-import UserChat from "@/components/chat/Chat";
-import conf from "@/conf";
-import { pinyin } from "@/utils/libs/pinyin";
-import {
-  Chat,
-  ChatListUtils,
-  MessageTargetType,
-  fetchPost
-} from "@/utils/chat";
+import { mapMutations, mapActions } from 'vuex'
+import LarkNavbar from '@/layout/LarkNavbar'
+import LarkSideWindow from '@/components/header/LarkSideWindow'
+import Search from '@/components/chat/ChatSearch'
+import UserChat from '@/components/chat/Chat'
+import conf from '@/conf'
+// import {
+//   Chat,
+//   ChatListUtils,
+//   MessageTargetType,
+//   fetchPost
+// } from '@/utils/chat'
 
 export default {
   components: {
@@ -115,31 +114,31 @@ export default {
     LarkNavbar
   },
   computed: {
-    //需要展示的研讨
+    // 需要展示的研讨
     chatList: {
       get: function () {
-        return this.$store.state.chat.chatList;
+        return this.$store.state.chat.chatList
       },
       set: function (chatList) {
-        this.$store.commit("setChatList", chatList);
+        this.$store.commit('setChatList', chatList)
       }
     },
-    //需要展示的群组
+    // 需要展示的群组
     groupList: {
       get: function () {
-        return this.$store.state.groupList;
+        return this.$store.state.groupList
       },
       set: function (groupList) {
-        this.$store.commit("setGroupList", groupList);
+        this.$store.commit('setGroupList', groupList)
       }
     },
-    //需要展示的联系人
+    // 需要展示的联系人
     contactList: {
       get: function () {
-        return this.$store.state.contactList;
+        return this.$store.state.contactList
       },
       set: function (contactList) {
-        this.$store.commit("setContactList", contactList);
+        this.$store.commit('setContactList', contactList)
       }
     }
   },
@@ -147,44 +146,44 @@ export default {
     return {
       modalCreateChat: false,
       host: conf.getHostUrl(),
-      search: "",
+      search: '',
       showSearchDiv: false,
       showAdd: true
-    };
+    }
   },
   methods: {
     ...mapMutations([
       //
     ]),
-    ...mapActions(["getChatList"]),
+    ...mapActions(['getChatList']),
     stopLoading (name) {
-      this[name] = false;
+      this[name] = false
     },
     closeSearchDiv: function () {
-      this.showAdd = true;
-      this.showSearchDiv = false;
+      this.showAdd = true
+      this.showSearchDiv = false
     },
     showSearch: function () {
-      this.showAdd = false;
-      this.search = "";
-      this.showSearchDiv = true;
+      this.showAdd = false
+      this.search = ''
+      this.showSearchDiv = true
     },
     // 打开一个聊天对话框
     showChat: function (chat) {
       this.$router.push({
-        path: "/index/chatBox",
+        path: '/index/chatBox',
         query: { chat: chat }
-      });
+      })
     }
   },
   mounted: function () {
-    this.listLoading = true;
+    this.listLoading = true
     // 请求获取消息列表
     this.getChatList()
-      .then(() => this.stopLoading("listLoading"))
-      .catch(() => this.stopLoading("listLoading"));
+      .then(() => this.stopLoading('listLoading'))
+      .catch(() => this.stopLoading('listLoading'))
   }
-};
+}
 </script>
 <style rel="stylesheet/scss" lang="scss">
 .group-box {

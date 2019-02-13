@@ -15,35 +15,32 @@
   </div>
 </template>
 <script>
-import conf from "@/conf";
-import { pinyin } from "@/utils/libs/pinyin";
-import { fetchPost } from "@/utils/chat";
 
 export default {
   components: {},
   data () {
     return {
-      search: "",
+      search: '',
       userList: [],
       searchUserList: [],
       showSearchDiv: false
-    };
+    }
   },
   methods: {
     closeSearchDiv: function () {
-      this.showSearchDiv = false;
+      this.showSearchDiv = false
     }
   },
   created: function () {
-    let self = this;
-    let users = self.$store.state.userFriendList;
+    let self = this
+    let users = self.$store.state.userFriendList
     for (let group of users) {
       for (let user of group.userList) {
-        self.userList.push(user);
+        self.userList.push(user)
       }
     }
   }
-};
+}
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
 .search {

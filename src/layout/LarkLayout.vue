@@ -19,23 +19,23 @@
   </div>
 </template>
 <script>
-import LarkNavbar from "./LarkNavbar";
-import LarkSidebar from "./LarkSidebar";
+import LarkNavbar from './LarkNavbar'
+import LarkSidebar from './LarkSidebar'
 
 export default {
-  name: "layout",
+  name: 'layout',
   components: { LarkNavbar, LarkSidebar },
   data () {
     return {
       isCollapsed: true
-    };
+    }
   },
   computed: {
     menuitemClasses: function () {
-      return ["menu-item", this.isCollapsed ? "collapsed-menu" : ""];
+      return ['menu-item', this.isCollapsed ? 'collapsed-menu' : '']
     }
   }
-};
+}
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>

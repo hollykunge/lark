@@ -1,31 +1,34 @@
-import Cookies from "js-cookie";
+import Cookies from 'js-cookie'
 // cookie保存的天数
-import config from "@/conf/cookie";
+import config from '@/conf/cookie'
 import {
-  forEach,
   hasOneOf,
   objEqual
-} from "@/utils/libs/tools";
-const cookieExpires = config;
+} from '@/utils/libs/tools'
 
-export const TOKEN_KEY = "token";
+const cookieExpires = config
+
+export const TOKEN_KEY = 'token'
 
 export const setToken = token => {
   console.log(token)
   console.log(cookieExpires)
   Cookies.set(TOKEN_KEY, token, {
     expires: 1
-  });
-};
+  })
+}
 export const getToken = () => {
-  const token = Cookies.get(TOKEN_KEY);
-  if (token) return token;
-  else return false;
-};
+  const token = Cookies.get(TOKEN_KEY)
+  if (token) {
+    return token
+  } else {
+    return false
+  }
+}
 
 export const hasChild = item => {
-  return item.children && item.children.length !== 0;
-};
+  return item.children && item.children.length !== 0
+}
 
 /**
  * @param {*} access 用户权限数组，如 ['super_admin', 'admin']
@@ -33,10 +36,12 @@ export const hasChild = item => {
  */
 const hasAccess = (access, route) => {
   console.log('hasAccess')
-  if (route.meta && route.meta.access)
-    return hasOneOf(access, route.meta.access);
-  else return true;
-};
+  if (route.meta && route.meta.access) {
+    return hasOneOf(access, route.meta.access)
+  } else {
+    return true
+  }
+}
 
 /**
  * 权鉴
@@ -49,45 +54,49 @@ export const canTurnTo = (name, access, routes) => {
   console.log('canTurnTo的name:' + name)
 
   const routePermissionJudge = list => {
+    console.log('canTurnTo的list:' + list)
     return list.some(item => {
-      if (item.children && item.children.length) {
-        return routePermissionJudge(item.children);
-      } else if (item.name === name) {
-        return hasAccess(access, item);
+      console.log(item)
+      if (item.name === name) {
+        console.log('item.name内容:' + item.name)
+        return hasAccess(access, item)
+      } else if (item.children && item.children.length) {
+        console.log('canTurnTo的item.children:' + item.children)
+        return routePermissionJudge(item.children)
       }
-    });
-  };
-  return routePermissionJudge(routes);
-};
+    })
+  }
+  return routePermissionJudge(routes)
+}
 
 /**
  * @param {String} url
  * @description 从URL中解析参数
  */
 export const getParams = url => {
-  const keyValueArr = url.split("?")[1].split("&");
-  let paramObj = {};
+  const keyValueArr = url.split('?')[1].split('&')
+  let paramObj = {}
   keyValueArr.forEach(item => {
-    const keyValue = item.split("=");
-    paramObj[keyValue[0]] = keyValue[1];
-  });
-  return paramObj;
-};
+    const keyValue = item.split('=')
+    paramObj[keyValue[0]] = keyValue[1]
+  })
+  return paramObj
+}
 
 /**
  * @param {Number} times 回调函数需要执行的次数
  * @param {Function} callback 回调函数
  */
 export const doCustomTimes = (times, callback) => {
-  let i = -1;
+  let i = -1
   while (++i < times) {
-    callback(i);
+    callback(i)
   }
-};
+}
 
 export const showByAccess = (access, canViewAccess) => {
-  return hasOneOf(canViewAccess, access);
-};
+  return hasOneOf(canViewAccess, access)
+}
 
 /**
  * @description 根据name/params/query判断两个路由对象是否相等
@@ -95,21 +104,21 @@ export const showByAccess = (access, canViewAccess) => {
  * @param {*} route2 路由对象
  */
 export const routeEqual = (route1, route2) => {
-  const params1 = route1.params || {};
-  const params2 = route2.params || {};
-  const query1 = route1.query || {};
-  const query2 = route2.query || {};
+  const params1 = route1.params || {}
+  const params2 = route2.params || {}
+  const query1 = route1.query || {}
+  const query2 = route2.query || {}
   return (
     route1.name === route2.name &&
     objEqual(params1, params2) &&
     objEqual(query1, query2)
-  );
-};
+  )
+}
 
 export const localSave = (key, value) => {
-  localStorage.setItem(key, value);
-};
+  localStorage.setItem(key, value)
+}
 
 export const localRead = key => {
-  return localStorage.getItem(key) || "";
-};
+  return localStorage.getItem(key) || ''
+}

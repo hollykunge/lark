@@ -5,12 +5,12 @@
 </template>
 <script>
 export default {
-  data() {
-    return {};
+  data () {
+    return {}
   },
   methods: {},
-  mounted() {}
-};
+  mounted () {}
+}
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
