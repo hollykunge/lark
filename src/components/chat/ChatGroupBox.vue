@@ -170,8 +170,9 @@ export default {
     },
     // 打开一个聊天对话框
     showChat: function (chat) {
+      console.log('开始push路由')
       this.$router.push({
-        path: '/index/chatBox',
+        name: 'chatBox',
         query: { chat: chat }
       })
     }

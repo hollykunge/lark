@@ -1,19 +1,6 @@
 <template>
   <Layout style="height: 100%">
     <chat-group-box/>
-    <!-- <Sider>
-      <lark-side-window/>
-    </Sider>-->
-    <!-- <Layout>
-      <Header>
-        <Header :style="{padding: 0}"
-                class="layout-header-bar">
-          <lark-navbar></lark-navbar>
-        </Header>
-      </Header>
-      <Content :style="{margin: '0px', background: '#F2F2F2', height: '100%'}">Content</Content>
-      <Footer>Footer</Footer>
-    </Layout>-->
   </Layout>
 </template>
 
