@@ -1,5 +1,5 @@
 <template>
-  <div class="chat-box-top">
+  <div class="window-top">
     <lark-window></lark-window>
   </div>
 </template>
@@ -28,7 +28,8 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-.chat-box-top {
+.window-top {
+  height: 32px;
   -webkit-app-region: drag;
 }
 </style>
