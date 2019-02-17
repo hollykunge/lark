@@ -1,11 +1,26 @@
 <template>
-  <h2>任务</h2>
+  <div>
+    <lark-navbar/>
+    <Layout>
+      <Header>Header</Header>
+      <Content>Content</Content>
+      <Footer>Footer</Footer>
+    </Layout>
+  </div>
 </template>
 
 <script>
-export default {
+  import LarkNavbar from '@/layout/LarkNavbar'
 
-}
+  export default {
+    components: {
+      LarkNavbar
+    },
+    data () {
+      return {}
+    },
+    methods: {}
+  }
 </script>
 
 <style>
