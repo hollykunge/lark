@@ -373,7 +373,7 @@ export function timeoutFetch (fetchPromise, timeout) {
  * @param self vue this 对象
  */
 export function fetchPost (url, formData, resultFun, self) {
-  timeoutFetch(tokenFetch(url, formData, self), 5000)
+  timeoutFetch(tokenFetch(url, formData, self), 50000)
     .then(response => {
       // token 失效，需要刷新
       if (response.status === 401) {
