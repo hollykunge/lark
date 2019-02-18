@@ -8,7 +8,7 @@ import {
 
 class HttpApiUtils {
   constructor () {
-    this.timeOutTime = 5000 // 请求超时时间
+    this.timeOutTime = 50000 // 请求超时时间
   }
 
   /**

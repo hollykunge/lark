@@ -216,7 +216,7 @@ export default {
   .chat-box-list {
     position: relative;
     height: 100%;
-    width: 264px;
+    width: 300px;
 
     display: flex;
     flex-direction: column;
@@ -279,7 +279,7 @@ export default {
   .chat-item {
     // overflow: hidden;
     padding: 12px 18px 11px;
-    border-bottom: 1px solid #c8c9ca;
+    border-bottom: 1px solid #dddddd;
     cursor: pointer;
     list-style: none;
     position: relative;

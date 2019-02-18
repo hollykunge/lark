@@ -4,8 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-import iView from 'iview'
+// import iView from 'iview'
 import 'iview/dist/styles/iview.css'
+import './plugins/iview.js'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
   faCoffee,
@@ -31,7 +32,6 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 Vue.config.productionTip = false
-Vue.use(iView)
 
 library.add(
   faCoffee,
