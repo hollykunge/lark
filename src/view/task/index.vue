@@ -1,6 +1,7 @@
 <template>
   <div class="full-height">
     <lark-navbar/>
+    <router-view></router-view>
     <Layout class="lark-task-layout">
       <Header class="lark-task-header">
         <project-header/>
