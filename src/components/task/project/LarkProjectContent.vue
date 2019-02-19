@@ -1,6 +1,6 @@
 <template>
   <div class="main-content">
-    <Card dis-hover>
+    <Card :shadow="true">
       <div class="search-con">
         <Row>
           <Col span="12">
@@ -103,10 +103,11 @@
     },
     methods: {
       show (index) {
-        this.$Modal.info({
-          title: 'User Info',
-          content: `Name：${this.projectList[index].name}<br>Age：${this.projectList[index].age}<br>Address：${this.projectList[index].address}`
-        })
+        this.$router.push({name: 'project', params: {projectId: this.projectList[index].id}})
+        // this.$Modal.info({
+        //   title: 'User Info',
+        //   content: `Name：${this.projectList[index].name}<br>Age：${this.projectList[index].status}<br>Address：${this.projectList[index].last}<br>id：${this.projectList[index].id}`
+        // })
       },
       remove (index) {
         this.projectList.splice(index, 1)

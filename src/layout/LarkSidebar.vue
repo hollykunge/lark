@@ -83,6 +83,17 @@
         </div>
       </Tooltip>
       </MenuItem>
+      <!--<MenuItem name="simulation"-->
+                <!--to="simulation"-->
+                <!--class="lark-menu-item">-->
+        <!--<Tooltip content="仿真"-->
+                 <!--placement="right">-->
+          <!--<div class="icon-style">-->
+            <!--<font-awesome-icon icon="bong"-->
+                               <!--size="2x" />-->
+          <!--</div>-->
+        <!--</Tooltip>-->
+      <!--</MenuItem>-->
       <MenuItem name="search"
                 to="search"
                 class="lark-menu-item">
@@ -94,6 +105,7 @@
         </div>
       </Tooltip>
       </MenuItem>
+
       <MenuItem name="setup"
                 to="setup"
                 class="lark-menu-item menu-item-setup">
