@@ -5,7 +5,7 @@
       <Header class="lark-task-header">
         <project-header/>
       </Header>
-      <Content>
+      <Content class="lark-task-content">
         <project-content/>
       </Content>
     </Layout>
@@ -36,11 +36,14 @@
     height: 60px;
     padding: 0px;
     background: rgb(242, 242, 242);
-    box-shadow: 0 2px 3px rgba(0, 21, 41, .15);
+    box-shadow: 0 1px 3px rgba(0, 21, 41, .15);
   }
 
   .lark-task-layout {
     flex: 1;
+    /*.lark-task-content{*/
+      /*background: #eceae8;*/
+    /*}*/
   }
 
   .full-height{

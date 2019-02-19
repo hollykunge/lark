@@ -47,6 +47,9 @@
     position: relative;
     border-radius: 1px;
     overflow: hidden;
+    .lark-content-layout{
+      background: #f2f2f2;
+    }
   }
 
   .layout-header-bar {

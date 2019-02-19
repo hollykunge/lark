@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import store from '@/store'
+
 Vue.use(Router)
 
 // 引入layout
@@ -13,6 +14,7 @@ import {
   canTurnTo
 } from '@/utils/libs/util'
 import config from '@/conf/cookie'
+
 /**
  * 路由配置项说明
  * declare type RouteConfig = {
@@ -44,7 +46,7 @@ export const routerMap = [{
     path: '/home',
     name: 'home',
     component: () => import('@/view/dashboard/index')
-        // children: dashboard
+    // children: dashboard
   },
   {
     path: '/chat',
@@ -54,39 +56,45 @@ export const routerMap = [{
       {
         path: '/chatBox',
         name: 'chatBox',
-        component: () => import('@/view/chat/chatBox')
+        component: () => import('@/view/chat/ChatBox')
       }
     ]
   },
   {
     path: '/task',
     name: 'task',
-    component: () => import('@/view/task/index')
-        // children: task
+    component: () => import('@/view/task/index'),
+    children: [
+      {
+        path: '/TaskGroup',
+        name: 'project',
+        component: () => import('@/view/task/TaskGroup')
+      }
+    ]
   },
   {
     path: '/data',
     name: 'data',
     component: () => import('@/view/data/index')
-        // children: data
+      // children: data
   },
   {
     path: '/tool',
     name: 'tool',
     component: () => import('@/view/tool/index')
-        // children: tool
+      // children: tool
   },
   {
     path: '/knowledge',
     name: 'knowledge',
     component: () => import('@/view/knowledge/index')
-        // children: knowledge
+      // children: knowledge
   },
   {
     path: '/search',
     name: 'search',
     component: () => import('@/view/search/index')
-        // children: search
+      // children: search
   }
   ]
 },
@@ -124,8 +132,10 @@ const router = new Router({
 })
 const LOGIN_PAGE_NAME = 'login'
 const turnTo = (to, access, next) => {
-  if (canTurnTo(to.name, access, routerMap)) next() // 有权限，可访问
-  else {
+  if (canTurnTo(to.name, access, routerMap)) {
+    console.log(to.name + '有权限，可访问')
+    next()
+  } else {
     next({
       replace: true,
       name: 'error_401'
