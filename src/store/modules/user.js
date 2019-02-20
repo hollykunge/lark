@@ -135,6 +135,7 @@ export default {
     }) {
       return new Promise((resolve, reject) => {
         try {
+          console.log('开始获取userinfo')
           getUserInfo(state.token)
             .then(res => {
               const data = res
