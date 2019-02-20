@@ -2,27 +2,14 @@
   <div class="full-height">
     <lark-navbar/>
     <router-view></router-view>
-    <Layout class="lark-task-layout">
-      <Header class="lark-task-header">
-        <project-header/>
-      </Header>
-      <Content class="lark-task-content">
-        <project-content/>
-      </Content>
-    </Layout>
   </div>
 </template>
 
 <script>
   import LarkNavbar from '@/layout/LarkNavbar'
-  import ProjectHeader from '@/components/task/project/LarkProjectHeader'
-  import ProjectContent from '@/components/task/project/LarkProjectContent'
-
   export default {
     components: {
-      LarkNavbar,
-      ProjectHeader,
-      ProjectContent
+      LarkNavbar
     },
     data () {
       return {}
@@ -32,21 +19,6 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-  .lark-task-header {
-    display: flex;
-    height: 60px;
-    padding: 0px;
-    background: rgb(242, 242, 242);
-    box-shadow: 0 1px 3px rgba(0, 21, 41, .15);
-  }
-
-  .lark-task-layout {
-    flex: 1;
-    /*.lark-task-content{*/
-      /*background: #eceae8;*/
-    /*}*/
-  }
-
   .full-height{
     height: 100%;
     flex-direction: column;
