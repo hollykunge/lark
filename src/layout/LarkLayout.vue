@@ -12,7 +12,9 @@
 
         <Content class="main-container"
                  :style="{margin: '0px', background: '#F2F2F2', minHeight: '704px', height: '100%'}">
-          <router-view></router-view>
+          <keep-alive>
+            <router-view></router-view>
+          </keep-alive>
         </Content>
       </Layout>
     </Layout>
