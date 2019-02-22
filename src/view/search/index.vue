@@ -1,13 +1,7 @@
 <template>
-  <div style="height: 100%">
+  <div class="lark-search-main">
     <lark-navbar/>
-    <Row type="flex" align="middle">
-      <Col span="12" offset="6">
-        <div style="height: 360px">
-          <Input search enter-button size="large" placeholder="输入搜索内容..."/>
-        </div>
-      </Col>
-    </Row>
+    <iframe :src="src" ref="iframe" class="search-iframe" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
   </div>
 </template>
 
@@ -19,7 +13,9 @@
       LarkNavbar
     },
     data () {
-      return {}
+      return {
+        src: 'https://www.baidu.com'
+      }
     },
     methods: {}
   }
@@ -27,4 +23,15 @@
 
 <style rel="stylesheet/scss" lang="scss" scoped>
 
+  .lark-search-main{
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    .search-iframe{
+      width: 100%;
+      height: 100%;
+      flex: 1;
+    }
+  }
 </style>
