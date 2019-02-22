@@ -31,6 +31,7 @@ import {
   faBong
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import VueFriendlyIframe from 'vue-friendly-iframe'
 
 Vue.config.productionTip = false
 
@@ -57,6 +58,7 @@ library.add(
   faBong
 )
 Vue.component('font-awesome-icon', FontAwesomeIcon)
+Vue.component('vue-friendly-iframe', VueFriendlyIframe)
 Vue.config.productionTip = false
 // fontawesome.library.add(solid)
 // Vue.component('font-awesome-icon', FontAwesomeIcon)

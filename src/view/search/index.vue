@@ -1,6 +1,7 @@
 <template>
   <div class="lark-search-main">
     <lark-navbar/>
+    <!--<vue-friendly-iframe :src="src" @load="onLoad" :style="iframeStyle"></vue-friendly-iframe>-->
     <iframe :src="src" ref="iframe" class="search-iframe" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
   </div>
 </template>
