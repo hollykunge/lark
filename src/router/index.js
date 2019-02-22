@@ -63,12 +63,18 @@ export const routerMap = [{
   {
     path: '/task',
     name: 'task',
+    redirect: { name: 'projects' },
     component: () => import('@/view/task/index'),
     children: [
       {
-        path: '/TaskGroup/:projectId',
+        path: '/task/task/:projectId',
         name: 'project',
-        component: () => import('@/view/task/TaskGroup')
+        component: () => import('@/view/task/task/index')
+      },
+      {
+        path: '/task/projects',
+        name: 'projects',
+        component: () => import('@/view/task/project/index')
       }
     ]
   },

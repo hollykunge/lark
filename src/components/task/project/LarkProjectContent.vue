@@ -103,11 +103,11 @@
     },
     methods: {
       show (index) {
-        this.$router.push({name: 'project', params: {projectId: this.projectList[index].id}})
-        // this.$Modal.info({
-        //   title: 'User Info',
-        //   content: `Name：${this.projectList[index].name}<br>Age：${this.projectList[index].status}<br>Address：${this.projectList[index].last}<br>id：${this.projectList[index].id}`
-        // })
+        // this.$router.push({name: 'project', params: {projectId: this.projectList[index].id}})
+        this.$Modal.info({
+          title: 'User Info',
+          content: `Name：${this.projectList[index].name}<br>Age：${this.projectList[index].status}<br>Address：${this.projectList[index].last}<br>id：${this.projectList[index].id}`
+        })
       },
       remove (index) {
         this.projectList.splice(index, 1)
