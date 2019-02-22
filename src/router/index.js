@@ -48,77 +48,71 @@ export const routerMap = [{
     component: () => import('@/view/dashboard/index')
     // children: dashboard
   },
-  {
-    path: '/chat',
-    name: 'chat',
-    component: () => import('@/view/chat/index'),
-    children: [
-      {
-        path: '/chatBox',
-        name: 'chatBox',
-        component: () => import('@/view/chat/ChatBox')
-      }
-    ]
-  },
-  {
-    path: '/task',
-    name: 'task',
-    redirect: { name: 'projects' },
-    component: () => import('@/view/task/index'),
-    children: [
-      {
-        path: '/task/task/:projectId',
-        name: 'project',
-        component: () => import('@/view/task/task/index')
-      },
-      {
-        path: '/task/project',
-        name: 'projects',
-        component: () => import('@/view/task/project/index')
-      }
-    ]
-  },
-  {
-    path: '/data',
-    name: 'data',
-    component: () => import('@/view/data/index')
+    {
+      path: '/chat',
+      name: 'chat',
+      component: () => import('@/view/chat/index'),
+      children: [
+        {
+          path: '/chatBox',
+          name: 'chatBox',
+          component: () => import('@/view/chat/ChatBox')
+        }
+      ]
+    },
+    {
+      path: '/task',
+      name: 'task',
+      component: () => import('@/view/task/index'),
+      children: [
+        {
+          path: '/TaskGroup/:projectId',
+          name: 'project',
+          component: () => import('@/view/task/TaskGroup')
+        }
+      ]
+    },
+    {
+      path: '/data',
+      name: 'data',
+      component: () => import('@/view/data/index')
       // children: data
-  },
-  {
-    path: '/tool',
-    name: 'tool',
-    component: () => import('@/view/tool/index')
+    },
+    {
+      path: '/tool',
+      name: 'tool',
+      component: () => import('@/view/tool/index')
       // children: tool
-  },
-  {
-    path: '/knowledge',
-    name: 'knowledge',
-    component: () => import('@/view/knowledge/index')
+    },
+    {
+      path: '/knowledge',
+      name: 'knowledge',
+      component: () => import('@/view/knowledge/index')
       // children: knowledge
-  },
-  {
-    path: '/search',
-    name: 'search',
-    component: () => import('@/view/search/index')
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: () => import('@/view/search/index')
       // children: search
-  },
-  {
-    path: '/401',
-    name: 'error_401',
-    component: () => import('@/view/error/page_401')
-  }
+    },
+    {
+      path: '/401',
+      name: 'error_401',
+      component: () => import('@/view/error/page_401')
+    }
   ]
 },
-{
-  path: '/update',
-  name: 'update',
-  component: Update
-},
-{
-  path: '/',
-  name: 'login',
-  component: () => import('@/view/login')
-}
+  {
+    path: '/update',
+    name: 'update',
+    component: Update
+  },
+  {
+    path: '/',
+    name: 'login',
+    component: () => import('@/view/login')
+  }
   // ,
   // {
   //   path: '/500',
