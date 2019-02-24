@@ -1,7 +1,9 @@
 <template>
   <div class="full-height">
     <lark-navbar/>
-    <router-view></router-view>
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
   </div>
 </template>
 

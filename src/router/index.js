@@ -6,6 +6,7 @@ Vue.use(Router)
 
 // 引入layout
 import LarkLayout from '@/layout/LarkLayout'
+import TaskView from '@/view/task/index'
 import Update from '@/components/Update'
 
 import {
@@ -39,14 +40,16 @@ const {
 } = config
 
 export const routerMap = [{
-  path: '/index',
-  name: '_home',
+  path: '/',
+  name: 'index',
+  meta: { title: '首页' },
   component: LarkLayout,
+  redirect: '/home',
   children: [{
     path: '/home',
     name: 'home',
-    component: () => import('@/view/dashboard/index')
-    // children: dashboard
+    component: () => import('@/view/dashboard/index'),
+    meta: { title: '主页', keepAlive: true }
   },
   {
     path: '/chat',
@@ -63,8 +66,10 @@ export const routerMap = [{
   {
     path: '/task',
     name: 'task',
-    redirect: { name: 'projects' },
-    component: () => import('@/view/task/index'),
+    component: TaskView,
+    redirect: '/task/projects',
+    alwaysShow: true,
+    meta: {keepAlive: true},
     children: [
       {
         path: '/task/task/:projectId',
@@ -74,6 +79,8 @@ export const routerMap = [{
       {
         path: '/task/projects',
         name: 'projects',
+        alwaysShow: true,
+        meta: {keepAlive: true},
         component: () => import('@/view/task/project/index')
       }
     ]
