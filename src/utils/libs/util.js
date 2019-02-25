@@ -51,17 +51,13 @@ const hasAccess = (access, route) => {
  * @description 用户是否可跳转到该页
  */
 export const canTurnTo = (name, access, routes) => {
-  console.log('canTurnTo的name:' + name)
-
+  console.log('有问题的name:' + name)
   const routePermissionJudge = list => {
-    console.log('canTurnTo的list:' + list)
     return list.some(item => {
       console.log(item)
       if (item.name === name) {
-        console.log('item.name内容:' + item.name)
         return hasAccess(access, item)
       } else if (item.children && item.children.length) {
-        console.log('canTurnTo的item.children:' + item.children)
         return routePermissionJudge(item.children)
       }
     })

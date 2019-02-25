@@ -1,18 +1,18 @@
 <template>
-  <Menu class="lark-task-menu" mode="horizontal" active-name="1">
-    <MenuItem name="1">
-      <Icon type="ios-paper"/>
+  <a-menu class="lark-task-menu" mode="horizontal" active-name="1">
+    <a-menuitem name="1">
+      <a-icon type="ios-paper"/>
       项目
-    </MenuItem>
-    <MenuItem name="2">
-      <Icon type="ios-people"/>
+    </a-menuitem>
+    <a-menuitem name="2">
+      <a-icon type="ios-people"/>
       活动
-    </MenuItem>
-    <MenuItem name="3">
-      <Icon type="ios-people"/>
+    </a-menuitem>
+    <a-menuitem name="3">
+      <a-icon type="ios-people"/>
       统计
-    </MenuItem>
-  </Menu>
+    </a-menuitem>
+  </a-menu>
 </template>
 
 <script>

@@ -1,211 +1,194 @@
 <template>
   <div>
     <div class="logo-con">
-      <Poptip title="Title"
-              content="content"
-              placement="right-start">
-        <Badge dot>
-          <Avatar shape="square"
+      <a-badge dot>
+        <a-avatar shape="square"
                   size="large"
-                  style="color: #f56a00;background-color: #fde3cf">杜</Avatar>
-        </Badge>
-      </Poptip>
+                  style="color: #f56a00;background-color: #fde3cf">杜
+        </a-avatar>
+      </a-badge>
     </div>
-    <Menu :active-name="$route.name"
-          theme="dark"
-          width="auto"
-          :class="menuitemClasses">
+    <a-menu theme="dark"
+            :inlineCollapsed="collapsed"
+            mode="inline"
+            :mode="vertical">
+      <a-menuitem name="home"
+                  to="home"
+                  class="lark-item-home">
+        <a-tooltip content="主页"
+                   placement="right">
+          <div class="icon-style">
+            <span class="iconfont icon-logo"></span>
+          </div>
+        </a-tooltip>
+      </a-menuitem>
+      <a-menuitem name="chat"
+                  to="chat"
+                  class="lark-menu-item">
+        <a-tooltip content="研讨"
+                   placement="right">
+          <div class="icon-style">
+            <!-- <a-badge :count="messageUnreadCount"> -->
+            <font-awesome-icon icon="comment"
+                               size="2x"/>
+            <!-- </a-badge> -->
+          </div>
+        </a-tooltip>
+      </a-menuitem>
+      <a-menuitem name="task"
+                  to="task"
+                  class="lark-menu-item">
+        <a-tooltip content="任务"
+                   placement="right">
+          <div class="icon-style">
+            <font-awesome-icon icon="tasks"
+                               size="2x"/>
+          </div>
+        </a-tooltip>
+      </a-menuitem>
+      <a-menuitem name="data"
+                  to="data"
+                  class="lark-menu-item">
+        <a-tooltip content="数据"
+                   placement="right">
+          <div class="icon-style">
+            <font-awesome-icon icon="table"
+                               size="2x"/>
+          </div>
+        </a-tooltip>
+      </a-menuitem>
+      <a-menuitem name="tool"
+                  to="tool"
+                  class="lark-menu-item">
+        <a-tooltip content="工具"
+                   placement="right">
+          <div class="icon-style">
+            <font-awesome-icon icon="toolbox"
+                               size="2x"/>
+          </div>
+        </a-tooltip>
+      </a-menuitem>
+      <a-menuitem name="knowledge"
+                  to="knowledge"
+                  class="lark-menu-item">
+        <a-tooltip content="知识"
+                   placement="right">
+          <div class="icon-style">
+            <font-awesome-icon icon="book-reader"
+                               size="2x"/>
+          </div>
+        </a-tooltip>
+      </a-menuitem>
+      <!--<a-menuitem name="simulation"-->
+      <!--to="simulation"-->
+      <!--class="lark-menu-item">-->
+      <!--<a-tooltip content="仿真"-->
+      <!--placement="right">-->
+      <!--<div class="icon-style">-->
+      <!--<font-awesome-icon icon="bong"-->
+      <!--size="2x" />-->
+      <!--</div>-->
+      <!--</a-tooltip>-->
+      <!--</a-menuitem>-->
+      <a-menuitem name="search"
+                  to="search"
+                  class="lark-menu-item">
+        <a-tooltip content="搜索"
+                   placement="right">
+          <div class="icon-style">
+            <font-awesome-icon icon="search"
+                               size="2x"/>
+          </div>
+        </a-tooltip>
+      </a-menuitem>
 
-      <MenuItem name="home"
-                to="home"
-                class="lark-item-home">
-      <Tooltip content="主页"
-               placement="right">
-        <div class="icon-style">
-          <span class="iconfont icon-logo"></span>
-        </div>
-      </Tooltip>
-      </MenuItem>
-      <MenuItem name="chat"
-                to="chat"
-                class="lark-menu-item">
-      <Tooltip content="研讨"
-               placement="right">
-        <div class="icon-style">
-          <!-- <Badge :count="messageUnreadCount"> -->
-          <font-awesome-icon icon="comment"
-                             size="2x" />
-          <!-- </Badge> -->
-        </div>
-      </Tooltip>
-      </MenuItem>
-      <MenuItem name="task"
-                to="task"
-                class="lark-menu-item">
-      <Tooltip content="任务"
-               placement="right">
-        <div class="icon-style">
-          <font-awesome-icon icon="tasks"
-                             size="2x" />
-        </div>
-      </Tooltip>
-      </MenuItem>
-      <MenuItem name="data"
-                to="data"
-                class="lark-menu-item">
-      <Tooltip content="数据"
-               placement="right">
-        <div class="icon-style">
-          <font-awesome-icon icon="table"
-                             size="2x" />
-        </div>
-      </Tooltip>
-      </MenuItem>
-      <MenuItem name="tool"
-                to="tool"
-                class="lark-menu-item">
-      <Tooltip content="工具"
-               placement="right">
-        <div class="icon-style">
-          <font-awesome-icon icon="toolbox"
-                             size="2x" />
-        </div>
-      </Tooltip>
-      </MenuItem>
-      <MenuItem name="knowledge"
-                to="knowledge"
-                class="lark-menu-item">
-      <Tooltip content="知识"
-               placement="right">
-        <div class="icon-style">
-          <font-awesome-icon icon="book-reader"
-                             size="2x" />
-        </div>
-      </Tooltip>
-      </MenuItem>
-      <!--<MenuItem name="simulation"-->
-                <!--to="simulation"-->
-                <!--class="lark-menu-item">-->
-        <!--<Tooltip content="仿真"-->
-                 <!--placement="right">-->
-          <!--<div class="icon-style">-->
-            <!--<font-awesome-icon icon="bong"-->
-                               <!--size="2x" />-->
-          <!--</div>-->
-        <!--</Tooltip>-->
-      <!--</MenuItem>-->
-      <MenuItem name="search"
-                to="search"
-                class="lark-menu-item">
-      <Tooltip content="搜索"
-               placement="right">
-        <div class="icon-style">
-          <font-awesome-icon icon="search"
-                             size="2x" />
-        </div>
-      </Tooltip>
-      </MenuItem>
-
-      <MenuItem name="setup"
-                to="setup"
-                class="lark-menu-item menu-item-setup">
-      <Tooltip content="设置"
-               placement="right">
-        <div class="icon-style">
-          <font-awesome-icon icon="cog"
-                             size="2x" />
-        </div>
-      </Tooltip>
-      </MenuItem>
-    </Menu>
+      <a-menuitem name="setup"
+                  to="setup"
+                  class="lark-menu-item menu-item-setup">
+        <a-tooltip content="设置"
+                   placement="right">
+          <div class="icon-style">
+            <font-awesome-icon icon="cog"
+                               size="2x"/>
+          </div>
+        </a-tooltip>
+      </a-menuitem>
+    </a-menu>
   </div>
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
   export default {
     data () {
       return {
-        isCollapsed: true
+        collapsed: false
       }
     },
     computed: {
-      rotateIcon () {
-        return ['menu-icon', this.isCollapsed ? 'rotate-icon' : '']
-      },
-      menuitemClasses () {
-        return ['menu-item', this.isCollapsed ? 'collapsed-menu' : '']
-      },
-      ...mapGetters([
-      // 'messageUnreadCount'
-      ])
     },
     methods: {
-      collapsedSider () {
-        this.$refs.side1.toggleCollapse()
+      toggleCollapsed () {
+        this.collapsed = !this.collapsed
       }
     }
-}
+  }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style rel="stylesheet/scss" lang="scss" scoped>
-.logo-con {
-  height: 64px;
-  text-align: center;
-  transition: all 0.3s;
-  background: rgb(1, 68, 168);
-  padding-top: 12px;
-  img {
-    padding: 8px;
-    margin-top: 6px;
-    height: 50px;
-    width: auto;
-  }
-}
-.lark-sidebar {
-  border-right: solid 0px #e6e6e6 !important;
-  height: 100%;
-  width: 64px;
-  .lark-sidebar-item {
+  .logo-con {
     height: 64px;
-    .icon-style {
-      padding-left: 0px;
+    text-align: center;
+    transition: all 0.3s;
+    background: rgb(1, 68, 168);
+    padding-top: 12px;
+
+    img {
+      padding: 8px;
+      margin-top: 6px;
+      height: 50px;
+      width: auto;
     }
   }
-}
-.ivu-menu-dark {
-  background-color: rgb(1, 68, 168) !important;
-}
-.ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu),
-.ivu-menu-dark.ivu-menu-vertical
+
+  .ivu-menu-dark {
+    background-color: rgb(1, 68, 168) !important;
+  }
+
+  .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu),
+  .ivu-menu-dark.ivu-menu-vertical
   .ivu-menu-item-active:not(.ivu-menu-submenu):hover,
-.ivu-menu-dark.ivu-menu-vertical
+  .ivu-menu-dark.ivu-menu-vertical
   .ivu-menu-submenu-title-active:not(.ivu-menu-submenu),
-.ivu-menu-dark.ivu-menu-vertical
+  .ivu-menu-dark.ivu-menu-vertical
   .ivu-menu-submenu-title-active:not(.ivu-menu-submenu):hover {
-  background: rgb(1, 68, 168);
-  border-radius: 0%;
-}
-.ivu-menu-dark.ivu-menu-vertical .ivu-menu-item:hover,
-.ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title:hover {
-  color: #fff;
-  background: rgb(1, 68, 168);
-  border-radius: 0%;
-}
-.ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu),
-.ivu-menu-dark.ivu-menu-vertical
+    background: rgb(1, 68, 168);
+    border-radius: 0%;
+  }
+
+  .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item:hover,
+  .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title:hover {
+    color: #fff;
+    background: rgb(1, 68, 168);
+    border-radius: 0%;
+  }
+
+  .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu),
+  .ivu-menu-dark.ivu-menu-vertical
   .ivu-menu-submenu-title-active:not(.ivu-menu-submenu) {
-  color: #ff9900;
-}
-.lark-menu-item {
-  padding: 14px 18px !important;
-}
-.lark-item-home {
-  padding: 14px 14px !important;
-}
-.menu-item-setup {
-  position: fixed !important;
-  bottom: 0;
-}
+    color: #ff9900;
+  }
+
+  .lark-menu-item {
+    padding: 14px 18px !important;
+  }
+
+  .lark-item-home {
+    padding: 14px 14px !important;
+  }
+
+  .menu-item-setup {
+    position: fixed !important;
+    bottom: 0;
+  }
 </style>

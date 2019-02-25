@@ -1,6 +1,6 @@
 <template>
     <div class="user-avatar">
-        <Avatar style="color: #f56a00;background-color: #fde3cf">爹</Avatar>
+        <a-avatar style="color: #f56a00;background-color: #fde3cf">爹</a-avatar>
         hollykunge
     </div>
 </template>

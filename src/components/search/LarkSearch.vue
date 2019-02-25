@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Input class="lark-search" placeholder="输入要搜索的内容" style="width: 360px" search/>
+    <a-input class="lark-search" placeholder="输入要搜索的内容" style="width: 360px" search/>
   </div>
 </template>
 <script>

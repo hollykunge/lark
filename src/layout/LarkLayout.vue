@@ -1,23 +1,23 @@
 <template>
   <div class="layout">
-    <Layout style="height: 100%">
-      <Sider ref="side1"
-             hide-trigger
-             collapsible
-             :collapsed-width="64"
-             v-model="isCollapsed">
+    <a-layout style="height: 100%">
+      <a-layout-sider ref="side1"
+                      trigger="null"
+                      defaultCollapsed=true
+                      width="64"
+      >
         <lark-sidebar class="sidebar-container"></lark-sidebar>
-      </Sider>
-      <Layout style="height: 100%" class="lark-content-layout">
+      </a-layout-sider>
+      <a-layout style="height: 100%" class="lark-content-layout">
 
-        <Content class="main-container"
-                 :style="{margin: '0px', background: '#F2F2F2', minHeight: '704px', height: '100%'}">
+        <a-layout-content class="main-container"
+                          :style="{margin: '0px', background: '#F2F2F2', minHeight: '704px', height: '100%'}">
           <keep-alive>
             <router-view></router-view>
           </keep-alive>
-        </Content>
-      </Layout>
-    </Layout>
+        </a-layout-content>
+      </a-layout>
+    </a-layout>
   </div>
 </template>
 <script>
@@ -28,9 +28,7 @@
     name: 'layout',
     components: {LarkNavbar, LarkSidebar},
     data () {
-      return {
-        isCollapsed: true
-      }
+      return {}
     },
     computed: {
       menuitemClasses: function () {
@@ -49,7 +47,8 @@
     position: relative;
     border-radius: 1px;
     overflow: hidden;
-    .lark-content-layout{
+
+    .lark-content-layout {
       background: #f2f2f2;
     }
   }

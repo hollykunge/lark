@@ -1,7 +1,7 @@
 <template>
   <div class="search-content">
     <div class="search-box2">
-      <Input search
+      <a-input search
              autofocus
              v-model="search"
              placeholder="搜索"

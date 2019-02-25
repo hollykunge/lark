@@ -1,19 +1,19 @@
 <template>
   <div class="main-content">
-    <Card :shadow="true">
+    <a-card :shadow="true">
       <div class="search-con">
-        <Row>
-          <Col span="12">
+        <a-row>
+          <a-col span="12">
             <RadioGroup v-model="radioProject" type="button">
               <Radio label="全部"></Radio>
               <Radio label="已完成"></Radio>
               <Radio label="未完成"></Radio>
             </RadioGroup>
-          </Col>
-          <Col span="12">
-            <Input search placeholder="输入项目名称..."/>
-          </Col>
-        </Row>
+          </a-col>
+          <a-col span="12">
+            <a-input search placeholder="输入项目名称..."/>
+          </a-col>
+        </a-row>
       </div>
 
       <div class="table-content">
@@ -25,7 +25,7 @@
           <Page :total="100" :current="1" @on-change="changePage"></Page>
         </div>
       </div>
-    </Card>
+    </a-card>
   </div>
 </template>
 
@@ -69,7 +69,7 @@
             align: 'center',
             render: (h, params) => {
               return h('div', [
-                h('Button', {
+                h('a-button', {
                   props: {
                     type: 'primary',
                     size: 'small'
@@ -83,7 +83,7 @@
                     }
                   }
                 }, 'View'),
-                h('Button', {
+                h('a-button', {
                   props: {
                     type: 'error',
                     size: 'small'

@@ -3,30 +3,30 @@
     <div class="chat-box-list">
       <div class="search-box">
         <lark-side-window />
-        <Row type="flex"
+        <a-row type="flex"
              justify="center">
-          <Col span="20">
-          <Input search
+          <a-col span="20">
+          <a-input search
                  placeholder="搜索"
                  size="small"
                  class="search"
                  @on-focus="showSearch()" />
-          </Col>
-          <Col span="4"
+          </a-col>
+          <a-col span="4"
                push="1">
-          <Button icon="md-close"
+          <a-button icon="md-close"
                   size="small"
                   v-show="showSearchDiv"
-                  @click="closeSearchDiv()"></Button>
-          <Button icon="md-add"
+                  @click="closeSearchDiv()"></a-button>
+          <a-button icon="md-add"
                   size="small"
                   v-show="showAdd"
-                  @click="modalCreateChat = true"></Button>
-          <Modal title="新建研讨"
+                  @click="modalCreateChat = true"></a-button>
+          <a-modal title="新建研讨"
                  v-model="modalCreateChat"
-                 :mask-closable="false"></Modal>
-          </Col>
-        </Row>
+                 :mask-closable="false"></a-modal>
+          </a-col>
+        </a-row>
       </div>
       <div class="search-result"
            v-show="showSearchDiv"></div>

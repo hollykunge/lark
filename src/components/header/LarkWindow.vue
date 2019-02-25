@@ -1,25 +1,25 @@
 <template>
   <div class="lark-nav-style">
-    <Row type="flex"
+    <a-row type="flex"
          justify="center"
          align="top">
-      <Button icon="md-disc"
+      <a-button icon="md-disc"
               class="button-default"
-              @click="handleTray"></Button>
-      <Button icon="md-remove"
+              @click="handleTray"></a-button>
+      <a-button icon="md-remove"
               class="button-default"
-              @click="handleMinimize"></Button>
-      <Button icon="md-square-outline"
+              @click="handleMinimize"></a-button>
+      <a-button icon="md-square-outline"
               class="button-default"
-              @click="handleMaximize"></Button>
-      <Button icon="md-close"
+              @click="handleMaximize"></a-button>
+      <a-button icon="md-close"
               class="button-danger"
-              @click="handleClose"></Button>
-      <Modal title="确认退出？"
+              @click="handleClose"></a-button>
+      <a-modal title="确认退出？"
              v-model="closeModel"
              :mask-closable="false">
-      </Modal>
-    </Row>
+      </a-modal>
+    </a-row>
   </div>
 </template>
 <script>

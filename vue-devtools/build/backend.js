@@ -217,7 +217,7 @@ class EncodeCache {
 
   /**
    * Returns a result unique to each input data
-   * @param {*} data Input data
+   * @param {*} data a-input data
    * @param {*} factory Function used to create the unique result
    */
   cache (data, factory) {
@@ -3770,7 +3770,7 @@ function withMacroTask (fn) {
     try {
       return fn.apply(null, arguments)
     } finally {
-      useMacroTask = false;    
+      useMacroTask = false;
     }
   })
 }

@@ -1,7 +1,7 @@
 <template>
-  <Layout style="height: 100%">
+  <a-layout style="height: 100%">
     <chat-group-box/>
-  </Layout>
+  </a-layout>
 </template>
 
 <script>

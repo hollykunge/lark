@@ -1,12 +1,12 @@
 <template>
-  <Layout class="lark-task-layout">
-    <Header class="lark-task-header">
+  <a-layout class="lark-task-layout">
+    <a-layout-header class="lark-task-header">
       <project-header/>
-    </Header>
-    <Content class="lark-task-content">
+    </a-layout-header>
+    <a-layout-content class="lark-task-content">
       <project-content/>
-    </Content>
-  </Layout>
+    </a-layout-content>
+  </a-layout>
 </template>
 
 <script>

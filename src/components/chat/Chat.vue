@@ -7,7 +7,7 @@
       <a href="javascript:;"
          @click="modal = true"
          class="pull-right menu">
-        <Icon type="md-menu" />
+        <a-icon type="md-menu" />
       </a>
     </div>
     <div class="im-chat-main">
@@ -32,8 +32,8 @@
         </div>
         <div class="im-chat-footer">
           <div class="im-chat-tool">
-            <Icon type="ios-happy-outline"
-                  @click="showFaceBox()"></Icon>
+            <a-icon type="ios-happy-outline"
+                  @click="showFaceBox()"></a-icon>
             <Upload :action="action"
                     name="file"
                     :format="imgFormat"
@@ -48,7 +48,7 @@
                     :on-exceeded-size="handleImgMaxSize"
                     :on-success="handleSuccess"
                     :on-error="handleError">
-              <Icon type="ios-image-outline"></Icon>
+              <a-icon type="ios-image-outline"></a-icon>
             </Upload>
             <Upload :action="action"
                     name="file"
@@ -64,19 +64,19 @@
                     :on-exceeded-size="handleFileMaxSize"
                     :on-success="handleSuccess"
                     :on-error="handleError">
-              <Icon type="ios-folder-open-outline"></Icon>
+              <a-icon type="ios-folder-open-outline"></a-icon>
             </Upload>
             <Faces v-show="showFace"
                    @click="showFace = true"
                    class="faces-box"
                    @insertFace="insertFace"></Faces>
-            <Button class="history-message-btn"
-                    @click="getHistoryMessage()">聊天记录</Button>
+            <a-button class="history-message-btn"
+                    @click="getHistoryMessage()">聊天记录</a-button>
           </div>
           <textarea v-model="messageContent"
                     @keyup.enter="mineSend()"></textarea>
           <div class="im-chat-send">
-            <Button @click="mineSend()">发送</Button>
+            <a-button @click="mineSend()">发送</a-button>
           </div>
         </div>
       </div>
@@ -95,7 +95,7 @@
         </ul>
       </div>
     </div>
-    <Modal closable
+    <a-modal closable
            class="user-model"
            v-model="modal"
            footer-hide
@@ -125,7 +125,7 @@
           <span>{{chat.name}}</span>
         </p>
       </div>
-    </Modal>
+    </a-modal>
     <Drawer title="聊天记录"
             :closable="true"
             v-model="showHistory"

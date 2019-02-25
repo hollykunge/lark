@@ -6,9 +6,9 @@
 </style>
 <template>
   <div class="notice-position">
-    <Badge :count="3" :offset="[12,0]">
+    <a-badge :count="3" :offset="[12,0]">
       <font-awesome-icon icon="bell" size="2x" @click.native="handleClick"/>
-    </Badge>
+    </a-badge>
   </div>
 </template>
 <script>

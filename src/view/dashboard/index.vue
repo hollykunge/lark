@@ -3,9 +3,9 @@
     <lark-navbar/>
     <h2>主页</h2>
     <div>
-      <Button type="primary" @click="getData" long>点一下试试
+      <a-button type="primary" @click="getData" long>点一下试试
         <font-awesome-icon icon="window-close"/>
-      </Button>
+      </a-button>
     </div>
     <img :src="img" alt style="margin-left: 40%; margin-top: 20%;">
   </div>

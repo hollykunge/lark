@@ -157,7 +157,7 @@ Type
   TComponentStateE = (csLoading, csReading, csWriting, csDestroying, csDesigning, csAncestor, csUpdating, csFixups, csFreeNotification, csInline, csDesignInstance);
 
   TComponentState = set of TComponentStateE;
-  
+
   TComponent = class(TPersistent)
     function FindComponent(AName: String): TComponent;
     constructor Create(AOwner: TComponent);
@@ -288,7 +288,7 @@ Type
   TRect = record
     Left, Top, Right, Bottom: Integer;
   end;
-  
+
   TPenMode = (pmBlack, pmWhite, pmNop, pmNot, pmCopy, pmNotCopy, pmMergePenNot, pmMaskPenNot, pmMergeNotPen, pmMaskNotPen, pmMerge, pmNotMerge, pmMask, pmNotMask, pmXor, pmNotXor);
 
   TPenStyle = (psSolid, psDash, psDot, psDashDot, psDashDotDot, psClear, psInsideFrame);
@@ -389,15 +389,15 @@ Type
   TAlign = (alNone, alTop, alBottom, alLeft, alRight, alClient);
 
   TDragMode = (dmManual, dmAutomatic);
-  
+
   TDragState = (dsDragEnter, dsDragLeave, dsDragMove);
-  
+
   TDragKind = (dkDrag, dkDock);
-  
+
   TDragOverEvent = procedure(Sender, Source: TObject; X, Y: Integer; State: TDragState; var Accept: Boolean);
-  
+
   TDragDropEvent = procedure(Sender, Source: TObject;X, Y: Integer);
-  
+
   TEndDragEvent = procedure(Sender, Target: TObject; X, Y: Integer);
 
   TDragObject = class(TObject)
@@ -668,7 +668,7 @@ Type
     property ModalResult: Longint; read write;
     property MDIChildCount: Integer; read;
     property MDIChildren[I: Integer]: TForm; read;
-    property Icon: TIcon; read write;
+    property a-icon: TIcon; read write;
     property Menu: TMainMenu; read write;
     property ObjectMenuItem: TMenuItem; read write;
     property PixelsPerInch: Integer; read write;
@@ -741,7 +741,7 @@ Type
     property HintPause: Integer; read write;
     property HintShortPause: Integer; read write;
     property HintHidePause: Integer; read write;
-    property Icon: TIcon; read write;
+    property a-icon: TIcon; read write;
     property OnHelp: THelpEvent; read write;
     property OnMessage: TMessageEvent; read write;
   end;
@@ -766,8 +766,8 @@ Type
 
   TMouseButton = (mbLeft, mbRight, mbMiddle);
 
-  TMouseEvent = procedure (Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
-  
+  TMouseEvent = procedure (Sender: TObject; a-button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+
   TMouseMoveEvent = procedure(Sender: TObject; Shift: TShiftState; X, Y: Integer);
 
   HWND = Longint;
@@ -1103,7 +1103,7 @@ Type
   TEOwnerDrawState = (odSelected, odGrayed, odDisabled, odChecked, odFocused, odDefault, odHotLight, odInactive, odNoAccel, odNoFocusRect, odReserved1, odReserved2, odComboBoxEdit);
 
   TOwnerDrawState = set of TEOwnerDrawState;
-  
+
   TListBox = class(TCustomListBox)
     property BorderStyle: TBorderStyle; read write;
     property Color: TColor; read write;
@@ -1201,7 +1201,7 @@ Type
 
   TUDBtnType = (btNext, btPrev);
 
-  TUDClickEvent = procedure(Sender: TObject; Button: TUDBtnType);
+  TUDClickEvent = procedure(Sender: TObject; a-button: TUDBtnType);
 
   TUDChangingEvent = procedure(Sender: TObject; var AllowChange: Boolean);
 
@@ -1437,12 +1437,12 @@ Type
 
   TNodeAttachMode = (naAdd, naAddFirst, naAddChild, naAddChildFirst, naInsert);
 
-  THitTest = (htAbove, htBelow, htNowhere, htOnItem, htOnButton, htOnIcon, htOnIndent, 
+  THitTest = (htAbove, htBelow, htNowhere, htOnItem, htOnButton, htOnIcon, htOnIndent,
        htOnLabel, htOnRight, htOnStateIcon, htToLeft, htToRight);
 
   THitTests = set of THitTest;
 
-  TSortType = (stNone, stData, stText, stBoth);    
+  TSortType = (stNone, stData, stText, stBoth);
 
   TResType = (rtBitmap, rtCursor, rtIcon);
 
@@ -2076,7 +2076,7 @@ Type
     property AutoSize: Boolean; read write;
     property BackColor: TColor; read write;
     property Center: Boolean; read write;
-    property Icon: TNewIcon; read write;
+    property a-icon: TNewIcon; read write;
     property DragCursor: Longint; read write;
     property DragMode: TDragMode; read write;
     property PopupMenu: TPopupMenu; read write;
@@ -2108,7 +2108,7 @@ Type
     property ParentFont: Boolean; read write;
     property FocusControl: TWinControl; read write;
     property Glyph: TBitmap; read write;
-    property Layout: TNewSpeedButtonLayout; read write;
+    property a-layout: TNewSpeedButtonLayout; read write;
     property Margin: Integer; read write;
     property NumGlyphs: Integer; read write;
     property ParentShowHint: Boolean; read write;
@@ -2364,7 +2364,7 @@ Type
   UINT = LongWord;
 
   BOOL = LongBool;
-  
+
   DWORD_PTR = LongWord;
 
   UINT_PTR = LongWord;
@@ -2459,7 +2459,7 @@ Type
     msgFinishedLabel,
     msgFinishedLabelNoIcons,
     msgFinishedRestartLabel,
-    msgFinishedRestartMessage, 
+    msgFinishedRestartMessage,
     msgFullInstallation,
     msgGroupNameTooLong,
     msgIncorrectPassword,
@@ -2487,7 +2487,7 @@ Type
     msgNoRadio,
     msgNotOnThisPlatform,
     msgNoUninstallWarning,
-    msgNoUninstallWarningTitle, 
+    msgNoUninstallWarningTitle,
     msgOnlyAdminCanUninstall,
     msgOnlyOnTheseArchitectures,
     msgOnlyOnThisPlatform,
@@ -2501,8 +2501,8 @@ Type
     msgReadyLabel1,
     msgReadyLabel2a,
     msgReadyLabel2b,
-    msgReadyMemoComponents, 
-    msgReadyMemoDir, 
+    msgReadyMemoComponents,
+    msgReadyMemoDir,
     msgReadyMemoGroup,
     msgReadyMemoTasks,
     msgReadyMemoType,
@@ -2584,15 +2584,15 @@ Type
     msgWizardUninstalling,
     msgWizardUserInfo,
     msgYesRadio);
-    
+
   TSetupStep = (ssPreInstall, ssInstall, ssPostInstall, ssDone);
 
   TUninstallStep = (usAppMutexCheck, usUninstall, usPostUninstall, usDone);
 
   TExecWait = (ewNoWait, ewWaitUntilTerminated, ewWaitUntilIdle);
-  
+
   TSetupProcessorArchitecture = (paUnknown, paX86, paX64, paIA64);
-  
+
   TFileTime = record
     dwLowDateTime: DWORD;
     dwHighDateTime: DWORD;
@@ -2945,7 +2945,7 @@ function Unassigned: Variant;
 function VarIsEmpty(const V: Variant): Boolean;
 function VarIsNull(const V: Variant): Boolean;
 function VarType(const V: Variant): TVarType;
-function SizeOf(const V: Variant): Longint; 
+function SizeOf(const V: Variant): Longint;
 
 // File System functions
 

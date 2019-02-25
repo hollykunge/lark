@@ -18,7 +18,7 @@ export default {
     // 添加一个菜单
     var menu = new gui.Menu()
     menu.append(
-      new gui.MenuItem({
+      new gui.a-menuitem({
         label: ' 退出',
         icon: path_
       })

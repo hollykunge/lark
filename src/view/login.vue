@@ -1,20 +1,20 @@
 <template>
-  <Layout style="height:100%">
-    <Header :style="{padding: 0}" class="layout-header-bar">
+  <a-layout style="height:100%">
+    <a-layout-header :style="{padding: 0}" class="layout-header-bar">
       <lark-navbar></lark-navbar>
-    </Header>
-    <Content :style="{margin: '0px', background: '#F2F2F2', minHeight: '600px', height: '100%'}">
-      <Row type="flex" justify="center" align="middle" class="login-panel">
-        <Col span="8">
-          <Card>
+    </a-layout-header>
+    <a-layout-content :style="{margin: '0px', background: '#F2F2F2', minHeight: '600px', height: '100%'}">
+      <a-row type="flex" justify="center" align="middle" class="login-panel">
+        <a-col span="8">
+          <a-card>
             <p slot="title">登录</p>
             <login-form @on-success-valid="handleSubmit"/>
-          </Card>
-        </Col>
-      </Row>
-    </Content>
-    <Footer>©2019 WorkHub Corporation. All rights reserved.</Footer>
-  </Layout>
+          </a-card>
+        </a-col>
+      </a-row>
+    </a-layout-content>
+    <a-layout-footer>©2019 WorkHub Corporation. All rights reserved.</a-layout-footer>
+  </a-layout>
 </template>
 <script>
 import LarkNavbar from '@/layout/LarkNavbar'

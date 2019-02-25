@@ -4,9 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-// import iView from 'iview'
-import 'iview/dist/styles/iview.css'
-import './plugins/iview.js'
+import Antd from 'ant-design-vue'
+import 'ant-design-vue/dist/antd.css'
+// import 'iview/dist/styles/iview.css'
+// import './plugins/iview.js'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
   faCoffee,
@@ -65,7 +66,7 @@ Vue.config.productionTip = false
 // for auto update
 import { checkUpdate } from '@/utils/update.js'
 checkUpdate()
-
+Vue.use(Antd)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

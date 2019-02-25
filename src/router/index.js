@@ -67,9 +67,7 @@ export const routerMap = [{
     path: '/task',
     name: 'task',
     component: TaskView,
-    redirect: '/task/projects',
-    alwaysShow: true,
-    meta: {keepAlive: true},
+    // redirect: '/task/projects',
     children: [
       {
         path: '/task/task/:projectId',
@@ -79,8 +77,6 @@ export const routerMap = [{
       {
         path: '/task/projects',
         name: 'projects',
-        alwaysShow: true,
-        meta: {keepAlive: true},
         component: () => import('@/view/task/project/index')
       }
     ]
@@ -146,7 +142,6 @@ const router = new Router({
 const LOGIN_PAGE_NAME = 'login'
 const turnTo = (to, access, next) => {
   if (canTurnTo(to.name, access, routerMap)) {
-    console.log(to.name + access + '有权限，可访问')
     next()
   } else {
     next({
@@ -173,10 +168,8 @@ router.beforeEach((to, from, next) => {
     })
   } else {
     if (store.state.user.hasGetInfo) {
-      console.log('有userinfo')
       turnTo(to, store.state.user.access, next)
     } else {
-      console.log('没有userinfo')
       store.dispatch('getUserInfo').then(user => {
         // 拉取用户信息，通过用户权限和跳转的页面的name来判断是否有权限访问;access必须是一个数组，如：['super_admin'] ['super_admin', 'admin']
         turnTo(to, user.access, next)
