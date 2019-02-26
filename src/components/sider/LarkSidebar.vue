@@ -11,6 +11,7 @@
     <a-menu>
       <a-menu-item name="home"
                   to="home"
+
                   class="lark-item-home">
         <a-tooltip content="主页"
                    placement="right">
@@ -113,9 +114,6 @@
     computed: {
     },
     methods: {
-      toggleCollapsed () {
-        this.collapsed = !this.collapsed
-      }
     }
   }
 </script>
@@ -137,31 +135,30 @@
     }
   }
 
-  .ivu-menu-dark {
+  .ant-menu {
     background-color: rgb(1, 68, 168) !important;
+    border-right: 0px solid #e8e8e8;
+    color: #cdcdcd;
+    .ant-menu-item{
+      height: 54px;
+    }
   }
 
-  .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu),
-  .ivu-menu-dark.ivu-menu-vertical
-  .ivu-menu-item-active:not(.ivu-menu-submenu):hover,
-  .ivu-menu-dark.ivu-menu-vertical
-  .ivu-menu-submenu-title-active:not(.ivu-menu-submenu),
-  .ivu-menu-dark.ivu-menu-vertical
-  .ivu-menu-submenu-title-active:not(.ivu-menu-submenu):hover {
+  .ant-menu .ant-menu-item-selected,
+  .ant-menu-item-selected:hover{
     background: rgb(1, 68, 168);
     border-radius: 0%;
   }
-
-  .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item:hover,
-  .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title:hover {
+  .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background: rgb(1, 68, 168);
+  }
+  .ant-menu .ant-menu-item:hover {
     color: #fff;
     background: rgb(1, 68, 168);
     border-radius: 0%;
   }
 
-  .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu),
-  .ivu-menu-dark.ivu-menu-vertical
-  .ivu-menu-submenu-title-active:not(.ivu-menu-submenu) {
+  .ant-menu .ant-menu-item-selected {
     color: #ff9900;
   }
 

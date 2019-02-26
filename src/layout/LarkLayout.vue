@@ -4,6 +4,7 @@
       <a-layout-sider ref="side1"
                       trigger="null"
                       width="64"
+                      style="background:#0144a8"
       >
         <lark-sidebar class="sidebar-container"></lark-sidebar>
       </a-layout-sider>
@@ -20,8 +21,8 @@
   </div>
 </template>
 <script>
-  import LarkNavbar from './LarkNavbar'
-  import LarkSidebar from './LarkSidebar'
+  import LarkNavbar from '../components/header/LarkNavbar'
+  import LarkSidebar from '../components/sider/LarkSidebar'
 
   export default {
     name: 'layout',
