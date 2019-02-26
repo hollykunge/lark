@@ -8,7 +8,7 @@
         <a-col span="8">
           <a-card>
             <p slot="title">登录</p>
-            <login-form @on-success-valid="handleSubmit"/>
+            <login-form/>
           </a-card>
         </a-col>
       </a-row>
@@ -19,29 +19,16 @@
 <script>
 import LarkNavbar from '@/layout/LarkNavbar'
 import LoginForm from '@/components/login/LoginForm'
-import { mapActions } from 'vuex'
+
 export default {
   components: { LarkNavbar, LoginForm },
   data () {
     return {
-      formTop: {
-        username: 'workhub',
-        password: 'workhub'
-      }
+
     }
   },
   methods: {
-    ...mapActions(['handleLogin', 'getUserInfo']),
-    handleSubmit ({ userName, password }) {
-      this.handleLogin({ userName, password }).then(res => {
-        this.getUserInfo()
-          .then(res => {
-            this.$router.push({
-              name: 'home'
-            })
-          })
-      })
-    }
+
   }
 }
 </script>
