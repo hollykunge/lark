@@ -1,68 +1,99 @@
 <template>
-  <a-form ref="loginForm" :model="form" :rules="rules" @keydown.enter.native="handleSubmit">
-    <a-formitem prop="userName">
-      <a-input v-model="form.userName" placeholder="请输入用户名">
-        <span slot="prepend">
-          <a-icon :size="16" type="ios-person"></a-icon>
-        </span>
+  <a-form id="formLogin"
+          class="user-layout-login"
+          ref="formLogin"
+          :form="form"
+          @submit="handleSubmit">
+    <a-form-item prop="userName">
+      <a-input v-model="form.userName"
+               size="large"
+               type="text"
+               placeholder="帐户名">
+        <a-icon slot="prefix" type="user" :style="{ color: 'rgba(0,0,0,.25)' }"/>
       </a-input>
-    </a-formitem>
-    <a-formitem prop="password">
-      <a-input type="password" v-model="form.password" placeholder="请输入密码">
-        <span slot="prepend">
-          <a-icon :size="14" type="md-lock"></a-icon>
-        </span>
+    </a-form-item>
+    <a-form-item prop="password">
+      <a-input v-model="form.password" size="large"
+               type="password"
+               autocomplete="false"
+               placeholder="密码 / admin">
+        <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }"/>
       </a-input>
-    </a-formitem>
-    <a-formitem>
-      <a-button @click="handleSubmit" type="primary" long>登录</a-button>
-    </a-formitem>
+    </a-form-item>
+    <a-form-item>
+      <a-button size="large"
+                type="primary"
+                htmlType="submit"
+                class="login-button"
+                :loading="state.loginBtn"
+                :disabled="state.loginBtn">登录
+      </a-button>
+    </a-form-item>
   </a-form>
 </template>
 <script>
-export default {
-  name: 'LoginForm',
-  props: {
-    userNameRules: {
-      type: Array,
-      default: () => {
-        return [{ required: true, message: '账号不能为空', trigger: 'blur' }]
+  import {mapActions} from 'vuex'
+
+  export default {
+    name: 'LoginForm',
+    props: {
+      userNameRules: {
+        type: Array,
+        default: () => {
+          return [{required: true, message: '账号不能为空', trigger: 'blur'}]
+        }
+      },
+      passwordRules: {
+        type: Array,
+        default: () => {
+          return [{required: true, message: '密码不能为空', trigger: 'blur'}]
+        }
       }
     },
-    passwordRules: {
-      type: Array,
-      default: () => {
-        return [{ required: true, message: '密码不能为空', trigger: 'blur' }]
-      }
-    }
-  },
-  data () {
-    return {
-      form: {
-        userName: 'workhub',
-        password: ''
-      }
-    }
-  },
-  computed: {
-    rules () {
+    data () {
       return {
-        userName: this.userNameRules,
-        password: this.passwordRules
-      }
-    }
-  },
-  methods: {
-    handleSubmit () {
-      this.$refs.loginForm.validate(valid => {
-        if (valid) {
-          this.$emit('on-success-valid', {
-            userName: this.form.userName,
-            password: this.form.password
-          })
+        form: {
+          userName: 'workhub',
+          password: ''
+        },
+        state: {
+          time: 60,
+          loginBtn: false,
+          // login type: 0 email, 1 username, 2 telephone
+          loginType: 0
         }
-      })
+      }
+    },
+    computed: {
+      rules () {
+        return {
+          userName: this.userNameRules,
+          password: this.passwordRules
+        }
+      }
+    },
+    methods: {
+      ...mapActions(['handleLogin', 'getUserInfo']),
+      handleSubmit ({ userName, password }) {
+        this.handleLogin({ userName, password }).then(res => {
+          this.getUserInfo()
+            .then(res => {
+              this.$router.push({
+                name: 'home'
+              })
+            })
+        })
+      }
+      // handleSubmit () {
+      //   this.$refs.loginForm.validate(valid => {
+      //     if (valid) {
+      //       this.$emit('on-success-valid', {
+      //         userName: this.form.userName,
+      //         password: this.form.password
+      //       })
+      //     }
+      //   })
+      // }
     }
   }
-}
 </script>

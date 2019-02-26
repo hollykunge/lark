@@ -3,7 +3,6 @@
     <a-layout style="height: 100%">
       <a-layout-sider ref="side1"
                       trigger="null"
-                      defaultCollapsed=true
                       width="64"
       >
         <lark-sidebar class="sidebar-container"></lark-sidebar>

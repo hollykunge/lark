@@ -8,11 +8,8 @@
         </a-avatar>
       </a-badge>
     </div>
-    <a-menu theme="dark"
-            :inlineCollapsed="collapsed"
-            mode="inline"
-            :mode="vertical">
-      <a-menuitem name="home"
+    <a-menu>
+      <a-menu-item name="home"
                   to="home"
                   class="lark-item-home">
         <a-tooltip content="主页"
@@ -21,8 +18,8 @@
             <span class="iconfont icon-logo"></span>
           </div>
         </a-tooltip>
-      </a-menuitem>
-      <a-menuitem name="chat"
+      </a-menu-item>
+      <a-menu-item name="chat"
                   to="chat"
                   class="lark-menu-item">
         <a-tooltip content="研讨"
@@ -34,8 +31,8 @@
             <!-- </a-badge> -->
           </div>
         </a-tooltip>
-      </a-menuitem>
-      <a-menuitem name="task"
+      </a-menu-item>
+      <a-menu-item name="task"
                   to="task"
                   class="lark-menu-item">
         <a-tooltip content="任务"
@@ -45,8 +42,8 @@
                                size="2x"/>
           </div>
         </a-tooltip>
-      </a-menuitem>
-      <a-menuitem name="data"
+      </a-menu-item>
+      <a-menu-item name="data"
                   to="data"
                   class="lark-menu-item">
         <a-tooltip content="数据"
@@ -56,8 +53,8 @@
                                size="2x"/>
           </div>
         </a-tooltip>
-      </a-menuitem>
-      <a-menuitem name="tool"
+      </a-menu-item>
+      <a-menu-item name="tool"
                   to="tool"
                   class="lark-menu-item">
         <a-tooltip content="工具"
@@ -67,8 +64,8 @@
                                size="2x"/>
           </div>
         </a-tooltip>
-      </a-menuitem>
-      <a-menuitem name="knowledge"
+      </a-menu-item>
+      <a-menu-item name="knowledge"
                   to="knowledge"
                   class="lark-menu-item">
         <a-tooltip content="知识"
@@ -78,19 +75,8 @@
                                size="2x"/>
           </div>
         </a-tooltip>
-      </a-menuitem>
-      <!--<a-menuitem name="simulation"-->
-      <!--to="simulation"-->
-      <!--class="lark-menu-item">-->
-      <!--<a-tooltip content="仿真"-->
-      <!--placement="right">-->
-      <!--<div class="icon-style">-->
-      <!--<font-awesome-icon icon="bong"-->
-      <!--size="2x" />-->
-      <!--</div>-->
-      <!--</a-tooltip>-->
-      <!--</a-menuitem>-->
-      <a-menuitem name="search"
+      </a-menu-item>
+      <a-menu-item name="search"
                   to="search"
                   class="lark-menu-item">
         <a-tooltip content="搜索"
@@ -100,9 +86,9 @@
                                size="2x"/>
           </div>
         </a-tooltip>
-      </a-menuitem>
+      </a-menu-item>
 
-      <a-menuitem name="setup"
+      <a-menu-item name="setup"
                   to="setup"
                   class="lark-menu-item menu-item-setup">
         <a-tooltip content="设置"
@@ -112,7 +98,7 @@
                                size="2x"/>
           </div>
         </a-tooltip>
-      </a-menuitem>
+      </a-menu-item>
     </a-menu>
   </div>
 </template>
