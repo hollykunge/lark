@@ -17,7 +17,7 @@
   </a-layout>
 </template>
 <script>
-import LarkNavbar from '@/layout/LarkNavbar'
+import LarkNavbar from '@/components/header/LarkNavbar'
 import LoginForm from '@/components/login/LoginForm'
 
 export default {

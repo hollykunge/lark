@@ -94,7 +94,7 @@
 </template>
 <script>
 import { mapMutations, mapActions } from 'vuex'
-import LarkNavbar from '@/layout/LarkNavbar'
+import LarkNavbar from '@/components/header/LarkNavbar'
 import LarkSideWindow from '@/components/header/LarkSideWindow'
 import Search from '@/components/chat/ChatSearch'
 import UserChat from '@/components/chat/Chat'

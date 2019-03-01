@@ -13,7 +13,7 @@
 
 <script>
   import {testApi} from '@/api/test'
-  import LarkNavbar from '@/layout/LarkNavbar'
+  import LarkNavbar from '@/components/header/LarkNavbar'
 
   export default {
     components: {

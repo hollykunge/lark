@@ -6,7 +6,7 @@
 
 <script>
 import ChatGroupBox from '@/components/chat/ChatGroupBox'
-import LarkNavbar from '@/layout/LarkNavbar'
+import LarkNavbar from '@/components/header/LarkNavbar'
 import LarkSideWindow from '@/components/header/LarkSideWindow'
 export default {
   components: { LarkSideWindow, LarkNavbar, ChatGroupBox },
